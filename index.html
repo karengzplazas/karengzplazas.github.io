@@ -69,25 +69,39 @@
       font-size: 14px;
       color: #888888;
     }
+
+    .language-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #222;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
 
+  <button class="language-toggle" onclick="toggleLanguage()">Español</button>
+
   <header>
     <h1>Karen Gómez P.</h1>
-    <p>Chemist | Data enthusiast | Turning data into knowledge.</p>
+    <p id="subtitle">Chemist | Data enthusiast | Turning data into knowledge.</p>
   </header>
 
   <section>
-    <h2>About Me</h2>
-    <p>
+    <h2 id="about-title">About Me</h2>
+    <p id="about-text">
       I am a Chemist with experience in biostatistics projects, where I have worked on data analysis applied to health, industry, and scientific research. I use advanced statistical tools to carry out descriptive and inferential analysis, as well as experimental design. I'm passionate about transforming data into useful knowledge for decision-making.
     </p>
   </section>
 
   <section>
-    <h2>Featured Projects</h2>
-    <ul>
+    <h2 id="projects-title">Featured Projects</h2>
+    <ul id="projects-list">
       <li><a href="https://github.com/karengzplazas/titanic-analysis" target="_blank">Titanic Survival Analysis</a></li>
       <li><a href="https://github.com/karengzplazas/telco-churn-prediction" target="_blank">Customer Churn Prediction - Telco</a></li>
       <li><a href="https://github.com/karengzplazas/autos-usados" target="_blank">Used Cars Investment Analysis</a></li>
@@ -97,8 +111,8 @@
   </section>
 
   <section>
-    <h2>Technical Skills</h2>
-    <ul>
+    <h2 id="skills-title">Technical Skills</h2>
+    <ul id="skills-list">
       <li>Python (experience with Jupyter and Visual Studio Code)</li>
       <li>MySQL and MongoDB</li>
       <li>Microsoft Excel (advanced analysis)</li>
@@ -108,13 +122,49 @@
   </section>
 
   <section>
-    <h2>Contact</h2>
+    <h2 id="contact-title">Contact</h2>
     <p>Email: <a href="mailto:Karengzplazas@gmail.com">Karengzplazas@gmail.com</a></p>
   </section>
 
   <footer>
     © 2025 Karen Gómez P.
   </footer>
+
+  <script>
+    const content = {
+      en: {
+        subtitle: "Chemist | Data enthusiast | Turning data into knowledge.",
+        aboutTitle: "About Me",
+        aboutText: "I am a Chemist with experience in biostatistics projects, where I have worked on data analysis applied to health, industry, and scientific research. I use advanced statistical tools to carry out descriptive and inferential analysis, as well as experimental design. I'm passionate about transforming data into useful knowledge for decision-making.",
+        projectsTitle: "Featured Projects",
+        skillsTitle: "Technical Skills",
+        contactTitle: "Contact",
+        toggleButton: "Español"
+      },
+      es: {
+        subtitle: "Química | Apasionada por los datos | Transformando datos en conocimiento.",
+        aboutTitle: "Sobre mí",
+        aboutText: "Soy Química con experiencia en proyectos de bioestadística, donde he trabajado en el análisis de datos aplicados a la salud, la industria y la investigación científica. Manejo herramientas estadísticas avanzadas para el desarrollo de análisis descriptivos, inferenciales y diseño de experimentos. Me apasiona transformar datos en conocimiento útil para la toma de decisiones.",
+        projectsTitle: "Proyectos destacados",
+        skillsTitle: "Habilidades técnicas",
+        contactTitle: "Contacto",
+        toggleButton: "English"
+      }
+    };
+
+    let currentLang = "en";
+
+    function toggleLanguage() {
+      currentLang = currentLang === "en" ? "es" : "en";
+      document.getElementById("subtitle").innerText = content[currentLang].subtitle;
+      document.getElementById("about-title").innerText = content[currentLang].aboutTitle;
+      document.getElementById("about-text").innerText = content[currentLang].aboutText;
+      document.getElementById("projects-title").innerText = content[currentLang].projectsTitle;
+      document.getElementById("skills-title").innerText = content[currentLang].skillsTitle;
+      document.getElementById("contact-title").innerText = content[currentLang].contactTitle;
+      document.querySelector(".language-toggle").innerText = content[currentLang].toggleButton;
+    }
+  </script>
 
 </body>
 </html>
