@@ -1,61 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Karen Gómez P. - Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio de Karen Gómez</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap');
+    :root {
+      --accent-color: #f5006a; /* Rosa vibrante de la G */
+    }
 
     body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #0d0d0d;
-      color: #e0e0e0;
+      padding: 0;
     }
 
     header {
-      background-color: #000000;
-      color: #ffffff;
-      padding: 60px 20px;
       text-align: center;
+      padding: 30px 20px 10px;
     }
 
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      font-style: italic;
-      margin-bottom: 10px;
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(30, 30, 30, 0.7); /* Fondo gris oscuro translúcido */
+      padding: 10px;
+      border-radius: 12px;
+      margin-bottom: 20px;
     }
 
-    header p {
-      font-size: 18px;
-      color: #bbbbbb;
+    .logo-container img {
+      max-width: 200px;
+      height: auto;
     }
 
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 5px;
+      color: #fff;
     }
 
     h2 {
-      color: #ffffff;
-      border-bottom: 2px solid #ffffff;
-      padding-bottom: 5px;
+      color: var(--accent-color);
+      border-bottom: 2px solid var(--accent-color);
+      display: inline-block;
+      margin-bottom: 10px;
     }
 
-    ul {
-      list-style-type: none;
-      padding-left: 0;
+    .content {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
     }
 
-    ul li {
-      margin-bottom: 8px;
+    section {
+      margin-bottom: 40px;
     }
 
     a {
-      color: #4db8ff;
+      color: var(--accent-color);
       text-decoration: none;
     }
 
@@ -66,105 +72,44 @@
     footer {
       text-align: center;
       padding: 20px;
-      font-size: 14px;
-      color: #888888;
-    }
-
-    .language-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background-color: #222;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 14px;
+      color: #888;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-
-  <button class="language-toggle" onclick="toggleLanguage()">Español</button>
-
   <header>
+    <div class="logo-container">
+      <img src="White Gold Luxury Initial Logo (2).png" alt="Karen Gómez Logo">
+    </div>
     <h1>Karen Gómez P.</h1>
-    <p id="subtitle">Chemist | Data enthusiast | Turning data into knowledge.</p>
+    <p>Científica de datos | Química | Analista Educativa</p>
   </header>
 
-  <section>
-    <h2 id="about-title">About Me</h2>
-    <p id="about-text">
-      I am a Chemist with experience in biostatistics projects, where I have worked on data analysis applied to health, industry, and scientific research. I use advanced statistical tools to carry out descriptive and inferential analysis, as well as experimental design. I'm passionate about transforming data into useful knowledge for decision-making.
-    </p>
-  </section>
+  <div class="content">
+    <section>
+      <h2>Sobre mí</h2>
+      <p>Soy una profesional apasionada por la estadística, la ciencia de datos y la mejora de la educación mediante el análisis riguroso y visualmente efectivo. Combino conocimientos científicos con herramientas tecnológicas para aportar a proyectos sociales y estratégicos.</p>
+    </section>
 
-  <section>
-    <h2 id="projects-title">Featured Projects</h2>
-    <ul id="projects-list">
-      <li><a href="https://github.com/karengzplazas/titanic-analysis" target="_blank">Titanic Survival Analysis</a></li>
-      <li><a href="https://github.com/karengzplazas/telco-churn-prediction" target="_blank">Customer Churn Prediction - Telco</a></li>
-      <li><a href="https://github.com/karengzplazas/autos-usados" target="_blank">Used Cars Investment Analysis</a></li>
-      <li><a href="https://github.com/karengzplazas/Faraona-sheet" target="_blank">Wisdom Pyramid Applied to Payments</a></li>
-      <li><a href="https://github.com/karengzplazas/Piramide-pagos" target="_blank">Payments Pyramid Project</a></li>
-    </ul>
-  </section>
+    <section>
+      <h2>Proyectos destacados</h2>
+      <ul>
+        <li><strong>Desigualdades Educativas en Colombia (2011–2023)</strong>: Análisis geoespacial, clustering y visualización con Python y Power BI.</li>
+        <li><strong>Optimización de inversiones en autos usados</strong>: Modelado predictivo con Random Forest y lógica de portafolio.</li>
+        <li><strong>Análisis de sentimiento en salud pública</strong>: Clasificación de opiniones de Twitter con NLP básico.</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2 id="skills-title">Technical Skills</h2>
-    <ul id="skills-list">
-      <li>Python (experience with Jupyter and Visual Studio Code)</li>
-      <li>MySQL and MongoDB</li>
-      <li>Microsoft Excel (advanced analysis)</li>
-      <li>Descriptive and inferential statistics, experimental design</li>
-      <li>English (B2 level)</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2 id="contact-title">Contact</h2>
-    <p>Email: <a href="mailto:Karengzplazas@gmail.com">Karengzplazas@gmail.com</a></p>
-  </section>
+    <section>
+      <h2>Contacto</h2>
+      <p>Correo: <a href="mailto:karengzplazas@gmail.com">karengzplazas@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/karengomezp">/karengomezp</a></p>
+    </section>
+  </div>
 
   <footer>
-    © 2025 Karen Gómez P.
+    &copy; 2025 Karen Gómez P. Todos los derechos reservados.
   </footer>
-
-  <script>
-    const content = {
-      en: {
-        subtitle: "Chemist | Data enthusiast | Turning data into knowledge.",
-        aboutTitle: "About Me",
-        aboutText: "I am a Chemist with experience in biostatistics projects, where I have worked on data analysis applied to health, industry, and scientific research. I use advanced statistical tools to carry out descriptive and inferential analysis, as well as experimental design. I'm passionate about transforming data into useful knowledge for decision-making.",
-        projectsTitle: "Featured Projects",
-        skillsTitle: "Technical Skills",
-        contactTitle: "Contact",
-        toggleButton: "Español"
-      },
-      es: {
-        subtitle: "Química | Apasionada por los datos | Transformando datos en conocimiento.",
-        aboutTitle: "Sobre mí",
-        aboutText: "Soy Química con experiencia en proyectos de bioestadística, donde he trabajado en el análisis de datos aplicados a la salud, la industria y la investigación científica. Manejo herramientas estadísticas avanzadas para el desarrollo de análisis descriptivos, inferenciales y diseño de experimentos. Me apasiona transformar datos en conocimiento útil para la toma de decisiones.",
-        projectsTitle: "Proyectos destacados",
-        skillsTitle: "Habilidades técnicas",
-        contactTitle: "Contacto",
-        toggleButton: "English"
-      }
-    };
-
-    let currentLang = "en";
-
-    function toggleLanguage() {
-      currentLang = currentLang === "en" ? "es" : "en";
-      document.getElementById("subtitle").innerText = content[currentLang].subtitle;
-      document.getElementById("about-title").innerText = content[currentLang].aboutTitle;
-      document.getElementById("about-text").innerText = content[currentLang].aboutText;
-      document.getElementById("projects-title").innerText = content[currentLang].projectsTitle;
-      document.getElementById("skills-title").innerText = content[currentLang].skillsTitle;
-      document.getElementById("contact-title").innerText = content[currentLang].contactTitle;
-      document.querySelector(".language-toggle").innerText = content[currentLang].toggleButton;
-    }
-  </script>
-
 </body>
 </html>
