@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Karen Gómez P. - Portfolio</title>
+  <title id="page-title">Karen Gómez P. - Portfolio</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap" rel="stylesheet">
@@ -140,11 +140,11 @@
   <section>
     <h2 id="skills-title">Technical Skills</h2>
     <ul id="skills-list">
-      <li><i class="fab fa-python"></i> <span id="skill1">Python (Jupyter y VS Code)</span></li>
-      <li><i class="fas fa-database"></i> <span id="skill2">MySQL y MongoDB</span></li>
-      <li><i class="fas fa-file-excel"></i> <span id="skill3">Microsoft Excel (análisis avanzado)</span></li>
-      <li><i class="fas fa-chart-line"></i> <span id="skill4">Estadística descriptiva/inferencial, diseño experimental</span></li>
-      <li><i class="fas fa-language"></i> <span id="skill5">Inglés (nivel B2)</span></li>
+      <li><i class="fab fa-python"></i> <span id="skill1">Python (Jupyter and VS Code)</span></li>
+      <li><i class="fas fa-database"></i> <span id="skill2">MySQL and MongoDB</span></li>
+      <li><i class="fas fa-file-excel"></i> <span id="skill3">Microsoft Excel (advanced analysis)</span></li>
+      <li><i class="fas fa-chart-line"></i> <span id="skill4">Descriptive/Inferential Statistics, Experimental Design</span></li>
+      <li><i class="fas fa-language"></i> <span id="skill5">English (B2 level)</span></li>
     </ul>
   </section>
 
@@ -153,13 +153,14 @@
     <p>Email: <a href="mailto:Karengzplazas@gmail.com">Karengzplazas@gmail.com</a></p>
   </section>
 
-  <footer>
+  <footer id="footer-text">
     © 2025 Karen Gómez P.
   </footer>
 
   <script>
     const content = {
       en: {
+        title: "Karen Gómez P. - Portfolio",
         subtitle: "Chemist | Data enthusiast | Turning data into knowledge.",
         aboutTitle: "About Me",
         aboutText: "I am a Chemist with experience in biostatistics projects, where I have worked on data analysis applied to health, industry, and scientific research. I use advanced statistical tools to carry out descriptive and inferential analysis, as well as experimental design. I'm passionate about transforming data into useful knowledge for decision-making.",
@@ -172,9 +173,11 @@
         skill4: "Descriptive/Inferential Statistics, Experimental Design",
         skill5: "English (B2 level)",
         contactTitle: "Contact",
-        toggleButton: "Español"
+        toggleButton: "Español",
+        footer: "© 2025 Karen Gómez P."
       },
       es: {
+        title: "Karen Gómez P. - Portafolio",
         subtitle: "Química | Apasionada por los datos | Transformando datos en conocimiento.",
         aboutTitle: "Sobre mí",
         aboutText: "Soy Química con experiencia en proyectos de bioestadística, donde he trabajado en el análisis de datos aplicados a la salud, la industria y la investigación científica. Manejo herramientas estadísticas avanzadas para el desarrollo de análisis descriptivos, inferenciales y diseño de experimentos. Me apasiona transformar datos en conocimiento útil para la toma de decisiones.",
@@ -187,7 +190,8 @@
         skill4: "Estadística descriptiva/inferencial, diseño experimental",
         skill5: "Inglés (nivel B2)",
         contactTitle: "Contacto",
-        toggleButton: "English"
+        toggleButton: "English",
+        footer: "© 2025 Karen Gómez P."
       }
     };
 
@@ -195,6 +199,8 @@
 
     function toggleLanguage() {
       currentLang = currentLang === "en" ? "es" : "en";
+
+      document.getElementById("page-title").innerText = content[currentLang].title;
       document.getElementById("subtitle").innerText = content[currentLang].subtitle;
       document.getElementById("about-title").innerText = content[currentLang].aboutTitle;
       document.getElementById("about-text").innerText = content[currentLang].aboutText;
@@ -208,6 +214,7 @@
       document.getElementById("skill5").innerText = content[currentLang].skill5;
       document.getElementById("contact-title").innerText = content[currentLang].contactTitle;
       document.querySelector(".language-toggle").innerText = content[currentLang].toggleButton;
+      document.getElementById("footer-text").innerText = content[currentLang].footer;
     }
   </script>
 
