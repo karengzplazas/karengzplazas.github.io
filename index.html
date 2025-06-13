@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Karen Gómez P. - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap');
 
@@ -19,6 +20,7 @@
       color: #ffffff;
       padding: 60px 20px;
       text-align: center;
+      position: relative;
     }
 
     header h1 {
@@ -33,6 +35,16 @@
       color: #bbbbbb;
     }
 
+    .header-icons {
+      margin-top: 10px;
+      font-size: 24px;
+    }
+
+    .header-icons i {
+      margin: 0 10px;
+      color: #f4a1c1;
+    }
+
     section {
       padding: 40px 20px;
       max-width: 900px;
@@ -40,7 +52,7 @@
     }
 
     h2 {
-      color: #f4a1c1; /* Rosa suave */
+      color: #f4a1c1;
       border-bottom: 2px solid #f4a1c1;
       padding-bottom: 5px;
     }
@@ -52,6 +64,11 @@
 
     ul li {
       margin-bottom: 8px;
+    }
+
+    ul li i {
+      margin-right: 10px;
+      color: #4db8ff;
     }
 
     a {
@@ -90,6 +107,9 @@
   <header>
     <h1>Karen Gómez P.</h1>
     <p id="subtitle">Chemist | Data enthusiast | Turning data into knowledge.</p>
+    <div class="header-icons">
+      <i class="fas fa-flask"></i> <i class="fas fa-database"></i>
+    </div>
   </header>
 
   <section>
@@ -114,11 +134,11 @@
   <section>
     <h2 id="skills-title">Technical Skills</h2>
     <ul id="skills-list">
-      <li id="skill-1">Python (Jupyter and Visual Studio Code)</li>
-      <li id="skill-2">MySQL and MongoDB</li>
-      <li id="skill-3">Microsoft Excel (advanced analysis)</li>
-      <li id="skill-4">Descriptive/inferential statistics, experimental design</li>
-      <li id="skill-5">English (B2 level)</li>
+      <li id="skill-1"><i class="fab fa-python"></i> Python (Jupyter and Visual Studio Code)</li>
+      <li id="skill-2"><i class="fas fa-database"></i> MySQL and MongoDB</li>
+      <li id="skill-3"><i class="fas fa-file-excel"></i> Microsoft Excel (advanced analysis)</li>
+      <li id="skill-4"><i class="fas fa-chart-bar"></i> Descriptive/inferential statistics, experimental design</li>
+      <li id="skill-5"><i class="fas fa-language"></i> English (B2 level)</li>
     </ul>
   </section>
 
@@ -173,11 +193,11 @@
       document.getElementById("projects-title").innerText = content[currentLang].projectsTitle;
       document.getElementById("skills-title").innerText = content[currentLang].skillsTitle;
       document.getElementById("contact-title").innerText = content[currentLang].contactTitle;
-      document.getElementById("skill-1").innerText = content[currentLang].skill1;
-      document.getElementById("skill-2").innerText = content[currentLang].skill2;
-      document.getElementById("skill-3").innerText = content[currentLang].skill3;
-      document.getElementById("skill-4").innerText = content[currentLang].skill4;
-      document.getElementById("skill-5").innerText = content[currentLang].skill5;
+      document.getElementById("skill-1").childNodes[1].nodeValue = content[currentLang].skill1;
+      document.getElementById("skill-2").childNodes[1].nodeValue = content[currentLang].skill2;
+      document.getElementById("skill-3").childNodes[1].nodeValue = content[currentLang].skill3;
+      document.getElementById("skill-4").childNodes[1].nodeValue = content[currentLang].skill4;
+      document.getElementById("skill-5").childNodes[1].nodeValue = content[currentLang].skill5;
       document.querySelector(".language-toggle").innerText = content[currentLang].toggleButton;
     }
   </script>
