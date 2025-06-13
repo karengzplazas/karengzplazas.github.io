@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
   <title>Karen Gómez P. - Portfolio</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Chart.js for the line chart -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts --> 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap" rel="stylesheet"> 
+   
+  <!-- Font Awesome for icons --> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
 
   <style>
     body {
@@ -25,9 +22,8 @@
     header {
       background: linear-gradient(90deg, #000000, #1a1a1a);
       color: #ffffff;
-      padding: 60px 20px 20px;
+      padding: 60px 20px;
       text-align: center;
-      position: relative;
     }
 
     header h1 {
@@ -50,11 +46,6 @@
 
     .header-icons i {
       margin: 0 10px;
-    }
-
-    .header-chart {
-      max-width: 600px;
-      margin: 30px auto 0;
     }
 
     section {
@@ -125,14 +116,13 @@
       <i class="fas fa-database"></i>
       <i class="fas fa-chart-bar"></i>
     </div>
-    <div class="header-chart">
-      <canvas id="lineChart" height="150"></canvas>
-    </div>
   </header>
 
   <section>
     <h2 id="about-title">About Me</h2>
-    <p id="about-text"></p>
+    <p id="about-text">
+      I am a Chemist with experience in biostatistics projects, where I have worked on data analysis applied to health, industry, and scientific research. I use advanced statistical tools to carry out descriptive and inferential analysis, as well as experimental design. I'm passionate about transforming data into useful knowledge for decision-making.
+    </p>
   </section>
 
   <section>
@@ -143,13 +133,19 @@
       <li><a href="https://github.com/karengzplazas/autos-usados" target="_blank">Used Cars Investment Analysis</a></li>
       <li><a href="https://github.com/karengzplazas/Faraona-sheet" target="_blank">Wisdom Pyramid Applied to Payments</a></li>
       <li><a href="https://github.com/karengzplazas/Piramide-pagos" target="_blank">Payments Pyramid Project</a></li>
-      <li><a href="https://github.com/karengzplazas/ESTADISTICAS_EN_EDUCACION" target="_blank">Educational Statistics Project</a></li>
+      <li><a href="https://github.com/karengzplazas/ESTADISTICAS_EN_EDUCACION" target="_blank" id="education-project">Statistics in Education - Colombia</a></li>
     </ul>
   </section>
 
   <section>
     <h2 id="skills-title">Technical Skills</h2>
-    <ul id="skills-list"></ul>
+    <ul id="skills-list">
+      <li><i class="fab fa-python"></i> Python (Jupyter y VS Code)</li>
+      <li><i class="fas fa-database"></i> MySQL y MongoDB</li>
+      <li><i class="fas fa-file-excel"></i> Microsoft Excel (análisis avanzado)</li>
+      <li><i class="fas fa-chart-line"></i> Estadística descriptiva/inferencial, diseño experimental</li>
+      <li><i class="fas fa-language"></i> Inglés (nivel B2)</li>
+    </ul>
   </section>
 
   <section>
@@ -168,14 +164,8 @@
         aboutTitle: "About Me",
         aboutText: "I am a Chemist with experience in biostatistics projects, where I have worked on data analysis applied to health, industry, and scientific research. I use advanced statistical tools to carry out descriptive and inferential analysis, as well as experimental design. I'm passionate about transforming data into useful knowledge for decision-making.",
         projectsTitle: "Featured Projects",
+        educationProject: "Statistics in Education - Colombia",
         skillsTitle: "Technical Skills",
-        skillsList: [
-          '<i class="fab fa-python"></i> Python (Jupyter and VS Code)',
-          '<i class="fas fa-database"></i> MySQL and MongoDB',
-          '<i class="fas fa-file-excel"></i> Microsoft Excel (advanced analysis)',
-          '<i class="fas fa-chart-line"></i> Descriptive/inferential statistics, experimental design',
-          '<i class="fas fa-language"></i> English (B2 level)'
-        ],
         contactTitle: "Contact",
         toggleButton: "Español"
       },
@@ -184,14 +174,8 @@
         aboutTitle: "Sobre mí",
         aboutText: "Soy Química con experiencia en proyectos de bioestadística, donde he trabajado en el análisis de datos aplicados a la salud, la industria y la investigación científica. Manejo herramientas estadísticas avanzadas para el desarrollo de análisis descriptivos, inferenciales y diseño de experimentos. Me apasiona transformar datos en conocimiento útil para la toma de decisiones.",
         projectsTitle: "Proyectos destacados",
+        educationProject: "Estadísticas en Educación - Colombia",
         skillsTitle: "Habilidades técnicas",
-        skillsList: [
-          '<i class="fab fa-python"></i> Python (Jupyter y VS Code)',
-          '<i class="fas fa-database"></i> MySQL y MongoDB',
-          '<i class="fas fa-file-excel"></i> Microsoft Excel (análisis avanzado)',
-          '<i class="fas fa-chart-line"></i> Estadística descriptiva/inferencial, diseño experimental',
-          '<i class="fas fa-language"></i> Inglés (nivel B2)'
-        ],
         contactTitle: "Contacto",
         toggleButton: "English"
       }
@@ -205,50 +189,13 @@
       document.getElementById("about-title").innerText = content[currentLang].aboutTitle;
       document.getElementById("about-text").innerText = content[currentLang].aboutText;
       document.getElementById("projects-title").innerText = content[currentLang].projectsTitle;
+      document.getElementById("education-project").innerText = content[currentLang].educationProject;
       document.getElementById("skills-title").innerText = content[currentLang].skillsTitle;
       document.getElementById("contact-title").innerText = content[currentLang].contactTitle;
       document.querySelector(".language-toggle").innerText = content[currentLang].toggleButton;
-
-      const skillsList = document.getElementById("skills-list");
-      skillsList.innerHTML = content[currentLang].skillsList.map(item => `<li>${item}</li>`).join('');
     }
-
-    toggleLanguage();
-
-    // Chart.js example data
-    const ctx = document.getElementById('lineChart').getContext('2d');
-    const lineChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['2020', '2021', '2022', '2023', '2024'],
-        datasets: [{
-          label: 'Learning & Projects Over Time',
-          data: [1, 2, 4, 6, 9],
-          borderColor: '#4db8ff',
-          backgroundColor: 'rgba(77, 184, 255, 0.1)',
-          tension: 0.4
-        }]
-      },
-      options: {
-        plugins: {
-          legend: {
-            labels: {
-              color: '#ffffff'
-            }
-          }
-        },
-        scales: {
-          x: {
-            ticks: { color: '#ffffff' },
-            grid: { color: '#333' }
-          },
-          y: {
-            ticks: { color: '#ffffff' },
-            grid: { color: '#333' }
-          }
-        }
-      }
-    });
   </script>
+
 </body>
 </html>
+
