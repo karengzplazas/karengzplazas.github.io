@@ -1,15 +1,15 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-  <meta charset="UTF-8" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Karen Gómez P. - Portfolio</title>
 
-  <!-- Google Fonts --> 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap" rel="stylesheet"> 
-   
-  <!-- Font Awesome for icons --> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     body {
@@ -140,11 +140,11 @@
   <section>
     <h2 id="skills-title">Technical Skills</h2>
     <ul id="skills-list">
-      <li><i class="fab fa-python"></i> Python (Jupyter y VS Code)</li>
-      <li><i class="fas fa-database"></i> MySQL y MongoDB</li>
-      <li><i class="fas fa-file-excel"></i> Microsoft Excel (análisis avanzado)</li>
-      <li><i class="fas fa-chart-line"></i> Estadística descriptiva/inferencial, diseño experimental</li>
-      <li><i class="fas fa-language"></i> Inglés (nivel B2)</li>
+      <li><i class="fab fa-python"></i> <span id="skill1">Python (Jupyter y VS Code)</span></li>
+      <li><i class="fas fa-database"></i> <span id="skill2">MySQL y MongoDB</span></li>
+      <li><i class="fas fa-file-excel"></i> <span id="skill3">Microsoft Excel (análisis avanzado)</span></li>
+      <li><i class="fas fa-chart-line"></i> <span id="skill4">Estadística descriptiva/inferencial, diseño experimental</span></li>
+      <li><i class="fas fa-language"></i> <span id="skill5">Inglés (nivel B2)</span></li>
     </ul>
   </section>
 
@@ -166,6 +166,11 @@
         projectsTitle: "Featured Projects",
         educationProject: "Statistics in Education - Colombia",
         skillsTitle: "Technical Skills",
+        skill1: "Python (Jupyter and VS Code)",
+        skill2: "MySQL and MongoDB",
+        skill3: "Microsoft Excel (advanced analysis)",
+        skill4: "Descriptive/Inferential Statistics, Experimental Design",
+        skill5: "English (B2 level)",
         contactTitle: "Contact",
         toggleButton: "Español"
       },
@@ -176,6 +181,11 @@
         projectsTitle: "Proyectos destacados",
         educationProject: "Estadísticas en Educación - Colombia",
         skillsTitle: "Habilidades técnicas",
+        skill1: "Python (Jupyter y VS Code)",
+        skill2: "MySQL y MongoDB",
+        skill3: "Microsoft Excel (análisis avanzado)",
+        skill4: "Estadística descriptiva/inferencial, diseño experimental",
+        skill5: "Inglés (nivel B2)",
         contactTitle: "Contacto",
         toggleButton: "English"
       }
@@ -191,6 +201,11 @@
       document.getElementById("projects-title").innerText = content[currentLang].projectsTitle;
       document.getElementById("education-project").innerText = content[currentLang].educationProject;
       document.getElementById("skills-title").innerText = content[currentLang].skillsTitle;
+      document.getElementById("skill1").innerText = content[currentLang].skill1;
+      document.getElementById("skill2").innerText = content[currentLang].skill2;
+      document.getElementById("skill3").innerText = content[currentLang].skill3;
+      document.getElementById("skill4").innerText = content[currentLang].skill4;
+      document.getElementById("skill5").innerText = content[currentLang].skill5;
       document.getElementById("contact-title").innerText = content[currentLang].contactTitle;
       document.querySelector(".language-toggle").innerText = content[currentLang].toggleButton;
     }
@@ -198,4 +213,3 @@
 
 </body>
 </html>
-
