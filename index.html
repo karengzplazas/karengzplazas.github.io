@@ -1,36 +1,51 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-<head> 
-  <meta charset="UTF-8" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
-  <title>Karen Gómez P. - Portfolio</title> 
-  <style> 
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap'); 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karen Gómez P. - Portfolio</title>
 
-    body { 
-      margin: 0; 
-      font-family: 'Roboto', sans-serif; 
-      background-color: #0d0d0d; 
-      color: #e0e0e0; 
-    } 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    header { 
-      background-color: #000000; 
-      color: #ffffff; 
-      padding: 60px 20px; 
-      text-align: center; 
-    } 
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+    }
 
-    header h1 { 
-      font-family: 'Playfair Display', serif; 
-      font-size: 48px; 
-      font-style: italic; 
-      margin-bottom: 10px; 
-    } 
+    header {
+      background: linear-gradient(90deg, #000000, #1a1a1a);
+      color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
+    }
 
-    header p { 
-      font-size: 18px; 
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
       color: #bbbbbb;
+    }
+
+    .header-icons {
+      margin-top: 20px;
+      font-size: 30px;
+      color: #f4a1c1;
+    }
+
+    .header-icons i {
+      margin: 0 10px;
     }
 
     section {
@@ -40,7 +55,7 @@
     }
 
     h2 {
-      color: #f4a1c1; /* Rosa suave */
+      color: #f4a1c1;
       border-bottom: 2px solid #f4a1c1;
       padding-bottom: 5px;
     }
@@ -54,6 +69,11 @@
       margin-bottom: 8px;
     }
 
+    ul li i {
+      margin-right: 8px;
+      color: #4db8ff;
+    }
+
     a {
       color: #4db8ff;
       text-decoration: none;
@@ -61,6 +81,7 @@
 
     a:hover {
       text-decoration: underline;
+      color: #ffb6c1;
     }
 
     footer {
@@ -90,6 +111,11 @@
   <header>
     <h1>Karen Gómez P.</h1>
     <p id="subtitle">Chemist | Data enthusiast | Turning data into knowledge.</p>
+    <div class="header-icons">
+      <i class="fas fa-flask"></i>
+      <i class="fas fa-database"></i>
+      <i class="fas fa-chart-bar"></i>
+    </div>
   </header>
 
   <section>
@@ -113,11 +139,11 @@
   <section>
     <h2 id="skills-title">Technical Skills</h2>
     <ul id="skills-list">
-      <li>Python (experience with Jupyter and Visual Studio Code)</li>
-      <li>MySQL and MongoDB</li>
-      <li>Microsoft Excel (advanced analysis)</li>
-      <li>Descriptive and inferential statistics, experimental design</li>
-      <li>English (B2 level)</li>
+      <li><i class="fab fa-python"></i> Python (Jupyter y VS Code)</li>
+      <li><i class="fas fa-database"></i> MySQL y MongoDB</li>
+      <li><i class="fas fa-file-excel"></i> Microsoft Excel (análisis avanzado)</li>
+      <li><i class="fas fa-chart-line"></i> Estadística descriptiva/inferencial, diseño experimental</li>
+      <li><i class="fas fa-language"></i> Inglés (nivel B2)</li>
     </ul>
   </section>
 
