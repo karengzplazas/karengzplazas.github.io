@@ -11,6 +11,9 @@
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <!-- Chart.js for the line chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <style>
     body {
       margin: 0;
@@ -22,7 +25,7 @@
     header {
       background: linear-gradient(90deg, #000000, #1a1a1a);
       color: #ffffff;
-      padding: 60px 20px;
+      padding: 60px 20px 20px;
       text-align: center;
       position: relative;
     }
@@ -47,6 +50,11 @@
 
     .header-icons i {
       margin: 0 10px;
+    }
+
+    .header-chart {
+      max-width: 600px;
+      margin: 30px auto 0;
     }
 
     section {
@@ -116,6 +124,9 @@
       <i class="fas fa-flask"></i>
       <i class="fas fa-database"></i>
       <i class="fas fa-chart-bar"></i>
+    </div>
+    <div class="header-chart">
+      <canvas id="lineChart" height="150"></canvas>
     </div>
   </header>
 
@@ -203,7 +214,41 @@
     }
 
     toggleLanguage();
-  </script>
 
+    // Chart.js example data
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    const lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['2020', '2021', '2022', '2023', '2024'],
+        datasets: [{
+          label: 'Learning & Projects Over Time',
+          data: [1, 2, 4, 6, 9],
+          borderColor: '#4db8ff',
+          backgroundColor: 'rgba(77, 184, 255, 0.1)',
+          tension: 0.4
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            labels: {
+              color: '#ffffff'
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: '#ffffff' },
+            grid: { color: '#333' }
+          },
+          y: {
+            ticks: { color: '#ffffff' },
+            grid: { color: '#333' }
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
