@@ -4,14 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Karen Gómez P. - Portfolio</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap');
+
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
@@ -20,7 +15,7 @@
     }
 
     header {
-      background: linear-gradient(90deg, #000000, #1a1a1a);
+      background-color: #000000;
       color: #ffffff;
       padding: 60px 20px;
       text-align: center;
@@ -38,16 +33,6 @@
       color: #bbbbbb;
     }
 
-    .header-icons {
-      margin-top: 20px;
-      font-size: 30px;
-      color: #f4a1c1;
-    }
-
-    .header-icons i {
-      margin: 0 10px;
-    }
-
     section {
       padding: 40px 20px;
       max-width: 900px;
@@ -55,7 +40,7 @@
     }
 
     h2 {
-      color: #f4a1c1;
+      color: #f4a1c1; /* Rosa suave */
       border-bottom: 2px solid #f4a1c1;
       padding-bottom: 5px;
     }
@@ -69,11 +54,6 @@
       margin-bottom: 8px;
     }
 
-    ul li i {
-      margin-right: 8px;
-      color: #4db8ff;
-    }
-
     a {
       color: #4db8ff;
       text-decoration: none;
@@ -81,7 +61,6 @@
 
     a:hover {
       text-decoration: underline;
-      color: #ffb6c1;
     }
 
     footer {
@@ -111,11 +90,6 @@
   <header>
     <h1>Karen Gómez P.</h1>
     <p id="subtitle">Chemist | Data enthusiast | Turning data into knowledge.</p>
-    <div class="header-icons">
-      <i class="fas fa-flask"></i>
-      <i class="fas fa-database"></i>
-      <i class="fas fa-chart-bar"></i>
-    </div>
   </header>
 
   <section>
@@ -125,27 +99,26 @@
     </p>
   </section>
 
-<section>
-  <h2 id="projects-title">Featured Projects</h2>
-  <ul id="projects-list">
-    <li><a href="https://github.com/karengzplazas/titanic-analysis" target="_blank">Titanic Survival Analysis</a></li>
-    <li><a href="https://github.com/karengzplazas/telco-churn-prediction" target="_blank">Customer Churn Prediction - Telco</a></li>
-    <li><a href="https://github.com/karengzplazas/autos-usados" target="_blank">Used Cars Investment Analysis</a></li>
-    <li><a href="https://github.com/karengzplazas/Faraona-sheet" target="_blank">Wisdom Pyramid Applied to Payments</a></li>
-    <li><a href="https://github.com/karengzplazas/Piramide-pagos" target="_blank">Payments Pyramid Project</a></li>
-    <li><a href="https://github.com/karengzplazas/ESTADISTICAS_EN_EDUCACION" target="_blank">Educational Statistics Analysis</a></li> <!-- NUEVO -->
-  </ul>
-</section>
-
+  <section>
+    <h2 id="projects-title">Featured Projects</h2>
+    <ul id="projects-list">
+      <li><a href="https://github.com/karengzplazas/titanic-analysis" target="_blank">Titanic Survival Analysis</a></li>
+      <li><a href="https://github.com/karengzplazas/telco-churn-prediction" target="_blank">Customer Churn Prediction - Telco</a></li>
+      <li><a href="https://github.com/karengzplazas/autos-usados" target="_blank">Used Cars Investment Analysis</a></li>
+      <li><a href="https://github.com/karengzplazas/Faraona-sheet" target="_blank">Wisdom Pyramid Applied to Payments</a></li>
+      <li><a href="https://github.com/karengzplazas/Piramide-pagos" target="_blank">Payments Pyramid Project</a></li>
+      <li><a href="https://github.com/karengzplazas/ESTADISTICAS_EN_EDUCACION" target="_blank">Educational Statistics Analysis</a></li>
+    </ul>
+  </section>
 
   <section>
     <h2 id="skills-title">Technical Skills</h2>
     <ul id="skills-list">
-      <li><i class="fab fa-python"></i> Python (Jupyter y VS Code)</li>
-      <li><i class="fas fa-database"></i> MySQL y MongoDB</li>
-      <li><i class="fas fa-file-excel"></i> Microsoft Excel (análisis avanzado)</li>
-      <li><i class="fas fa-chart-line"></i> Estadística descriptiva/inferencial, diseño experimental</li>
-      <li><i class="fas fa-language"></i> Inglés (nivel B2)</li>
+      <li id="skill-1">Python (Jupyter and Visual Studio Code)</li>
+      <li id="skill-2">MySQL and MongoDB</li>
+      <li id="skill-3">Microsoft Excel (advanced analysis)</li>
+      <li id="skill-4">Descriptive/inferential statistics, experimental design</li>
+      <li id="skill-5">English (B2 level)</li>
     </ul>
   </section>
 
@@ -166,6 +139,11 @@
         aboutText: "I am a Chemist with experience in biostatistics projects, where I have worked on data analysis applied to health, industry, and scientific research. I use advanced statistical tools to carry out descriptive and inferential analysis, as well as experimental design. I'm passionate about transforming data into useful knowledge for decision-making.",
         projectsTitle: "Featured Projects",
         skillsTitle: "Technical Skills",
+        skill1: "Python (Jupyter and Visual Studio Code)",
+        skill2: "MySQL and MongoDB",
+        skill3: "Microsoft Excel (advanced analysis)",
+        skill4: "Descriptive/inferential statistics, experimental design",
+        skill5: "English (B2 level)",
         contactTitle: "Contact",
         toggleButton: "Español"
       },
@@ -175,6 +153,11 @@
         aboutText: "Soy Química con experiencia en proyectos de bioestadística, donde he trabajado en el análisis de datos aplicados a la salud, la industria y la investigación científica. Manejo herramientas estadísticas avanzadas para el desarrollo de análisis descriptivos, inferenciales y diseño de experimentos. Me apasiona transformar datos en conocimiento útil para la toma de decisiones.",
         projectsTitle: "Proyectos destacados",
         skillsTitle: "Habilidades técnicas",
+        skill1: "Python (Jupyter y Visual Studio Code)",
+        skill2: "MySQL y MongoDB",
+        skill3: "Microsoft Excel (análisis avanzado)",
+        skill4: "Estadística descriptiva/inferencial, diseño experimental",
+        skill5: "Inglés (nivel B2)",
         contactTitle: "Contacto",
         toggleButton: "English"
       }
@@ -190,10 +173,14 @@
       document.getElementById("projects-title").innerText = content[currentLang].projectsTitle;
       document.getElementById("skills-title").innerText = content[currentLang].skillsTitle;
       document.getElementById("contact-title").innerText = content[currentLang].contactTitle;
+      document.getElementById("skill-1").innerText = content[currentLang].skill1;
+      document.getElementById("skill-2").innerText = content[currentLang].skill2;
+      document.getElementById("skill-3").innerText = content[currentLang].skill3;
+      document.getElementById("skill-4").innerText = content[currentLang].skill4;
+      document.getElementById("skill-5").innerText = content[currentLang].skill5;
       document.querySelector(".language-toggle").innerText = content[currentLang].toggleButton;
     }
   </script>
 
 </body>
 </html>
-
