@@ -1,35 +1,36 @@
-<!DOCTYPE html>  
-<html lang="en"> 
-<head>  
-  <meta charset="UTF-8" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
-  <title>Karen Gómez P. - Portfolio</title> 
-  <style> 
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap'); 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karen Gómez P. - Data Solutions</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap');
 
-    body { 
-      margin: 0; 
-      font-family: 'Roboto', sans-serif; 
-      background-color: #0d0d0d; 
-      color: #e0e0e0; 
-    } 
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+    }
 
-    header { 
-      background-color: #000000; 
-      color: #ffffff; 
-      padding: 60px 20px; 
-      text-align: center; 
-    } 
+    header {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+    }
 
-    header h1 { 
-      font-family: 'Playfair Display', serif; 
-      font-size: 48px; 
-      font-style: italic; 
-      margin-bottom: 10px; 
-    } 
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
 
-    header p { 
-      font-size: 18px; 
+    header p {
+      font-size: 18px;
       color: #bbbbbb;
     }
 
@@ -40,16 +41,6 @@
       display: flex;
       justify-content: center;
       gap: 20px;
-    }
-
-    .icons-row span {
-      transition: transform 0.3s ease, text-shadow 0.3s ease;
-      cursor: default;
-    }
-
-    .icons-row span:hover {
-      transform: translateY(-5px) scale(1.2);
-      text-shadow: 0 0 10px #f4a1c1;
     }
 
     section {
@@ -112,6 +103,46 @@
     .language-toggle:hover {
       background-color: #444;
     }
+
+    /* Accordion Styles */
+    .accordion {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      transition: background-color 0.3s ease;
+      margin-bottom: 5px;
+    }
+
+    .accordion:hover {
+      background-color: #333333;
+    }
+
+    .accordion:after {
+      content: '\002B';
+      color: #f4a1c1;
+      float: right;
+    }
+
+    .accordion.active:after {
+      content: "\2212";
+    }
+
+    .panel {
+      padding: 0 18px;
+      background-color: #262626;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .panel p {
+      margin: 10px 0;
+    }
   </style>
 </head>
 <body>
@@ -120,19 +151,43 @@
 
   <header>
     <h1>Karen Gómez P.</h1>
-    <p id="subtitle">Chemist | Data enthusiast | Turning data into knowledge.</p>
+    <p id="subtitle">Chemist | Data Analyst | Transforming data into solutions.</p>
     <div class="icons-row">
       <span title="Chemistry">⚗️</span>
-      <span title="Data">📊</span>
-      <span title="Technology">💻</span>
+      <span title="Data Analysis">📊</span>
+      <span title="Tech Solutions">💻</span>
     </div>
   </header>
 
   <section>
     <h2 id="about-title">About Me</h2>
     <p id="about-text">
-      I am a Chemist with experience in biostatistics projects, where I have worked on data analysis applied to health, industry, and scientific research. I use advanced statistical tools to carry out descriptive and inferential analysis, as well as experimental design. I'm passionate about transforming data into useful knowledge for decision-making.
+      I help organizations unlock the power of their data. With a strong background in Chemistry and Biostatistics, I deliver robust analyses that turn raw numbers into actionable insights for industries, healthcare and research.
     </p>
+  </section>
+
+  <section>
+    <h2 id="services-title">Services</h2>
+
+    <button class="accordion" id="service1-title">Data Analysis & Reporting</button>
+    <div class="panel">
+      <p id="service1-text">In-depth descriptive and inferential statistical analysis, reports for decision-making, customized dashboards.</p>
+    </div>
+
+    <button class="accordion" id="service2-title">Database Design & Management</button>
+    <div class="panel">
+      <p id="service2-text">MySQL and MongoDB database structuring, data cleaning, transformation and optimization.</p>
+    </div>
+
+    <button class="accordion" id="service3-title">Predictive Modeling</button>
+    <div class="panel">
+      <p id="service3-text">Building predictive models using Python, including customer churn, trend forecasting, and clustering.</p>
+    </div>
+
+    <button class="accordion" id="service4-title">Training & Consulting</button>
+    <div class="panel">
+      <p id="service4-text">Personalized training sessions for teams, data literacy workshops, and tailored consulting for project implementation.</p>
+    </div>
   </section>
 
   <section>
@@ -141,20 +196,8 @@
       <li><a href="https://github.com/karengzplazas/titanic-analysis" target="_blank">Titanic Survival Analysis</a></li>
       <li><a href="https://github.com/karengzplazas/telco-churn-prediction" target="_blank">Customer Churn Prediction - Telco</a></li>
       <li><a href="https://github.com/karengzplazas/autos-usados" target="_blank">Used Cars Investment Analysis</a></li>
-      <li><a href="https://github.com/karengzplazas/Faraona-sheet" target="_blank">Wisdom Pyramid Applied to Payments</a></li>
       <li><a href="https://github.com/karengzplazas/Piramide-pagos" target="_blank">Payments Pyramid Project</a></li>
       <li><a href="https://github.com/karengzplazas/ESTADISTICAS_EN_EDUCACION" target="_blank" id="edu-project">Statistics in Education - Colombia</a></li>
-    </ul>
-  </section>
-
-  <section>
-    <h2 id="skills-title">Technical Skills</h2>
-    <ul id="skills-list">
-      <li>Python (experience with Jupyter and Visual Studio Code)</li>
-      <li>MySQL and MongoDB</li>
-      <li>Microsoft Excel (advanced analysis)</li>
-      <li>Descriptive and inferential statistics, experimental design</li>
-      <li>English (B2 level)</li>
     </ul>
   </section>
 
@@ -164,27 +207,43 @@
   </section>
 
   <footer>
-    © 2025 Karen Gómez P.
+    © 2025 Karen Gómez P. | Data Solutions
   </footer>
 
   <script>
     const content = {
       en: {
-        subtitle: "Chemist | Data enthusiast | Turning data into knowledge.",
+        subtitle: "Chemist | Data Analyst | Transforming data into solutions.",
         aboutTitle: "About Me",
-        aboutText: "I am a Chemist with experience in biostatistics projects, where I have worked on data analysis applied to health, industry, and scientific research. I use advanced statistical tools to carry out descriptive and inferential analysis, as well as experimental design. I'm passionate about transforming data into useful knowledge for decision-making.",
+        aboutText: "I help organizations unlock the power of their data. With a strong background in Chemistry and Biostatistics, I deliver robust analyses that turn raw numbers into actionable insights for industries, healthcare and research.",
+        servicesTitle: "Services",
+        service1Title: "Data Analysis & Reporting",
+        service1Text: "In-depth descriptive and inferential statistical analysis, reports for decision-making, customized dashboards.",
+        service2Title: "Database Design & Management",
+        service2Text: "MySQL and MongoDB database structuring, data cleaning, transformation and optimization.",
+        service3Title: "Predictive Modeling",
+        service3Text: "Building predictive models using Python, including customer churn, trend forecasting, and clustering.",
+        service4Title: "Training & Consulting",
+        service4Text: "Personalized training sessions for teams, data literacy workshops, and tailored consulting for project implementation.",
         projectsTitle: "Featured Projects",
-        skillsTitle: "Technical Skills",
         contactTitle: "Contact",
         toggleButton: "Español",
         eduProject: "Statistics in Education - Colombia"
       },
       es: {
-        subtitle: "Química | Apasionada por los datos | Transformando datos en conocimiento.",
+        subtitle: "Química | Analista de Datos | Transformando datos en soluciones.",
         aboutTitle: "Sobre mí",
-        aboutText: "Soy Química con experiencia en proyectos de bioestadística, donde he trabajado en el análisis de datos aplicados a la salud, la industria y la investigación científica. Manejo herramientas estadísticas avanzadas para el desarrollo de análisis descriptivos, inferenciales y diseño de experimentos. Me apasiona transformar datos en conocimiento útil para la toma de decisiones.",
-        projectsTitle: "Proyectos destacados",
-        skillsTitle: "Habilidades técnicas",
+        aboutText: "Ayudo a las organizaciones a aprovechar el poder de sus datos. Con una sólida formación en Química y Bioestadística, ofrezco análisis robustos que convierten números en información accionable para la industria, la salud y la investigación.",
+        servicesTitle: "Servicios",
+        service1Title: "Análisis de Datos e Informes",
+        service1Text: "Análisis estadístico descriptivo e inferencial, generación de reportes para la toma de decisiones y paneles personalizados.",
+        service2Title: "Diseño y Gestión de Bases de Datos",
+        service2Text: "Estructuración de bases de datos MySQL y MongoDB, limpieza, transformación y optimización de datos.",
+        service3Title: "Modelos Predictivos",
+        service3Text: "Construcción de modelos predictivos en Python, incluyendo predicción de abandono, pronóstico de tendencias y segmentación.",
+        service4Title: "Capacitación y Consultoría",
+        service4Text: "Sesiones de formación personalizadas para equipos, talleres de alfabetización de datos y consultoría a medida para proyectos.",
+        projectsTitle: "Proyectos Destacados",
         contactTitle: "Contacto",
         toggleButton: "English",
         eduProject: "Estadísticas en Educación - Colombia"
@@ -198,11 +257,33 @@
       document.getElementById("subtitle").innerText = content[currentLang].subtitle;
       document.getElementById("about-title").innerText = content[currentLang].aboutTitle;
       document.getElementById("about-text").innerText = content[currentLang].aboutText;
+      document.getElementById("services-title").innerText = content[currentLang].servicesTitle;
+      document.getElementById("service1-title").innerText = content[currentLang].service1Title;
+      document.getElementById("service1-text").innerText = content[currentLang].service1Text;
+      document.getElementById("service2-title").innerText = content[currentLang].service2Title;
+      document.getElementById("service2-text").innerText = content[currentLang].service2Text;
+      document.getElementById("service3-title").innerText = content[currentLang].service3Title;
+      document.getElementById("service3-text").innerText = content[currentLang].service3Text;
+      document.getElementById("service4-title").innerText = content[currentLang].service4Title;
+      document.getElementById("service4-text").innerText = content[currentLang].service4Text;
       document.getElementById("projects-title").innerText = content[currentLang].projectsTitle;
-      document.getElementById("skills-title").innerText = content[currentLang].skillsTitle;
       document.getElementById("contact-title").innerText = content[currentLang].contactTitle;
       document.querySelector(".language-toggle").innerText = content[currentLang].toggleButton;
       document.getElementById("edu-project").innerText = content[currentLang].eduProject;
+    }
+
+    // Accordion functionality
+    const acc = document.getElementsByClassName("accordion");
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
     }
   </script>
 
