@@ -10,96 +10,38 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #f9f9f9;
+      background-color: #f8f9fa;
       color: #333;
+      line-height: 1.6;
     }
 
     header {
-      background-color: #ffffff;
+      background: #ffffff;
       padding: 60px 20px;
       text-align: center;
-      border-bottom: 1px solid #e0e0e0;
+      border-bottom: 1px solid #ddd;
     }
 
     header h1 {
       font-family: 'Playfair Display', serif;
       font-size: 48px;
-      font-style: italic;
-      margin: 0 0 10px 0;
+      margin-bottom: 10px;
       color: #222;
     }
 
     header p {
       font-size: 18px;
-      color: #666;
+      color: #555;
       margin: 0;
     }
 
     .icons-row {
-      margin-top: 15px;
+      margin-top: 20px;
       font-size: 28px;
-      color: #f4a1c1;
       display: flex;
       justify-content: center;
       gap: 20px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h2 {
-      color: #333;
-      border-bottom: 2px solid #f4a1c1;
-      padding-bottom: 5px;
-      margin-top: 40px;
-    }
-
-    details {
-      margin-bottom: 15px;
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 10px 15px;
-      transition: box-shadow 0.3s ease;
-    }
-
-    details:hover {
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    ul li {
-      margin-bottom: 8px;
-    }
-
-    a {
       color: #0077b6;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #777;
-      border-top: 1px solid #e0e0e0;
-      margin-top: 40px;
     }
 
     .language-toggle {
@@ -110,14 +52,109 @@
       color: #fff;
       border: none;
       padding: 10px 20px;
-      cursor: pointer;
-      font-size: 14px;
       border-radius: 20px;
-      transition: background-color 0.3s ease;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     .language-toggle:hover {
       background-color: #005f8e;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      color: #222;
+      margin-bottom: 20px;
+      border-left: 5px solid #0077b6;
+      padding-left: 10px;
+    }
+
+    /* About */
+    #about-text {
+      max-width: 800px;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .service-card h3 {
+      margin: 15px 0 10px 0;
+      color: #0077b6;
+    }
+
+    .service-card p {
+      font-size: 15px;
+      color: #555;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .project-card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      color: #777;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
     }
 
   </style>
@@ -128,7 +165,7 @@
 
   <header>
     <h1>Karen Gómez P.</h1>
-    <p id="subtitle">Chemist | Data Analyst | Transforming data into actionable insights</p>
+    <p id="subtitle">Chemist | Data Analyst | Turning data into knowledge</p>
     <div class="icons-row">
       <span title="Chemistry">⚗️</span>
       <span title="Data">📊</span>
@@ -139,80 +176,90 @@
   <div class="container">
     <h2 id="about-title">About Me</h2>
     <p id="about-text">
-      I am a Chemist with experience in biostatistics and data analysis applied to health, industry, and scientific research. I specialize in descriptive and inferential statistics, experimental design, and data-driven decision making.
+      I am a Chemist with experience in biostatistics and data analysis applied to health, industry, and scientific research. I specialize in descriptive and inferential statistics, experimental design, and turning data into actionable insights for better decision-making.
     </p>
 
     <h2 id="services-title">Services</h2>
-
-    <details>
-      <summary id="service1-title">Data Analysis & Visualization</summary>
-      <p id="service1-text">I provide data cleaning, processing, statistical analysis and visualization using Python, Excel and BI tools to help you discover insights and trends.</p>
-    </details>
-
-    <details>
-      <summary id="service2-title">Biostatistics Consulting</summary>
-      <p id="service2-text">Design and analysis of experiments, clinical studies, or public health projects, ensuring robust and valid results.</p>
-    </details>
-
-    <details>
-      <summary id="service3-title">Database Management</summary>
-      <p id="service3-text">Organization and management of data using SQL and NoSQL databases, including MySQL and MongoDB, ensuring data integrity and accessibility.</p>
-    </details>
-
-    <details>
-      <summary id="service4-title">Training & Workshops</summary>
-      <p id="service4-text">Customized training sessions on data literacy, basic statistics, and data tools for teams and organizations.</p>
-    </details>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3 id="service1-title">Data Analysis & Visualization</h3>
+        <p id="service1-text">Data cleaning, statistical analysis, dashboards and visual reports to make your data clear and impactful.</p>
+      </div>
+      <div class="service-card">
+        <h3 id="service2-title">Biostatistics Consulting</h3>
+        <p id="service2-text">Design and analysis of experiments and health-related studies to ensure valid and reliable results.</p>
+      </div>
+      <div class="service-card">
+        <h3 id="service3-title">Database Management</h3>
+        <p id="service3-text">Setup and management of SQL and NoSQL databases for secure and organized data storage.</p>
+      </div>
+      <div class="service-card">
+        <h3 id="service4-title">Training & Workshops</h3>
+        <p id="service4-text">Custom training sessions in data literacy, statistics, and analytics tools for your team or company.</p>
+      </div>
+    </div>
 
     <h2 id="projects-title">Featured Projects</h2>
-    <ul id="projects-list">
-      <li><a href="https://github.com/karengzplazas/titanic-analysis" target="_blank">Titanic Survival Analysis</a></li>
-      <li><a href="https://github.com/karengzplazas/telco-churn-prediction" target="_blank">Customer Churn Prediction - Telco</a></li>
-      <li><a href="https://github.com/karengzplazas/autos-usados" target="_blank">Used Cars Investment Analysis</a></li>
-      <li><a href="https://github.com/karengzplazas/ESTADISTICAS_EN_EDUCACION" target="_blank" id="edu-project">Statistics in Education - Colombia</a></li>
-    </ul>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Titanic Survival Analysis</h3>
+        <a href="https://github.com/karengzplazas/titanic-analysis" target="_blank">View Project →</a>
+      </div>
+      <div class="project-card">
+        <h3>Customer Churn Prediction - Telco</h3>
+        <a href="https://github.com/karengzplazas/telco-churn-prediction" target="_blank">View Project →</a>
+      </div>
+      <div class="project-card">
+        <h3>Used Cars Investment Analysis</h3>
+        <a href="https://github.com/karengzplazas/autos-usados" target="_blank">View Project →</a>
+      </div>
+      <div class="project-card">
+        <h3 id="edu-project">Statistics in Education - Colombia</h3>
+        <a href="https://github.com/karengzplazas/ESTADISTICAS_EN_EDUCACION" target="_blank">View Project →</a>
+      </div>
+    </div>
 
     <h2 id="contact-title">Contact</h2>
     <p>Email: <a href="mailto:Karengzplazas@gmail.com">Karengzplazas@gmail.com</a></p>
   </div>
 
   <footer>
-    © 2025 Karen Gómez P.
+    © 2025 Karen Gómez P. | Turning data into knowledge.
   </footer>
 
   <script>
     const content = {
       en: {
-        subtitle: "Chemist | Data Analyst | Transforming data into actionable insights",
+        subtitle: "Chemist | Data Analyst | Turning data into knowledge",
         aboutTitle: "About Me",
-        aboutText: "I am a Chemist with experience in biostatistics and data analysis applied to health, industry, and scientific research. I specialize in descriptive and inferential statistics, experimental design, and data-driven decision making.",
+        aboutText: "I am a Chemist with experience in biostatistics and data analysis applied to health, industry, and scientific research. I specialize in descriptive and inferential statistics, experimental design, and turning data into actionable insights for better decision-making.",
         servicesTitle: "Services",
         service1Title: "Data Analysis & Visualization",
-        service1Text: "I provide data cleaning, processing, statistical analysis and visualization using Python, Excel and BI tools to help you discover insights and trends.",
+        service1Text: "Data cleaning, statistical analysis, dashboards and visual reports to make your data clear and impactful.",
         service2Title: "Biostatistics Consulting",
-        service2Text: "Design and analysis of experiments, clinical studies, or public health projects, ensuring robust and valid results.",
+        service2Text: "Design and analysis of experiments and health-related studies to ensure valid and reliable results.",
         service3Title: "Database Management",
-        service3Text: "Organization and management of data using SQL and NoSQL databases, including MySQL and MongoDB, ensuring data integrity and accessibility.",
+        service3Text: "Setup and management of SQL and NoSQL databases for secure and organized data storage.",
         service4Title: "Training & Workshops",
-        service4Text: "Customized training sessions on data literacy, basic statistics, and data tools for teams and organizations.",
+        service4Text: "Custom training sessions in data literacy, statistics, and analytics tools for your team or company.",
         projectsTitle: "Featured Projects",
         contactTitle: "Contact",
         toggleButton: "Español",
         eduProject: "Statistics in Education - Colombia"
       },
       es: {
-        subtitle: "Química | Analista de Datos | Transformando datos en información útil",
+        subtitle: "Química | Analista de Datos | Transformando datos en conocimiento",
         aboutTitle: "Sobre mí",
-        aboutText: "Soy Química con experiencia en bioestadística y análisis de datos aplicados a la salud, la industria y la investigación científica. Me especializo en estadísticas descriptivas e inferenciales, diseño experimental y toma de decisiones basadas en datos.",
+        aboutText: "Soy Química con experiencia en bioestadística y análisis de datos aplicados a la salud, la industria y la investigación científica. Me especializo en estadísticas descriptivas e inferenciales, diseño experimental y transformar datos en información útil para la toma de decisiones.",
         servicesTitle: "Servicios",
         service1Title: "Análisis y Visualización de Datos",
-        service1Text: "Ofrezco limpieza, procesamiento, análisis estadístico y visualización de datos usando Python, Excel y herramientas BI para descubrir insights y tendencias.",
+        service1Text: "Limpieza de datos, análisis estadístico, paneles y reportes visuales para hacer tus datos claros y útiles.",
         service2Title: "Consultoría en Bioestadística",
-        service2Text: "Diseño y análisis de experimentos, estudios clínicos o proyectos de salud pública, asegurando resultados sólidos y válidos.",
+        service2Text: "Diseño y análisis de experimentos y estudios de salud para garantizar resultados válidos y confiables.",
         service3Title: "Gestión de Bases de Datos",
-        service3Text: "Organización y gestión de datos usando bases de datos SQL y NoSQL, incluyendo MySQL y MongoDB, asegurando integridad y accesibilidad.",
+        service3Text: "Configuración y gestión de bases de datos SQL y NoSQL para un almacenamiento seguro y organizado.",
         service4Title: "Capacitaciones y Talleres",
-        service4Text: "Sesiones de formación personalizadas en alfabetización de datos, estadística básica y herramientas de datos para equipos y organizaciones.",
+        service4Text: "Sesiones de formación personalizadas en alfabetización de datos, estadística y herramientas analíticas para tu equipo o empresa.",
         projectsTitle: "Proyectos Destacados",
         contactTitle: "Contacto",
         toggleButton: "English",
