@@ -3,35 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Karen Gómez P. - Data Solutions</title>
+  <title>Karen Gómez P. - Data Analyst Portfolio</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap');
 
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #0d0d0d;
-      color: #e0e0e0;
+      background-color: #f9f9f9;
+      color: #333;
     }
 
     header {
-      background-color: #000000;
-      color: #ffffff;
+      background-color: #ffffff;
       padding: 60px 20px;
       text-align: center;
-      position: relative;
+      border-bottom: 1px solid #e0e0e0;
     }
 
     header h1 {
       font-family: 'Playfair Display', serif;
       font-size: 48px;
       font-style: italic;
-      margin-bottom: 10px;
+      margin: 0 0 10px 0;
+      color: #222;
     }
 
     header p {
       font-size: 18px;
-      color: #bbbbbb;
+      color: #666;
+      margin: 0;
     }
 
     .icons-row {
@@ -43,16 +44,35 @@
       gap: 20px;
     }
 
-    section {
-      padding: 40px 20px;
+    .container {
       max-width: 900px;
       margin: auto;
+      padding: 40px 20px;
     }
 
     h2 {
-      color: #f4a1c1;
+      color: #333;
       border-bottom: 2px solid #f4a1c1;
       padding-bottom: 5px;
+      margin-top: 40px;
+    }
+
+    details {
+      margin-bottom: 15px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px 15px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    details:hover {
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: bold;
     }
 
     ul {
@@ -61,88 +81,45 @@
     }
 
     ul li {
-      margin-bottom: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    ul li:hover {
-      transform: scale(1.02);
+      margin-bottom: 8px;
     }
 
     a {
-      color: #4db8ff;
+      color: #0077b6;
       text-decoration: none;
-      transition: color 0.3s ease;
     }
 
     a:hover {
       text-decoration: underline;
-      color: #80d4ff;
     }
 
     footer {
       text-align: center;
       padding: 20px;
       font-size: 14px;
-      color: #888888;
+      color: #777;
+      border-top: 1px solid #e0e0e0;
+      margin-top: 40px;
     }
 
     .language-toggle {
       position: absolute;
       top: 20px;
       right: 20px;
-      background-color: #222;
+      background-color: #0077b6;
       color: #fff;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
       font-size: 14px;
+      border-radius: 20px;
       transition: background-color 0.3s ease;
     }
 
     .language-toggle:hover {
-      background-color: #444;
+      background-color: #005f8e;
     }
 
-    /* Accordion Styles */
-    .accordion {
-      background-color: #1a1a1a;
-      color: #ffffff;
-      cursor: pointer;
-      padding: 18px;
-      width: 100%;
-      text-align: left;
-      border: none;
-      outline: none;
-      transition: background-color 0.3s ease;
-      margin-bottom: 5px;
-    }
-
-    .accordion:hover {
-      background-color: #333333;
-    }
-
-    .accordion:after {
-      content: '\002B';
-      color: #f4a1c1;
-      float: right;
-    }
-
-    .accordion.active:after {
-      content: "\2212";
-    }
-
-    .panel {
-      padding: 0 18px;
-      background-color: #262626;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-
-    .panel p {
-      margin: 10px 0;
-    }
   </style>
 </head>
 <body>
@@ -151,98 +128,91 @@
 
   <header>
     <h1>Karen Gómez P.</h1>
-    <p id="subtitle">Chemist | Data Analyst | Transforming data into solutions.</p>
+    <p id="subtitle">Chemist | Data Analyst | Transforming data into actionable insights</p>
     <div class="icons-row">
       <span title="Chemistry">⚗️</span>
-      <span title="Data Analysis">📊</span>
-      <span title="Tech Solutions">💻</span>
+      <span title="Data">📊</span>
+      <span title="Technology">💻</span>
     </div>
   </header>
 
-  <section>
+  <div class="container">
     <h2 id="about-title">About Me</h2>
     <p id="about-text">
-      I help organizations unlock the power of their data. With a strong background in Chemistry and Biostatistics, I deliver robust analyses that turn raw numbers into actionable insights for industries, healthcare and research.
+      I am a Chemist with experience in biostatistics and data analysis applied to health, industry, and scientific research. I specialize in descriptive and inferential statistics, experimental design, and data-driven decision making.
     </p>
-  </section>
 
-  <section>
     <h2 id="services-title">Services</h2>
 
-    <button class="accordion" id="service1-title">Data Analysis & Reporting</button>
-    <div class="panel">
-      <p id="service1-text">In-depth descriptive and inferential statistical analysis, reports for decision-making, customized dashboards.</p>
-    </div>
+    <details>
+      <summary id="service1-title">Data Analysis & Visualization</summary>
+      <p id="service1-text">I provide data cleaning, processing, statistical analysis and visualization using Python, Excel and BI tools to help you discover insights and trends.</p>
+    </details>
 
-    <button class="accordion" id="service2-title">Database Design & Management</button>
-    <div class="panel">
-      <p id="service2-text">MySQL and MongoDB database structuring, data cleaning, transformation and optimization.</p>
-    </div>
+    <details>
+      <summary id="service2-title">Biostatistics Consulting</summary>
+      <p id="service2-text">Design and analysis of experiments, clinical studies, or public health projects, ensuring robust and valid results.</p>
+    </details>
 
-    <button class="accordion" id="service3-title">Predictive Modeling</button>
-    <div class="panel">
-      <p id="service3-text">Building predictive models using Python, including customer churn, trend forecasting, and clustering.</p>
-    </div>
+    <details>
+      <summary id="service3-title">Database Management</summary>
+      <p id="service3-text">Organization and management of data using SQL and NoSQL databases, including MySQL and MongoDB, ensuring data integrity and accessibility.</p>
+    </details>
 
-    <button class="accordion" id="service4-title">Training & Consulting</button>
-    <div class="panel">
-      <p id="service4-text">Personalized training sessions for teams, data literacy workshops, and tailored consulting for project implementation.</p>
-    </div>
-  </section>
+    <details>
+      <summary id="service4-title">Training & Workshops</summary>
+      <p id="service4-text">Customized training sessions on data literacy, basic statistics, and data tools for teams and organizations.</p>
+    </details>
 
-  <section>
     <h2 id="projects-title">Featured Projects</h2>
     <ul id="projects-list">
       <li><a href="https://github.com/karengzplazas/titanic-analysis" target="_blank">Titanic Survival Analysis</a></li>
       <li><a href="https://github.com/karengzplazas/telco-churn-prediction" target="_blank">Customer Churn Prediction - Telco</a></li>
       <li><a href="https://github.com/karengzplazas/autos-usados" target="_blank">Used Cars Investment Analysis</a></li>
-      <li><a href="https://github.com/karengzplazas/Piramide-pagos" target="_blank">Payments Pyramid Project</a></li>
       <li><a href="https://github.com/karengzplazas/ESTADISTICAS_EN_EDUCACION" target="_blank" id="edu-project">Statistics in Education - Colombia</a></li>
     </ul>
-  </section>
 
-  <section>
     <h2 id="contact-title">Contact</h2>
     <p>Email: <a href="mailto:Karengzplazas@gmail.com">Karengzplazas@gmail.com</a></p>
-  </section>
+  </div>
 
   <footer>
-    © 2025 Karen Gómez P. | Data Solutions
+    © 2025 Karen Gómez P.
   </footer>
 
   <script>
     const content = {
       en: {
-        subtitle: "Chemist | Data Analyst | Transforming data into solutions.",
+        subtitle: "Chemist | Data Analyst | Transforming data into actionable insights",
         aboutTitle: "About Me",
-        aboutText: "I help organizations unlock the power of their data. With a strong background in Chemistry and Biostatistics, I deliver robust analyses that turn raw numbers into actionable insights for industries, healthcare and research.",
+        aboutText: "I am a Chemist with experience in biostatistics and data analysis applied to health, industry, and scientific research. I specialize in descriptive and inferential statistics, experimental design, and data-driven decision making.",
         servicesTitle: "Services",
-        service1Title: "Data Analysis & Reporting",
-        service1Text: "In-depth descriptive and inferential statistical analysis, reports for decision-making, customized dashboards.",
-        service2Title: "Database Design & Management",
-        service2Text: "MySQL and MongoDB database structuring, data cleaning, transformation and optimization.",
-        service3Title: "Predictive Modeling",
-        service3Text: "Building predictive models using Python, including customer churn, trend forecasting, and clustering.",
-        service4Title: "Training & Consulting",
-        service4Text: "Personalized training sessions for teams, data literacy workshops, and tailored consulting for project implementation.",
+        service1Title: "Data Analysis & Visualization",
+        service1Text: "I provide data cleaning, processing, statistical analysis and visualization using Python, Excel and BI tools to help you discover insights and trends.",
+        service2Title: "Biostatistics Consulting",
+        service2Text: "Design and analysis of experiments, clinical studies, or public health projects, ensuring robust and valid results.",
+        service3Title: "Database Management",
+        service3Text: "Organization and management of data using SQL and NoSQL databases, including MySQL and MongoDB, ensuring data integrity and accessibility.",
+        service4Title: "Training & Workshops",
+        service4Text: "Customized training sessions on data literacy, basic statistics, and data tools for teams and organizations.",
         projectsTitle: "Featured Projects",
         contactTitle: "Contact",
         toggleButton: "Español",
         eduProject: "Statistics in Education - Colombia"
       },
       es: {
-        subtitle: "Química | Analista de Datos | Transformando datos en soluciones.",
+        subtitle: "Química | Analista de Datos | Transformando datos en información útil",
         aboutTitle: "Sobre mí",
-        aboutText: "Ayudo a las organizaciones a aprovechar el poder de sus datos. Con una sólida formación en Química y Bioestadística, ofrezco análisis robustos que convierten números en información accionable para la industria, la salud y la investigación.",
+        aboutText: "Soy Química con experiencia en bioestadística y análisis de datos aplicados a la salud, la industria y la investigación científica. Me especializo en estadísticas descriptivas e inferenciales, diseño experimental y toma de decisiones basadas en datos.",
         servicesTitle: "Servicios",
-        service1Title: "Análisis de Datos e Informes",
-        service1Text: "Análisis estadístico descriptivo e inferencial, generación de reportes para la toma de decisiones y paneles personalizados.",
-        service2Title: "Diseño y Gestión de Bases de Datos",
-        service2Text: "Estructuración de bases de datos MySQL y MongoDB, limpieza, transformación y optimización de datos.",
-        service3Title: "Modelos Predictivos",
-        service3Text: "Construcción de modelos predictivos en Python, incluyendo predicción de abandono, pronóstico de tendencias y segmentación.",
-        service4Title: "Capacitación y Consultoría",
-        service4Text: "Sesiones de formación personalizadas para equipos, talleres de alfabetización de datos y consultoría a medida para proyectos.",
+        service1Title: "Análisis y Visualización de Datos",
+        service1Text: "Ofrezco limpieza, procesamiento, análisis estadístico y visualización de datos usando Python, Excel y herramientas BI para descubrir insights y tendencias.",
+        service2Title: "Consultoría en Bioestadística",
+        service2Text: "Diseño y análisis de experimentos, estudios clínicos o proyectos de salud pública, asegurando resultados sólidos y válidos.",
+        service3Title: "Gestión de Bases de Datos",
+        service3Text: "Organización y gestión de datos usando bases de datos SQL y NoSQL, incluyendo MySQL y MongoDB, asegurando integridad y accesibilidad.",
+        service4Title: "Capacitaciones y Talleres",
+        service4Text: "Sesiones de formación personalizadas en alfabetización de datos, estadística básica y herramientas de datos para equipos y organizaciones.",
         projectsTitle: "Proyectos Destacados",
         contactTitle: "Contacto",
         toggleButton: "English",
@@ -271,22 +241,7 @@
       document.querySelector(".language-toggle").innerText = content[currentLang].toggleButton;
       document.getElementById("edu-project").innerText = content[currentLang].eduProject;
     }
-
-    // Accordion functionality
-    const acc = document.getElementsByClassName("accordion");
-    for (let i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        const panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        }
-      });
-    }
   </script>
 
 </body>
 </html>
-
