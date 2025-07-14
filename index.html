@@ -34,142 +34,230 @@
       scroll-behavior: smooth;
     }
 
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+
+    header {
+      background: var(--bg-white);
+      padding: 80px 20px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    header h1 {
+      font-family: var(--font-display);
+      font-size: 52px;
+      margin-bottom: 10px;
+      color: var(--text-color-dark);
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 20px;
+      color: var(--text-color-medium);
+      margin: 0;
+      font-weight: 300;
+    }
+
+    .social-icons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .social-icons a {
+      font-size: 32px;
+      color: var(--primary-color);
+      transition: transform 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-7px) scale(1.2);
+      color: var(--secondary-color);
+    }
+
     .language-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
+      position: absolute;
+      top: 25px;
+      right: 25px;
       background-color: var(--primary-color);
       color: var(--bg-white);
       border: none;
       padding: 10px 20px;
       border-radius: 25px;
       cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      font-size: 16px;
       font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    h1, h2 {
-      font-family: var(--font-display);
-      color: var(--text-color-dark);
+    .language-toggle:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
     }
 
     .container {
       max-width: 1000px;
-      margin: 100px auto 0 auto;
-      padding: 0 20px 50px;
+      margin: 0 auto;
+      padding: 60px 30px;
     }
 
     h2 {
-      margin-top: 60px;
+      font-family: var(--font-display);
+      color: var(--text-color-dark);
+      margin-bottom: 30px;
       border-left: 6px solid var(--primary-color);
       padding-left: 15px;
+      font-size: 36px;
     }
 
-    .services-grid, .projects-grid {
+    #about-text {
+      max-width: 850px;
+      margin: 0 auto 40px;
+      font-size: 18px;
+      color: var(--text-color-dark);
+    }
+
+    #about-text strong {
+      color: var(--primary-color);
+    }
+
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
       margin-top: 30px;
     }
 
-    .service-card, .project-card {
+    .service-card {
       background: var(--bg-white);
       border: 1px solid var(--border-color);
       border-radius: 10px;
-      padding: 25px;
+      padding: 30px;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
-    .service-card:hover, .project-card:hover {
-      transform: translateY(-5px);
+    .service-card:hover {
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
     }
 
     .service-card i {
-      font-size: 40px;
+      font-size: 50px;
       color: var(--primary-color);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      margin: 15px 0 10px 0;
+      color: var(--text-color-dark);
+      font-size: 24px;
+    }
+
+    .service-card p {
+      font-size: 16px;
+      color: var(--text-color-medium);
     }
 
     .call-to-action {
       background-color: var(--primary-color);
       color: var(--bg-white);
-      padding: 50px 20px;
+      padding: 60px 20px;
       text-align: center;
       border-radius: 10px;
       margin-top: 60px;
     }
 
+    .call-to-action h2 {
+      color: var(--bg-white);
+      margin-bottom: 25px;
+      border-left: none;
+      padding-left: 0;
+      font-size: 40px;
+    }
+
+    .call-to-action p {
+      font-size: 20px;
+      margin-bottom: 35px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .contact-button {
       background-color: var(--secondary-color);
       color: var(--bg-white);
-      padding: 15px 30px;
+      padding: 18px 40px;
+      border: none;
       border-radius: 30px;
-      text-decoration: none;
+      font-size: 22px;
       font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      text-decoration: none;
       display: inline-block;
-      margin-top: 20px;
+    }
+
+    .contact-button:hover {
+      background-color: #004d73;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
 
     footer {
       text-align: center;
-      padding: 30px;
-      background-color: var(--bg-white);
-      border-top: 1px solid var(--border-color);
-      font-size: 14px;
+      padding: 40px 20px;
+      font-size: 15px;
       color: var(--text-color-light);
+      border-top: 1px solid var(--border-color);
+      margin-top: 60px;
+      background-color: var(--bg-white);
     }
   </style>
 </head>
+
 <body>
-  <button class="language-toggle" onclick="toggleLanguage()">English</button>
+  <header>
+    <h1>Karen Gómez P.</h1>
+    <p id="subtitle">Química | Analista de Datos | Transformando datos en conocimiento</p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/karengomezp/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/karengzplazas" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+    <button class="language-toggle" onclick="toggleLanguage()">English</button>
+  </header>
 
   <div class="container">
-    <h1 id="subtitle">Química | Analista de Datos | Transformando datos en conocimiento</h1>
-
     <h2 id="about-title">Sobre mí</h2>
     <p id="about-text">
-      Soy una <strong>Química</strong> con sólida experiencia en <strong>bioestadística</strong> y <strong>análisis de datos</strong>, aplicada en los campos de la salud, la industria y la investigación científica. Me especializo en el uso de <strong>estadística descriptiva e inferencial</strong>, el <strong>diseño experimental</strong> y la crucial tarea de transformar datos complejos en <strong>conocimiento accionable</strong> para una toma de decisiones estratégica y efectiva.
+      Soy una <strong>Química</strong> con sólida experiencia en <strong>bioestadística</strong> y <strong>análisis de datos</strong>, aplicada en los campos de la salud, la industria y la investigación científica.
     </p>
 
     <h2 id="services-title">Servicios</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <i class="fas fa-chart-line"></i>
-        <h3 id="service1-title">Análisis de Datos</h3>
-        <p id="service1-text">Transformo grandes volúmenes de datos en información clara.</p>
-      </div>
-      <div class="service-card">
-        <i class="fas fa-microscope"></i>
-        <h3 id="service2-title">Bioestadística</h3>
-        <p id="service2-text">Consultoría para estudios científicos y de salud.</p>
-      </div>
-      <div class="service-card">
-        <i class="fas fa-database"></i>
-        <h3 id="service3-title">Bases de Datos</h3>
-        <p id="service3-text">Gestión y optimización de bases de datos SQL y NoSQL.</p>
-      </div>
-    </div>
-
-    <h2 id="projects-title">Proyectos</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3 id="project1-title">Análisis Titanic</h3>
-        <p id="project1-text">Predicción de supervivencia usando Machine Learning.</p>
-      </div>
-      <div class="project-card">
-        <h3 id="project2-title">Customer Churn</h3>
-        <p id="project2-text">Modelo para retención de clientes Telco.</p>
-      </div>
-    </div>
+    <!-- Tus tarjetas de servicio aquí -->
 
     <div class="call-to-action">
-      <h2 id="cta-title">¿Listo para transformar tus datos?</h2>
-      <a href="mailto:karengzplazas@gmail.com" class="contact-button" id="cta-button">Contáctame</a>
+      <h2>¿Listo para transformar tus datos en una ventaja competitiva?</h2>
+      <p>Contáctame hoy mismo para discutir tus necesidades y cómo la ciencia de datos puede impulsar tu éxito.</p>
+      <a href="#contact" class="contact-button">¡Hablemos de tu proyecto!</a>
     </div>
 
     <h2 id="contact-title">Contacto</h2>
-    <p>Email: <a href="mailto:karengzplazas@gmail.com">karengzplazas@gmail.com</a></p>
+    <p>Email: <a href="mailto:Karengzplazas@gmail.com">Karengzplazas@gmail.com</a></p>
   </div>
 
   <footer>
@@ -178,81 +266,41 @@
 
   <script>
     const content = {
-      es: {
-        subtitle: "Química | Analista de Datos | Transformando datos en conocimiento",
-        aboutTitle: "Sobre mí",
-        aboutText: "Soy una <strong>Química</strong> con sólida experiencia en <strong>bioestadística</strong> y <strong>análisis de datos</strong>, aplicada en los campos de la salud, la industria y la investigación científica. Me especializo en el uso de <strong>estadística descriptiva e inferencial</strong>, el <strong>diseño experimental</strong> y la crucial tarea de transformar datos complejos en <strong>conocimiento accionable</strong> para una toma de decisiones estratégica y efectiva.",
-        servicesTitle: "Servicios",
-        service1Title: "Análisis de Datos",
-        service1Text: "Transformo grandes volúmenes de datos en información clara.",
-        service2Title: "Bioestadística",
-        service2Text: "Consultoría para estudios científicos y de salud.",
-        service3Title: "Bases de Datos",
-        service3Text: "Gestión y optimización de bases de datos SQL y NoSQL.",
-        projectsTitle: "Proyectos",
-        project1Title: "Análisis Titanic",
-        project1Text: "Predicción de supervivencia usando Machine Learning.",
-        project2Title: "Customer Churn",
-        project2Text: "Modelo para retención de clientes Telco.",
-        ctaTitle: "¿Listo para transformar tus datos?",
-        ctaButton: "Contáctame",
-        contactTitle: "Contacto",
-        toggleButton: "English"
-      },
       en: {
         subtitle: "Chemist | Data Analyst | Turning data into knowledge",
         aboutTitle: "About Me",
-        aboutText: "I am a <strong>Chemist</strong> with strong experience in <strong>biostatistics</strong> and <strong>data analysis</strong> applied in health, industry, and scientific research. I specialize in <strong>descriptive and inferential statistics</strong>, <strong>experimental design</strong>, and the crucial task of transforming complex data into <strong>actionable insights</strong> for strategic decision-making.",
+        aboutText: "I am a <strong>Chemist</strong> with solid experience in <strong>biostatistics</strong> and <strong>data analysis</strong>...",
         servicesTitle: "Services",
-        service1Title: "Data Analysis",
-        service1Text: "I turn large volumes of data into clear insights.",
-        service2Title: "Biostatistics",
-        service2Text: "Consulting for scientific and health studies.",
-        service3Title: "Databases",
-        service3Text: "Management and optimization of SQL & NoSQL databases.",
-        projectsTitle: "Projects",
-        project1Title: "Titanic Analysis",
-        project1Text: "Survival prediction using Machine Learning.",
-        project2Title: "Customer Churn",
-        project2Text: "Model for Telco customer retention.",
-        ctaTitle: "Ready to transform your data?",
-        ctaButton: "Contact Me",
         contactTitle: "Contact",
         toggleButton: "Español"
+      },
+      es: {
+        subtitle: "Química | Analista de Datos | Transformando datos en conocimiento",
+        aboutTitle: "Sobre mí",
+        aboutText: "Soy una <strong>Química</strong> con sólida experiencia en <strong>bioestadística</strong> y <strong>análisis de datos</strong>...",
+        servicesTitle: "Servicios",
+        contactTitle: "Contacto",
+        toggleButton: "English"
       }
     };
 
     let currentLang = "es";
 
     function toggleLanguage() {
-      currentLang = currentLang === "es" ? "en" : "es";
+      currentLang = currentLang === "en" ? "es" : "en";
       updateContent();
     }
 
     function updateContent() {
-      const lang = content[currentLang];
-      document.getElementById("subtitle").innerHTML = lang.subtitle;
-      document.getElementById("about-title").innerText = lang.aboutTitle;
-      document.getElementById("about-text").innerHTML = lang.aboutText;
-      document.getElementById("services-title").innerText = lang.servicesTitle;
-      document.getElementById("service1-title").innerText = lang.service1Title;
-      document.getElementById("service1-text").innerText = lang.service1Text;
-      document.getElementById("service2-title").innerText = lang.service2Title;
-      document.getElementById("service2-text").innerText = lang.service2Text;
-      document.getElementById("service3-title").innerText = lang.service3Title;
-      document.getElementById("service3-text").innerText = lang.service3Text;
-      document.getElementById("projects-title").innerText = lang.projectsTitle;
-      document.getElementById("project1-title").innerText = lang.project1Title;
-      document.getElementById("project1-text").innerText = lang.project1Text;
-      document.getElementById("project2-title").innerText = lang.project2Title;
-      document.getElementById("project2-text").innerText = lang.project2Text;
-      document.getElementById("cta-title").innerText = lang.ctaTitle;
-      document.getElementById("cta-button").innerText = lang.ctaButton;
-      document.getElementById("contact-title").innerText = lang.contactTitle;
-      document.querySelector(".language-toggle").innerText = lang.toggleButton;
+      document.getElementById("subtitle").innerHTML = content[currentLang].subtitle;
+      document.getElementById("about-title").innerText = content[currentLang].aboutTitle;
+      document.getElementById("about-text").innerHTML = content[currentLang].aboutText;
+      document.getElementById("services-title").innerText = content[currentLang].servicesTitle;
+      document.getElementById("contact-title").innerText = content[currentLang].contactTitle;
+      document.querySelector(".language-toggle").innerText = content[currentLang].toggleButton;
     }
 
-    document.addEventListener("DOMContentLoaded", updateContent);
+    document.addEventListener('DOMContentLoaded', updateContent);
   </script>
 </body>
 </html>
