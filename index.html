@@ -104,7 +104,6 @@
             font-size: 16px;
             font-weight: bold;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            z-index: 1000; /* Asegura que esté por encima de otros elementos */
         }
 
         .language-toggle:hover {
@@ -213,7 +212,7 @@
             color: var(--text-color-dark);
             font-size: 22px;
         }
-
+        
         .project-card .project-link {
             display: inline-block;
             margin-top: auto; /* Empuja el enlace hacia abajo si hay espacio extra */
@@ -377,9 +376,7 @@
 
 <body>
 
-    <button class="language-toggle" onclick="toggleLanguage()">English</button>
-
-    <header>
+    <button class="language-toggle" onclick="toggleLanguage()">English</button> <header>
         <h1>Karen Gómez P.</h1>
         <p id="subtitle">Química | Analista de Datos | Transformando datos en conocimiento</p>
         <div class="social-icons">
@@ -459,7 +456,7 @@
 
         <h2 id="contact-title">Contacto</h2>
         <p>Email: <a href="mailto:Karengzplazas@gmail.com">Karengzplazas@gmail.com</a></p>
-        <p>¿Prefieres una llamada? ¡Agenda una cita directamente! <a href="#" target="_blank">Agenda aquí</a></p>
+        <p id="schedule-text">¿Prefieres una llamada? ¡Agenda una cita directamente! <a href="#" target="_blank">Agenda aquí</a></p>
     </div>
 
     <footer>
@@ -559,7 +556,7 @@
             document.querySelector(".contact-button").innerText = content[currentLang].ctaButton;
 
             // Actualizar texto del scheduler
-            // document.getElementById("schedule-text").innerText = content[currentLang].scheduleCall;
+            document.getElementById("schedule-text").innerText = content[currentLang].scheduleCall;
         }
 
         // Ejecutar al cargar para asegurar que el contenido inicial sea el correcto
