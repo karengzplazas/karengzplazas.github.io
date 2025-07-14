@@ -1,394 +1,386 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Karen Gómez P. - Data Analyst Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karen Gómez P. - Data Analyst Portfolio</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300,400,700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/4b4f78c0d5.js" crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300,400,700&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --primary-color: #0077b6;
-            --secondary-color: #005f8e;
-            --text-color-dark: #222;
-            --text-color-medium: #555;
-            --text-color-light: #777;
-            --bg-light: #f8f9fa;
-            --bg-white: #ffffff;
-            --border-color: #ddd;
-            --font-display: 'Playfair Display', serif;
-            --font-body: 'Roboto', sans-serif;
-        }
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/4b4f78c0d5.js" crossorigin="anonymous"></script>
 
-        body {
-            margin: 0;
-            font-family: var(--font-body);
-            background-color: var(--bg-light);
-            color: var(--text-color-medium);
-            line-height: 1.8;
-            scroll-behavior: smooth;
-        }
+  <style>
+    :root {
+      --primary-color: #0077b6;
+      --secondary-color: #005f8e;
+      --text-color-dark: #222;
+      --text-color-medium: #555;
+      --text-color-light: #777;
+      --bg-light: #f8f9fa;
+      --bg-white: #ffffff;
+      --border-color: #ddd;
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'Roboto', sans-serif;
+    }
 
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background-color: var(--bg-light);
+      color: var(--text-color-medium);
+      line-height: 1.8;
+      scroll-behavior: smooth;
+    }
 
-        a:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-        header {
-            background: var(--bg-white);
-            padding: 80px 20px 40px;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
+    a:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
 
-        .profile-picture {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--primary-color);
-            margin-bottom: 20px;
-            box-shadow: 0 0 15px rgba(0, 119, 182, 0.4);
-        }
+    header {
+      background: var(--bg-white);
+      padding: 80px 20px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
 
-        header h1 {
-            font-family: var(--font-display);
-            font-size: 52px;
-            margin-bottom: 10px;
-            color: var(--text-color-dark);
-            letter-spacing: 1px;
-        }
+    header h1 {
+      font-family: var(--font-display);
+      font-size: 52px;
+      margin-bottom: 10px;
+      color: var(--text-color-dark);
+      letter-spacing: 1px;
+    }
 
-        header p {
-            font-size: 20px;
-            color: var(--text-color-medium);
-            margin: 0;
-            font-weight: 300;
-        }
+    header p {
+      font-size: 20px;
+      color: var(--text-color-medium);
+      margin: 0;
+      font-weight: 300;
+    }
 
-        .social-icons {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-        }
+    .social-icons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
 
-        .social-icons a {
-            font-size: 32px;
-            color: var(--primary-color);
-            transition: transform 0.3s ease, color 0.3s ease;
-            cursor: pointer;
-        }
+    .social-icons a {
+      font-size: 32px;
+      color: var(--primary-color);
+      transition: transform 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+    }
 
-        .social-icons a:hover {
-            transform: translateY(-7px) scale(1.2);
-            color: var(--secondary-color);
-        }
+    .social-icons a:hover {
+      transform: translateY(-7px) scale(1.2);
+      color: var(--secondary-color);
+    }
 
-        .language-toggle {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            background-color: var(--primary-color);
-            color: var(--bg-white);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-            font-size: 16px;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+    .language-toggle {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-        .language-toggle:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
+    .language-toggle:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 60px 30px;
-        }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 30px;
+    }
 
-        h2 {
-            font-family: var(--font-display);
-            color: var(--text-color-dark);
-            margin-bottom: 30px;
-            border-left: 6px solid var(--primary-color);
-            padding-left: 15px;
-            font-size: 36px;
-        }
+    h2 {
+      font-family: var(--font-display);
+      color: var(--text-color-dark);
+      margin-bottom: 30px;
+      border-left: 6px solid var(--primary-color);
+      padding-left: 15px;
+      font-size: 36px;
+    }
 
-        #about-text {
-            max-width: 850px;
-            margin: 0 auto 40px;
-            font-size: 18px;
-            color: var(--text-color-dark);
-        }
+    #about-text {
+      max-width: 850px;
+      margin: 0 auto 40px;
+      font-size: 18px;
+      color: var(--text-color-dark);
+    }
+    #about-text strong {
+      color: var(--primary-color);
+    }
 
-        #about-text strong {
-            color: var(--primary-color);
-        }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
+    .service-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .service-card {
-            background: var(--bg-white);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+    .service-card:hover {
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+    }
 
-        .service-card:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            transform: translateY(-5px);
-        }
+    .service-card i {
+      font-size: 50px;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
 
-        .service-card i {
-            font-size: 50px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            animation: bounceIn 0.8s ease-out;
-        }
+    .service-card h3 {
+      margin: 15px 0 10px 0;
+      color: var(--text-color-dark);
+      font-size: 24px;
+    }
 
-        .service-card h3 {
-            margin: 15px 0 10px 0;
-            color: var(--text-color-dark);
-            font-size: 24px;
-        }
+    .service-card p {
+      font-size: 16px;
+      color: var(--text-color-medium);
+    }
 
-        .service-card p {
-            font-size: 16px;
-            color: var(--text-color-medium);
-        }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
+    .project-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 180px;
+    }
 
-        .project-card {
-            background: var(--bg-white);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 180px;
-        }
+    .project-card:hover {
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+    }
 
-        .project-card:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            transform: translateY(-5px);
-        }
+    .project-card h3 {
+      margin-bottom: 15px;
+      color: var(--text-color-dark);
+      font-size: 22px;
+    }
 
-        .project-card h3 {
-            margin-bottom: 15px;
-            color: var(--text-color-dark);
-            font-size: 22px;
-        }
-        
-        .project-card .project-link {
-            display: inline-block;
-            margin-top: auto;
-            background-color: var(--primary-color);
-            color: var(--bg-white);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
+    .project-card .project-link {
+      display: inline-block;
+      margin-top: auto;
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
 
-        .project-card .project-link:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            text-decoration: none;
-        }
+    .project-card .project-link:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
 
-        .call-to-action {
-            background-color: var(--primary-color);
-            color: var(--bg-white);
-            padding: 60px 20px;
-            text-align: center;
-            border-radius: 10px;
-            margin-top: 60px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+    .call-to-action {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 60px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 
-        .call-to-action h2 {
-            color: var(--bg-white);
-            margin-bottom: 25px;
-            border-left: none;
-            padding-left: 0;
-            font-size: 40px;
-        }
+    .call-to-action h2 {
+      color: var(--bg-white);
+      margin-bottom: 25px;
+      border-left: none;
+      padding-left: 0;
+      font-size: 40px;
+    }
 
-        .call-to-action p {
-            font-size: 20px;
-            margin-bottom: 35px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .call-to-action p {
+      font-size: 20px;
+      margin-bottom: 35px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-        .contact-button {
-            background-color: var(--secondary-color);
-            color: var(--bg-white);
-            padding: 18px 40px;
-            border: none;
-            border-radius: 30px;
-            font-size: 22px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            text-decoration: none;
-            display: inline-block;
-        }
+    .contact-button {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      padding: 18px 40px;
+      border: none;
+      border-radius: 30px;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-decoration: none;
+      display: inline-block;
+    }
 
-        .contact-button:hover {
-            background-color: #004d73;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-            text-decoration: none;
-        }
+    .contact-button:hover {
+      background-color: #004d73;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      text-decoration: none;
+    }
 
-        #contact {
-            text-align: center;
-            padding-bottom: 60px;
-        }
+    #contact {
+      text-align: center;
+      padding-bottom: 60px;
+    }
+    #contact p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    #contact a {
+      font-weight: bold;
+      font-size: 18px;
+    }
 
-        #contact p {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        #contact a {
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 15px;
-            color: var(--text-color-light);
-            border-top: 1px solid var(--border-color);
-            margin-top: 60px;
-            background-color: var(--bg-white);
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 42px;
-            }
-            header p {
-                font-size: 16px;
-            }
-            .language-toggle {
-                top: 15px;
-                right: 15px;
-                padding: 8px 15px;
-                font-size: 14px;
-            }
-            h2 {
-                font-size: 30px;
-            }
-            #about-text {
-                font-size: 16px;
-            }
-            .services-grid, .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            .service-card, .project-card {
-                padding: 20px;
-            }
-            .service-card i {
-                font-size: 40px;
-            }
-            .service-card h3 {
-                font-size: 20px;
-            }
-            .call-to-action h2 {
-                font-size: 32px;
-            }
-            .call-to-action p {
-                font-size: 16px;
-            }
-            .contact-button {
-                font-size: 18px;
-                padding: 15px 30px;
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0.1); opacity: 0; }
-            60% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); }
-        }
-
-        .service-card {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
-        .service-card:nth-child(4) { animation-delay: 0.4s; }
-    </style>
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 15px;
+      color: var(--text-color-light);
+      border-top: 1px solid var(--border-color);
+      margin-top: 60px;
+      background-color: var(--bg-white);
+    }
+  </style>
 </head>
 
 <body>
+  <button class="language-toggle" onclick="toggleLanguage()">Español</button>
 
-    <button class="language-toggle" onclick="toggleLanguage()">Español</button>
+  <header>
+    <h1>Karen Gómez P.</h1>
+    <p id="subtitle">Química | Analista de Datos | Transformando datos en conocimiento</p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/karengomezp/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/karengzplazas" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+  </header>
 
-    <header>
-        <h1>Karen Gómez P.</h1>
-        <p id="subtitle">Química | Analista de Datos | Transformando datos en conocimiento</p>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/karengomezp/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/karengzplazas" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        </div>
-    </header>
+  <div class="container">
+    <h2 id="about-title">Sobre mí</h2>
+    <p id="about-text">Soy una <strong>Química</strong> con sólida experiencia en <strong>bioestadística</strong> y <strong>análisis de datos</strong>, aplicada en los campos de la salud, la industria y la investigación científica.
+      Me especializo en el uso de <strong>estadística descriptiva e inferencial</strong>, el <strong>diseño experimental</strong> y la crucial tarea de transformar datos complejos en <strong>conocimiento accionable</strong> para una toma de decisiones estratégica y efectiva. Mi pasión radica en desentrañar patrones y ofrecer soluciones basadas en evidencia.
+    </p>
 
-    <!-- El resto de tu contenido se mantiene igual (container, services, projects, CTA, contacto, footer y script de idiomas) -->
+    <h2 id="services-title">Servicios</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fas fa-chart-bar"></i>
+        <h3 id="service1-title">Análisis y Visualización de Datos</h3>
+        <p id="service1-text">Limpieza de datos, análisis estadístico, creación de dashboards interactivos y reportes visuales impactantes para hacer tus datos claros y útiles.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-microscope"></i>
+        <h3 id="service2-title">Consultoría en Bioestadística</h3>
+        <p id="service2-text">Diseño robusto y análisis riguroso de experimentos y estudios relacionados con la salud para garantizar resultados válidos, confiables y publicables.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-database"></i>
+        <h3 id="service3-title">Gestión de Bases de Datos</h3>
+        <p id="service3-text">Configuración, optimización y gestión eficiente de bases de datos SQL y NoSQL, asegurando un almacenamiento de datos seguro, organizado y accesible.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h3 id="service4-title">Capacitaciones y Talleres</h3>
+        <p id="service4-text">Sesiones de formación personalizadas en alfabetización de datos, estadística aplicada y manejo de herramientas analíticas para potenciar las habilidades de tu equipo o empresa.</p>
+      </div>
+    </div>
 
-    <!-- Aquí iría todo tu contenido .container, .call-to-action, footer y script exactamente igual -->
-    <!-- Si quieres, lo completo con gusto. Avísame 😉 -->
+    <h2 id="projects-title">Proyectos Destacados</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Titanic Survival Analysis</h3>
+        <p>Análisis predictivo para determinar factores de supervivencia en el desastre del Titanic usando machine learning.</p>
+        <a href="https://github.com/karengzplazas/titanic-analysis" target="_blank" class="project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="project-card">
+        <h3>Customer Churn Prediction - Telco</h3>
+        <p>Modelo de predicción de abandono de clientes en una empresa de telecomunicaciones para optimizar estrategias de retención.</p>
+        <a href="https://github.com/karengzplazas/telco-churn-prediction" target="_blank" class="project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="project-card">
+        <h3>Used Cars Investment Analysis</h3>
+        <p>Análisis de mercado de coches usados para identificar oportunidades de inversión y optimizar la compra-venta.</p>
+        <a href="https://github.com/karengzplazas/autos-usados" target="_blank" class="project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="project-card">
+        <h3 id="edu-project">Estadísticas en Educación - Colombia</h3>
+        <p>Estudio detallado sobre tendencias y métricas educativas en Colombia, proporcionando insights para políticas públicas.</p>
+        <a href="https://github.com/karengzplazas/ESTADISTICAS_EN_EDUCACION" target="_blank" class="project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
 
-</body>
-</html>
+    <div class="call-to-action">
+      <h2>¿Listo para transformar tus datos en una ventaja competitiva?</h2>
+      <p>Contáctame hoy mismo para discutir tus necesidades y cómo la ciencia de datos puede impulsar tu éxito.</p>
+      <a href="#contact" class="contact-button">¡Hablemos de tu proyecto!</a>
+    </div>
+
+    <h2 id="contact-title">Contacto</h2>
+    <p>Email: <a href="mailto:Karengzplazas@gmail.com">Karengzplazas@gmail.com</a></p>
+    <p>¿Prefieres una llamada? ¡Agenda una cita directamente! <a href="#" target="_blank">Agenda aquí</a></p>
+  </div>
+
+  <footer>
+    © 2025 Karen Gómez P. | Transformando datos en conocimiento.
+  </footer>
+
+  <script>
+    const content = {
+      en: {
+        subtitle: "Chemist | Data Analyst | Turning data into knowledge",
+        aboutTitle: "About Me",
+        aboutText: "I am a <strong>Chemist</strong> with solid experience in <strong>biostatistics</strong> and <strong>data analysis</strong>...",
