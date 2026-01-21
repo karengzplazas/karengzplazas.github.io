@@ -8,7 +8,6 @@
 
   <meta name="description" content="Portafolio profesional de Karen Gómez P. — Química y Analista de Datos. Bioestadística, ML, visualización y consultoría.">
 
-  <!-- Fuentes + icons -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <link
@@ -99,7 +98,8 @@
       padding:8px 12px;
       border-radius:18px;
       cursor:pointer;
-      font-weight:600
+      font-weight:600;
+      min-width: 50px;
     }
 
     .hamburger{
@@ -348,16 +348,15 @@
 </head>
 
 <body>
-  <!-- NAV -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="inner">
       <div class="brand">Karen Gómez P.</div>
 
       <div class="links" id="navLinks" aria-hidden="false">
-        <a href="#about">Sobre mí</a>
-        <a href="#services">Servicios</a>
-        <a href="#projects">Proyectos</a>
-        <a href="#contact">Contacto</a>
+        <a href="#about" id="nav-about">Sobre mí</a>
+        <a href="#services" id="nav-services">Servicios</a>
+        <a href="#projects" id="nav-projects">Proyectos</a>
+        <a href="#contact" id="nav-contact">Contacto</a>
         <a href="https://github.com/karengzplazas" target="_blank" aria-label="GitHub">
           <i class="fab fa-github"></i>
         </a>
@@ -375,7 +374,6 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <header class="hero" role="banner">
     <div class="hero-inner">
       <div class="hero-photo" aria-hidden="false">
@@ -388,26 +386,24 @@
 
         <div class="hero-cta">
           <a class="btn-primary" id="ctaPrimary" href="#contact">Contáctame</a>
-          <a class="btn-outline" href="https://github.com/karengzplazas" target="_blank">Ver GitHub</a>
+          <a class="btn-outline" id="ctaSecondary" href="https://github.com/karengzplazas" target="_blank">Ver GitHub</a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- MAIN -->
   <main>
-    <!-- ABOUT -->
     <section id="about" aria-labelledby="aboutTitle">
       <h2 id="aboutTitle">Sobre mí</h2>
 
       <div class="about-card">
-        <p>
+        <p id="aboutText1">
           <strong>Karen Gómez P.</strong> — Química con experiencia en bioestadística, análisis de datos y visualización.
           Manejo Python, SQL, Power BI y técnicas de machine learning para resolver problemas aplicados en salud,
           educación e industria.
         </p>
 
-        <p style="margin-top:8px;color:var(--muted)">
+        <p id="aboutText2" style="margin-top:8px;color:var(--muted)">
           Trabajo produciendo resultados reproducibles y comunicables.
           Si necesitas un análisis riguroso, visualizaciones claras o apoyo estadístico para tus estudios,
           podemos conversar.
@@ -415,44 +411,41 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
     <section id="services" aria-labelledby="servicesTitle">
       <h2 id="servicesTitle">Servicios</h2>
 
       <div class="services-grid">
         <div class="service">
           <i class="fas fa-chart-line" aria-hidden="true"></i>
-          <h4>Analítica & Visualización</h4>
-          <p>Dashboards interactivos y reportes ejecutivos.</p>
+          <h4 id="service1Title">Analítica & Visualización</h4>
+          <p id="service1Desc">Dashboards interactivos y reportes ejecutivos.</p>
         </div>
 
         <div class="service">
           <i class="fas fa-vials" aria-hidden="true"></i>
-          <h4>Bioestadística</h4>
-          <p>Diseño experimental y análisis de estudios de salud.</p>
+          <h4 id="service2Title">Bioestadística</h4>
+          <p id="service2Desc">Diseño experimental y análisis de estudios de salud.</p>
         </div>
 
         <div class="service">
           <i class="fas fa-database" aria-hidden="true"></i>
-          <h4>Gestión de Datos</h4>
-          <p>ETL, SQL y pipelines reproducibles.</p>
+          <h4 id="service3Title">Gestión de Datos</h4>
+          <p id="service3Desc">ETL, SQL y pipelines reproducibles.</p>
         </div>
 
         <div class="service">
           <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
-          <h4>Capacitaciones</h4>
-          <p>Talleres prácticos en Python y visualización.</p>
+          <h4 id="service4Title">Capacitaciones</h4>
+          <p id="service4Desc">Talleres prácticos en Python y visualización.</p>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
     <section id="projects" aria-labelledby="projectsTitle">
       <h2 id="projectsTitle">Proyectos Destacados</h2>
 
       <div class="projects-grid" role="list">
 
-        <!-- Project 1 -->
         <article class="project-card" role="listitem" aria-labelledby="p1Title">
           <div class="project-media" aria-hidden="true">
             <img src="https://images.unsplash.com/photo-1505839673365-e3971f8d9184?q=80&w=1400&auto=format&fit=crop" alt="Titanic - barco en el mar">
@@ -460,11 +453,11 @@
 
           <div class="project-body">
             <h3 id="p1Title">Titanic Survival Analysis</h3>
-            <p>Análisis predictivo para determinar factores de supervivencia usando ML y explicación de variables.</p>
+            <p id="p1Desc">Análisis predictivo para determinar factores de supervivencia usando ML y explicación de variables.</p>
           </div>
 
           <div class="project-footer">
-            <a class="project-link" href="https://github.com/karengzplazas/titanic-analysis" target="_blank" rel="noopener">
+            <a class="project-link p-link" href="https://github.com/karengzplazas/titanic-analysis" target="_blank" rel="noopener">
               Ver proyecto
             </a>
             <span style="margin-left:auto;color:var(--muted);font-size:13px">
@@ -473,7 +466,6 @@
           </div>
         </article>
 
-        <!-- Project 2 -->
         <article class="project-card" role="listitem" aria-labelledby="p2Title">
           <div class="project-media" aria-hidden="true">
             <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1400&auto=format&fit=crop" alt="Proyecto Churn - modelo">
@@ -481,11 +473,11 @@
 
           <div class="project-body">
             <h3 id="p2Title">Customer Churn Prediction</h3>
-            <p>Modelo para predecir abandono y estrategia de optimización de retención.</p>
+            <p id="p2Desc">Modelo para predecir abandono y estrategia de optimización de retención.</p>
           </div>
 
           <div class="project-footer">
-            <a class="project-link" href="https://github.com/karengzplazas/telco-churn-prediction" target="_blank" rel="noopener">
+            <a class="project-link p-link" href="https://github.com/karengzplazas/telco-churn-prediction" target="_blank" rel="noopener">
               Ver proyecto
             </a>
             <span style="margin-left:auto;color:var(--muted);font-size:13px">
@@ -494,7 +486,6 @@
           </div>
         </article>
 
-        <!-- Project 3 -->
         <article class="project-card" role="listitem" aria-labelledby="p3Title">
           <div class="project-media" aria-hidden="true">
             <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=1400&auto=format&fit=crop" alt="Proyecto Autos Usados - análisis">
@@ -502,11 +493,11 @@
 
           <div class="project-body">
             <h3 id="p3Title">Used Cars Investment Analysis</h3>
-            <p>Análisis de mercado de autos usados y modelo de optimización de compra-venta.</p>
+            <p id="p3Desc">Análisis de mercado de autos usados y modelo de optimización de compra-venta.</p>
           </div>
 
           <div class="project-footer">
-            <a class="project-link" href="https://github.com/karengzplazas/autos-usados" target="_blank" rel="noopener">
+            <a class="project-link p-link" href="https://github.com/karengzplazas/autos-usados" target="_blank" rel="noopener">
               Ver proyecto
             </a>
             <span style="margin-left:auto;color:var(--muted);font-size:13px">
@@ -515,7 +506,6 @@
           </div>
         </article>
 
-        <!-- Project 4 -->
         <article class="project-card" role="listitem" aria-labelledby="p4Title">
           <div class="project-media" aria-hidden="true">
             <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1400&auto=format&fit=crop" alt="Educación - estudiantes en clase">
@@ -523,11 +513,11 @@
 
           <div class="project-body">
             <h3 id="p4Title">Estadísticas en Educación - Colombia</h3>
-            <p>Estudio y visualizaciones para apoyar políticas públicas basadas en datos.</p>
+            <p id="p4Desc">Estudio y visualizaciones para apoyar políticas públicas basadas en datos.</p>
           </div>
 
           <div class="project-footer">
-            <a class="project-link" href="https://github.com/karengzplazas/ESTADISTICAS_EN_EDUCACION" target="_blank" rel="noopener">
+            <a class="project-link p-link" href="https://github.com/karengzplazas/ESTADISTICAS_EN_EDUCACION" target="_blank" rel="noopener">
               Ver proyecto
             </a>
             <span style="margin-left:auto;color:var(--muted);font-size:13px">
@@ -539,18 +529,17 @@
       </div>
     </section>
 
-    <!-- CONTACT / CTA -->
     <section id="contact" aria-labelledby="contactTitle">
       <h2 id="contactTitle">Contacto</h2>
 
       <div class="cta">
-        <p style="margin:6px 0 12px">
+        <p id="contactLead" style="margin:6px 0 12px">
           ¿Listo para transformar datos en decisión? Escríbeme y conversamos.
         </p>
 
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a class="btn-primary" href="mailto:Karengzplazas@gmail.com">Enviar correo</a>
-          <a class="btn-outline" href="#" onclick="alert('Aquí puedes poner tu enlace a calendario');return false;">
+          <a class="btn-primary" id="btnMail" href="mailto:Karengzplazas@gmail.com">Enviar correo</a>
+          <a class="btn-outline" id="btnCall" href="#" onclick="alert('Aquí puedes poner tu enlace a calendario');return false;">
             Agendar llamada
           </a>
         </div>
@@ -564,12 +553,137 @@
   </main>
 
   <footer>
-    © <span id="year"></span> Karen Gómez P. — Transformando datos en conocimiento.
+    © <span id="year"></span> <span id="footerText">Karen Gómez P. — Transformando datos en conocimiento.</span>
   </footer>
 
   <script>
-    // Footer year
+    // --- LÓGICA DE TRADUCCIÓN ---
+    const translations = {
+      es: {
+        navAbout: "Sobre mí",
+        navServices: "Servicios",
+        navProjects: "Proyectos",
+        navContact: "Contacto",
+        heroSubtitle: "Química • Analista de Datos • Bioestadística y Machine Learning",
+        ctaPrimary: "Contáctame",
+        ctaSecondary: "Ver GitHub",
+        aboutTitle: "Sobre mí",
+        aboutText1: "<strong>Karen Gómez P.</strong> — Química con experiencia en bioestadística, análisis de datos y visualización. Manejo Python, SQL, Power BI y técnicas de machine learning para resolver problemas aplicados en salud, educación e industria.",
+        aboutText2: "Trabajo produciendo resultados reproducibles y comunicables. Si necesitas un análisis riguroso, visualizaciones claras o apoyo estadístico para tus estudios, podemos conversar.",
+        servicesTitle: "Servicios",
+        service1Title: "Analítica & Visualización",
+        service1Desc: "Dashboards interactivos y reportes ejecutivos.",
+        service2Title: "Bioestadística",
+        service2Desc: "Diseño experimental y análisis de estudios de salud.",
+        service3Title: "Gestión de Datos",
+        service3Desc: "ETL, SQL y pipelines reproducibles.",
+        service4Title: "Capacitaciones",
+        service4Desc: "Talleres prácticos en Python y visualización.",
+        projectsTitle: "Proyectos Destacados",
+        p1Desc: "Análisis predictivo para determinar factores de supervivencia usando ML y explicación de variables.",
+        p2Desc: "Modelo para predecir abandono y estrategia de optimización de retención.",
+        p3Desc: "Análisis de mercado de autos usados y modelo de optimización de compra-venta.",
+        p4Desc: "Estudio y visualizaciones para apoyar políticas públicas basadas en datos.",
+        pLink: "Ver proyecto",
+        contactTitle: "Contacto",
+        contactLead: "¿Listo para transformar datos en decisión? Escríbeme y conversamos.",
+        btnMail: "Enviar correo",
+        btnCall: "Agendar llamada",
+        footerText: "Karen Gómez P. — Transformando datos en conocimiento."
+      },
+      en: {
+        navAbout: "About me",
+        navServices: "Services",
+        navProjects: "Projects",
+        navContact: "Contact",
+        heroSubtitle: "Chemist • Data Analyst • Biostatistics and Machine Learning",
+        ctaPrimary: "Contact me",
+        ctaSecondary: "View GitHub",
+        aboutTitle: "About me",
+        aboutText1: "<strong>Karen Gómez P.</strong> — Chemist with experience in biostatistics, data analysis and visualization. I handle Python, SQL, Power BI and machine learning techniques to solve problems applied in health, education and industry.",
+        aboutText2: "I produce reproducible and communicable results. If you need rigorous analysis, clear visualizations or statistical support for your studies, let's talk.",
+        servicesTitle: "Services",
+        service1Title: "Analytics & Visualization",
+        service1Desc: "Interactive dashboards and executive reports.",
+        service2Title: "Biostatistics",
+        service2Desc: "Experimental design and analysis of health studies.",
+        service3Title: "Data Management",
+        service3Desc: "ETL, SQL and reproducible pipelines.",
+        service4Title: "Training",
+        service4Desc: "Practical workshops in Python and visualization.",
+        projectsTitle: "Featured Projects",
+        p1Desc: "Predictive analysis to determine survival factors using ML and variable explanation.",
+        p2Desc: "Model to predict churn and retention optimization strategy.",
+        p3Desc: "Used cars market analysis and buy-sell optimization model.",
+        p4Desc: "Study and visualizations to support data-driven public policies.",
+        pLink: "View project",
+        contactTitle: "Contact",
+        contactLead: "Ready to transform data into decisions? Write to me and let's talk.",
+        btnMail: "Send email",
+        btnCall: "Schedule call",
+        footerText: "Karen Gómez P. — Transforming data into knowledge."
+      }
+    };
+
+    let currentLang = 'es';
+    const langBtn = document.getElementById('langToggle');
+
+    langBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
+      updateLanguage();
+    });
+
+    function updateLanguage() {
+      const texts = translations[currentLang];
+      
+      document.getElementById('nav-about').textContent = texts.navAbout;
+      document.getElementById('nav-services').textContent = texts.navServices;
+      document.getElementById('nav-projects').textContent = texts.navProjects;
+      document.getElementById('nav-contact').textContent = texts.navContact;
+      document.getElementById('heroSubtitle').textContent = texts.heroSubtitle;
+      document.getElementById('ctaPrimary').textContent = texts.ctaPrimary;
+      document.getElementById('ctaSecondary').textContent = texts.ctaSecondary;
+      document.getElementById('aboutTitle').textContent = texts.aboutTitle;
+      document.getElementById('aboutText1').innerHTML = texts.aboutText1;
+      document.getElementById('aboutText2').textContent = texts.aboutText2;
+      document.getElementById('servicesTitle').textContent = texts.servicesTitle;
+      document.getElementById('service1Title').textContent = texts.service1Title;
+      document.getElementById('service1Desc').textContent = texts.service1Desc;
+      document.getElementById('service2Title').textContent = texts.service2Title;
+      document.getElementById('service2Desc').textContent = texts.service2Desc;
+      document.getElementById('service3Title').textContent = texts.service3Title;
+      document.getElementById('service3Desc').textContent = texts.service3Desc;
+      document.getElementById('service4Title').textContent = texts.service4Title;
+      document.getElementById('service4Desc').textContent = texts.service4Desc;
+      document.getElementById('projectsTitle').textContent = texts.projectsTitle;
+      document.getElementById('p1Desc').textContent = texts.p1Desc;
+      document.getElementById('p2Desc').textContent = texts.p2Desc;
+      document.getElementById('p3Desc').textContent = texts.p3Desc;
+      document.getElementById('p4Desc').textContent = texts.p4Desc;
+      document.getElementById('contactTitle').textContent = texts.contactTitle;
+      document.getElementById('contactLead').textContent = texts.contactLead;
+      document.getElementById('btnMail').textContent = texts.btnMail;
+      document.getElementById('btnCall').textContent = texts.btnCall;
+      document.getElementById('footerText').textContent = texts.footerText;
+
+      // Traducir todos los enlaces de proyectos (clase .p-link)
+      document.querySelectorAll('.p-link').forEach(link => {
+        link.textContent = texts.pLink;
+      });
+    }
+
+    // --- FUNCIONALIDADES EXISTENTES ---
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile menu
     const hamb = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamb.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      const expanded = navLinks.classList.contains('show');
+      hamb.setAttribute('aria-expanded', expanded);
+    });
+  </script>
+</body>
+</html>
