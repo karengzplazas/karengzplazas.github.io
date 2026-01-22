@@ -572,6 +572,10 @@
           <input type="text" name="name" required placeholder="Tu nombre">
         </div>
         <div class="form-group">
+          <label id="labelPhone">Teléfono</label>
+          <input type="tel" name="phone" required placeholder="Ej: +57 300 123 4567">
+        </div>
+        <div class="form-group">
           <label id="labelEmail">Correo</label>
           <input type="email" name="email" required placeholder="tu@email.com">
         </div>
@@ -601,13 +605,13 @@
         service2Title: "Bioestadística", service2Desc: "Diseño experimental y análisis de estudios de salud.",
         service3Title: "Gestión de Datos", service3Desc: "ETL, SQL y pipelines reproducibles.",
         service4Title: "Capacitaciones", service4Desc: "Talleres prácticos en Python y visualización.",
-        projectsTitle: "Proyectos Destacados", pLink: "Ver proyecto", p1Desc: "Análisis predictivo para determinar factores de supervivencia...",
+        projectsTitle: "Proyectos Destacados", pLink: "Ver proyecto", p1Desc: "Análisis predictivo para determinar factores de supervivencia usando ML y explicación de variables.",
         p2Desc: "Modelo para predecir abandono y estrategia de optimización de retención.",
         p3Desc: "Análisis de mercado de autos usados y modelo de optimización de compra-venta.",
         p4Desc: "Estudio y visualizaciones para apoyar políticas públicas basadas en datos.",
         contactTitle: "Contacto", contactLead: "¿Listo para transformar datos en decisión? Escríbeme y conversamos.",
         btnMail: "Enviar correo", btnCall: "Agendar llamada", modalTitle: "Agendar una llamada",
-        labelName: "Nombre", labelEmail: "Correo", labelMsg: "Mensaje", btnSubmitForm: "Enviar solicitud",
+        labelName: "Nombre", labelPhone: "Teléfono", labelEmail: "Correo", labelMsg: "Mensaje", btnSubmitForm: "Enviar solicitud",
         footerText: "Karen Gómez P. — Transformando datos en conocimiento."
       },
       en: {
@@ -620,13 +624,13 @@
         service2Title: "Biostatistics", service2Desc: "Experimental design and analysis of health studies.",
         service3Title: "Data Management", service3Desc: "ETL, SQL and reproducible pipelines.",
         service4Title: "Training", service4Desc: "Practical workshops in Python and visualization.",
-        projectsTitle: "Featured Projects", pLink: "View project", p1Desc: "Predictive analysis to determine survival factors...",
+        projectsTitle: "Featured Projects", pLink: "View project", p1Desc: "Predictive analysis to determine survival factors using ML and variable explanation.",
         p2Desc: "Model to predict churn and retention optimization strategy.",
         p3Desc: "Used cars market analysis and buy-sell optimization model.",
         p4Desc: "Study and visualizations to support data-driven public policies.",
         contactTitle: "Contact", contactLead: "Ready to transform data into decisions? Write to me and let's talk.",
         btnMail: "Send email", btnCall: "Schedule call", modalTitle: "Schedule a call",
-        labelName: "Name", labelEmail: "Email", labelMsg: "Message", btnSubmitForm: "Send request",
+        labelName: "Name", labelPhone: "Phone", labelEmail: "Email", labelMsg: "Message", btnSubmitForm: "Send request",
         footerText: "Karen Gómez P. — Transforming data into knowledge."
       }
     };
@@ -662,12 +666,17 @@
       document.getElementById('service4Title').textContent = texts.service4Title;
       document.getElementById('service4Desc').textContent = texts.service4Desc;
       document.getElementById('projectsTitle').textContent = texts.projectsTitle;
+      document.getElementById('p1Desc').textContent = texts.p1Desc;
+      document.getElementById('p2Desc').textContent = texts.p2Desc;
+      document.getElementById('p3Desc').textContent = texts.p3Desc;
+      document.getElementById('p4Desc').textContent = texts.p4Desc;
       document.getElementById('contactTitle').textContent = texts.contactTitle;
       document.getElementById('contactLead').textContent = texts.contactLead;
       document.getElementById('btnMail').textContent = texts.btnMail;
       document.getElementById('btnCall').textContent = texts.btnCall;
       document.getElementById('modalTitle').textContent = texts.modalTitle;
       document.getElementById('labelName').textContent = texts.labelName;
+      document.getElementById('labelPhone').textContent = texts.labelPhone; // ACTUALIZADO
       document.getElementById('labelEmail').textContent = texts.labelEmail;
       document.getElementById('labelMsg').textContent = texts.labelMsg;
       document.getElementById('btnSubmitForm').textContent = texts.btnSubmitForm;
