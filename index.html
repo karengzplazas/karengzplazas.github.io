@@ -134,15 +134,14 @@
       color:white;
       padding:72px 18px;
       text-align:center;
-      overflow: hidden; /* Importante para que los iconos no se salgan */
+      overflow: hidden; 
     }
 
-    /* Fondo decorativo con iconos de análisis de datos */
     header.hero::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      opacity: 0.12; /* Controla qué tan sutiles se ven los iconos */
+      opacity: 0.12;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Cg fill='%23FFFFFF'%3E%3Cpath d='M10 80 L30 50 L50 70 L90 20' stroke='white' stroke-width='2' fill='none'/%3E%3Ccircle cx='10' cy='80' r='2'/%3E%3Ccircle cx='30' cy='50' r='2'/%3E%3Ccircle cx='50' cy='70' r='2'/%3E%3Ccircle cx='90' cy='20' r='2'/%3E%3Crect x='70' y='60' width='6' height='15' opacity='0.5'/%3E%3Crect x='80' y='50' width='6' height='25' opacity='0.5'/%3E%3Crect x='90' y='65' width='6' height='10' opacity='0.5'/%3E%3Cpath d='M10 20 L25 20 L25 35' stroke='white' stroke-width='1' fill='none'/%3E%3C/g%3E%3C/svg%3E");
       background-size: 200px 200px;
       pointer-events: none;
@@ -150,7 +149,7 @@
 
     .hero-inner{
       position: relative;
-      z-index: 1; /* Pone el contenido sobre el fondo de iconos */
+      z-index: 1;
       max-width:var(--max-width);
       margin:0 auto;
       display:flex;
@@ -225,14 +224,15 @@
       width: 100%; height: 100%;
       background-color: rgba(0,0,0,0.5);
       backdrop-filter: blur(4px);
+      overflow-y: auto;
     }
     .modal-content {
       background-color: var(--card);
-      margin: 10% auto;
+      margin: 5% auto;
       padding: 30px;
       border-radius: var(--radius);
       width: 90%;
-      max-width: 450px;
+      max-width: 500px;
       box-shadow: var(--shadow);
       position: relative;
     }
@@ -248,6 +248,17 @@
     .form-group input, .form-group textarea {
       width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;
     }
+
+    /* ACORDEÓN FAQ DENTRO DEL MODAL */
+    .faq-item { border-bottom: 1px solid #edf2f7; padding: 5px 0; }
+    .faq-question {
+      width: 100%; background: none; border: none; text-align: left;
+      display: flex; justify-content: space-between; font-weight: 600;
+      cursor: pointer; padding: 10px 0; color: var(--text); font-size: 14px;
+    }
+    .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease; color: var(--muted); font-size: 13px; }
+    .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 10px; }
+    .faq-item.active i { transform: rotate(180deg); }
 
     /* MAIN */
     main{
@@ -276,7 +287,7 @@
       margin:0 auto
     }
 
-    /* SERVICES */
+    /* SERVICES MEJORADO */
     .services-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -286,10 +297,17 @@
 
     .service{
       background:var(--card);
-      padding:16px;
+      padding:24px 16px;
       border-radius:12px;
       box-shadow:var(--shadow);
-      text-align:center
+      text-align:center;
+      cursor: pointer;
+      transition: 0.3s ease;
+      border-bottom: 3px solid transparent;
+    }
+    .service:hover {
+      transform: translateY(-5px);
+      border-bottom: 3px solid var(--primary);
     }
 
     .service i{
@@ -465,25 +483,25 @@
       <h2 id="servicesTitle">Servicios</h2>
 
       <div class="services-grid">
-        <div class="service">
+        <div class="service" onclick="openServiceModal('analytics')">
           <i class="fas fa-chart-line" aria-hidden="true"></i>
           <h4 id="service1Title">Analítica & Visualización</h4>
           <p id="service1Desc">Dashboards interactivos y reportes ejecutivos.</p>
         </div>
 
-        <div class="service">
+        <div class="service" onclick="openServiceModal('bio')">
           <i class="fas fa-vials" aria-hidden="true"></i>
           <h4 id="service2Title">Bioestadística</h4>
           <p id="service2Desc">Diseño experimental y análisis de estudios de salud.</p>
         </div>
 
-        <div class="service">
+        <div class="service" onclick="openServiceModal('data')">
           <i class="fas fa-database" aria-hidden="true"></i>
           <h4 id="service3Title">Gestión de Datos</h4>
           <p id="service3Desc">ETL, SQL y pipelines reproducibles.</p>
         </div>
 
-        <div class="service">
+        <div class="service" onclick="openServiceModal('training')">
           <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
           <h4 id="service4Title">Capacitaciones</h4>
           <p id="service4Desc">Talleres prácticos en Python y visualización.</p>
@@ -495,7 +513,6 @@
       <h2 id="projectsTitle">Proyectos Destacados</h2>
 
       <div class="projects-grid" role="list">
-
         <article class="project-card" role="listitem" aria-labelledby="p1Title">
           <div class="project-media" aria-hidden="true">
             <img src="https://images.unsplash.com/photo-1505839673365-e3971f8d9184?q=80&w=1400&auto=format&fit=crop" alt="Titanic">
@@ -551,7 +568,6 @@
             <span style="margin-left:auto;color:var(--muted);font-size:13px">Folium • Análisis espacial</span>
           </div>
         </article>
-
       </div>
     </section>
 
@@ -603,11 +619,45 @@
     </div>
   </div>
 
+  <div id="serviceDetailModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal()">&times;</span>
+      <div id="serviceContent"></div>
+      <div style="margin-top:25px; text-align:center;">
+        <button class="btn-primary" id="modalServiceCta" onclick="closeServiceModal(); openModal();">Solicitar información</button>
+      </div>
+    </div>
+  </div>
+
   <footer>
     © <span id="year"></span> <span id="footerText">Karen Gómez P. — Transformando datos en conocimiento.</span>
   </footer>
 
   <script>
+    // --- DATOS EXTENDIDOS PARA SERVICIOS ---
+    const serviceDetails = {
+      analytics: {
+        title: { es: "Analítica & Visualización", en: "Analytics & Visualization" },
+        text: { es: "Transformo datos complejos en historias visuales. Uso Power BI y Python para crear dashboards que facilitan decisiones basadas en evidencia.", en: "I transform complex data into visual stories. I use Power BI and Python to create dashboards that facilitate evidence-based decisions." },
+        faq: { es: "¿Qué herramientas usas? Power BI, Plotly y Seaborn. ¿Es fácil de usar? Sí, diseño interfaces intuitivas para perfiles no técnicos.", en: "What tools do you use? Power BI, Plotly, and Seaborn. Is it easy to use? Yes, I design intuitive interfaces for non-technical profiles." }
+      },
+      bio: {
+        title: { es: "Bioestadística & Rigor Científico", en: "Biostatistics & Scientific Rigor" },
+        text: { es: "Como Química, entiendo el rigor del laboratorio. Aplico diseño experimental (DoE) y modelos de regresión para asegurar resultados significativos.", en: "As a Chemist, I understand lab rigor. I apply experimental design (DoE) and regression models to ensure significant results." },
+        faq: { es: "¿Ayudas con publicaciones? Sí, aseguro que la estadística cumpla con estándares de revistas. ¿Analizas datos clínicos? Sí, manejo bases de datos de salud.", en: "Do you help with publications? Yes, I ensure statistics meet journal standards. Do you analyze clinical data? Yes, I handle health databases." }
+      },
+      data: {
+        title: { es: "Gestión de Datos & ETL", en: "Data Management & ETL" },
+        text: { es: "Automatizo la limpieza de datos desorganizados. Creo flujos de trabajo en SQL y Python para garantizar que tus datos sean reproducibles.", en: "I automate disorganized data cleaning. I create SQL and Python workflows to ensure your data is reproducible." },
+        faq: { es: "¿Es seguro mi dato? Manejo protocolos de confidencialidad. ¿Entregas el código? Sí, entrego scripts documentados.", en: "Is my data safe? I handle confidentiality protocols. Do you deliver the code? Yes, I deliver documented scripts." }
+      },
+      training: {
+        title: { es: "Capacitaciones a Medida", en: "Custom Training" },
+        text: { es: "Talleres prácticos sobre Python y visualización. Enseño a equipos a ser autónomos en el manejo de sus propios datos.", en: "Hands-on workshops on Python and visualization. I teach teams to be autonomous in handling their own data." },
+        faq: { es: "¿Es para principiantes? Sí, adapto el nivel desde cero. ¿Dan certificado? Se entrega constancia técnica de participación.", en: "Is it for beginners? Yes, I adapt the level from scratch. Do you provide certificates? Technical certificates of participation are provided." }
+      }
+    };
+
     // --- LÓGICA DE TRADUCCIÓN ---
     const translations = {
       es: {
@@ -627,7 +677,7 @@
         contactTitle: "Contacto", contactLead: "¿Listo para transformar datos en decisión? Escríbeme y conversamos.",
         btnMail: "Enviar correo", btnCall: "Agendar llamada", modalTitle: "Agendar una llamada",
         labelName: "Nombre", labelPhone: "Teléfono", labelEmail: "Correo", labelMsg: "Mensaje", btnSubmitForm: "Enviar solicitud",
-        footerText: "Karen Gómez P. — Transformando datos en conocimiento."
+        footerText: "Karen Gómez P. — Transformando datos en conocimiento.", modalServiceCta: "Solicitar información"
       },
       en: {
         navAbout: "About me", navServices: "Services", navProjects: "Projects", navContact: "Contact",
@@ -646,7 +696,7 @@
         contactTitle: "Contact", contactLead: "Ready to transform data into decisions? Write to me and let's talk.",
         btnMail: "Send email", btnCall: "Schedule call", modalTitle: "Schedule a call",
         labelName: "Name", labelPhone: "Phone", labelEmail: "Email", labelMsg: "Message", btnSubmitForm: "Send request",
-        footerText: "Karen Gómez P. — Transforming data into knowledge."
+        footerText: "Karen Gómez P. — Transforming data into knowledge.", modalServiceCta: "Request information"
       }
     };
 
@@ -696,16 +746,53 @@
       document.getElementById('labelMsg').textContent = texts.labelMsg;
       document.getElementById('btnSubmitForm').textContent = texts.btnSubmitForm;
       document.getElementById('footerText').textContent = texts.footerText;
+      document.getElementById('modalServiceCta').textContent = texts.modalServiceCta;
       document.querySelectorAll('.p-link').forEach(link => { link.textContent = texts.pLink; });
     }
 
-    // --- LÓGICA DEL MODAL ---
-    const modal = document.getElementById("contactModal");
-    function openModal() { modal.style.display = "block"; }
-    function closeModal() { modal.style.display = "none"; }
-    window.onclick = (e) => { if (e.target == modal) closeModal(); }
+    // --- LÓGICA DE MODALES ---
+    const contactModal = document.getElementById("contactModal");
+    const serviceModal = document.getElementById("serviceDetailModal");
 
-    // --- FUNCIONALIDADES ---
+    function openModal() { contactModal.style.display = "block"; }
+    function closeModal() { contactModal.style.display = "none"; }
+
+    function openServiceModal(key) {
+      const data = serviceDetails[key];
+      const container = document.getElementById('serviceContent');
+      // Dividimos las FAQs por el signo '?' para crear el acordeón
+      const faqs = data.faq[currentLang].split('? ');
+      
+      container.innerHTML = `
+        <h3 style="color:var(--primary); font-family:'Playfair Display'; margin-bottom:10px;">${data.title[currentLang]}</h3>
+        <p style="font-size:15px; margin-bottom:20px;">${data.text[currentLang]}</p>
+        <div style="text-align:left; border-top:1px solid #eee; padding-top:15px;">
+          <p style="font-weight:700; color:var(--primary); font-size:12px; margin-bottom:10px; text-transform:uppercase;">Preguntas Frecuentes</p>
+          ${faqs.map(f => {
+            const parts = f.split('. ');
+            const q = parts[0];
+            const a = parts[1] || "";
+            return `
+              <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                  ${q}${q.includes('?') ? '' : '?'} <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">${a}</div>
+              </div>`;
+          }).join('')}
+        </div>
+      `;
+      serviceModal.style.display = "block";
+    }
+
+    function closeServiceModal() { serviceModal.style.display = "none"; }
+
+    window.onclick = (e) => { 
+      if (e.target == contactModal) closeModal(); 
+      if (e.target == serviceModal) closeServiceModal();
+    }
+
+    // --- FUNCIONALIDADES EXTRAS ---
     document.getElementById('year').textContent = new Date().getFullYear();
     const hamb = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
