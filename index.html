@@ -127,15 +127,30 @@
       .hamburger{display:inline-block}
     }
 
-    /* HERO */
+    /* HERO MEJORADO CON ICONOS DE DATOS */
     header.hero{
+      position: relative;
       background:linear-gradient(135deg,#0077b6 0%,#0096c7 60%);
       color:white;
       padding:72px 18px;
-      text-align:center
+      text-align:center;
+      overflow: hidden; /* Importante para que los iconos no se salgan */
+    }
+
+    /* Fondo decorativo con iconos de análisis de datos */
+    header.hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      opacity: 0.12; /* Controla qué tan sutiles se ven los iconos */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Cg fill='%23FFFFFF'%3E%3Cpath d='M10 80 L30 50 L50 70 L90 20' stroke='white' stroke-width='2' fill='none'/%3E%3Ccircle cx='10' cy='80' r='2'/%3E%3Ccircle cx='30' cy='50' r='2'/%3E%3Ccircle cx='50' cy='70' r='2'/%3E%3Ccircle cx='90' cy='20' r='2'/%3E%3Crect x='70' y='60' width='6' height='15' opacity='0.5'/%3E%3Crect x='80' y='50' width='6' height='25' opacity='0.5'/%3E%3Crect x='90' y='65' width='6' height='10' opacity='0.5'/%3E%3Cpath d='M10 20 L25 20 L25 35' stroke='white' stroke-width='1' fill='none'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
     }
 
     .hero-inner{
+      position: relative;
+      z-index: 1; /* Pone el contenido sobre el fondo de iconos */
       max-width:var(--max-width);
       margin:0 auto;
       display:flex;
@@ -676,7 +691,7 @@
       document.getElementById('btnCall').textContent = texts.btnCall;
       document.getElementById('modalTitle').textContent = texts.modalTitle;
       document.getElementById('labelName').textContent = texts.labelName;
-      document.getElementById('labelPhone').textContent = texts.labelPhone; // ACTUALIZADO
+      document.getElementById('labelPhone').textContent = texts.labelPhone;
       document.getElementById('labelEmail').textContent = texts.labelEmail;
       document.getElementById('labelMsg').textContent = texts.labelMsg;
       document.getElementById('btnSubmitForm').textContent = texts.btnSubmitForm;
