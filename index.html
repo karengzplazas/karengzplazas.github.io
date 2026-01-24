@@ -127,7 +127,7 @@
       .hamburger{display:inline-block}
     }
 
-    /* HERO MEJORADO CON ICONOS DE DATOS */
+    /* HERO CON ICONOS DE DATOS */
     header.hero{
       position: relative;
       background:linear-gradient(135deg,#0077b6 0%,#0096c7 60%);
@@ -215,50 +215,65 @@
       cursor: pointer;
     }
 
-    /* --- ESTILOS DEL MODAL --- */
+   /* --- ESTILOS DEL MODAL ACTUALIZADOS --- */
     .modal {
       display: none; 
       position: fixed; 
       z-index: 2000; 
       left: 0; top: 0;
       width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      backdrop-filter: blur(4px);
+      background-color: rgba(0,0,0,0.6);
+      backdrop-filter: blur(5px);
       overflow-y: auto;
     }
+
     .modal-content {
       background-color: var(--card);
-      margin: 5% auto;
+      margin: 20px auto;
       padding: 30px;
       border-radius: var(--radius);
       width: 90%;
-      max-width: 500px;
+      max-width: 550px;
       box-shadow: var(--shadow);
       position: relative;
     }
+
     .close-modal {
       position: absolute;
       right: 20px; top: 15px;
       font-size: 28px;
       cursor: pointer;
       color: var(--muted);
+      z-index: 10;
     }
+
     .form-group { margin-bottom: 15px; text-align: left; }
     .form-group label { display: block; font-weight: 500; margin-bottom: 5px; color: var(--text); }
     .form-group input, .form-group textarea {
       width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;
     }
 
-    /* ACORDEÓN FAQ DENTRO DEL MODAL */
-    .faq-item { border-bottom: 1px solid #edf2f7; padding: 5px 0; }
+    /* ACORDEÓN FAQ (DENTRO DEL MODAL) */
+    .faq-item { border-bottom: 1px solid #edf2f7; padding: 2px 0; }
     .faq-question {
       width: 100%; background: none; border: none; text-align: left;
-      display: flex; justify-content: space-between; font-weight: 600;
-      cursor: pointer; padding: 10px 0; color: var(--text); font-size: 14px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-weight: 600; cursor: pointer; padding: 15px 0; 
+      color: var(--text); font-size: 15px; gap: 10px;
     }
-    .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease; color: var(--muted); font-size: 13px; }
-    .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 10px; }
-    .faq-item.active i { transform: rotate(180deg); }
+    .faq-answer { 
+      max-height: 0; 
+      overflow: hidden; 
+      transition: all 0.3s ease-out; 
+      color: var(--muted); 
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer { 
+      max-height: 1000px; /* Suficiente para que no se corte el texto */
+      padding-bottom: 15px; 
+    }
+    .faq-item.active i { transform: rotate(180deg); color: var(--primary); }
 
     /* MAIN */
     main{
@@ -750,46 +765,76 @@
       document.querySelectorAll('.p-link').forEach(link => { link.textContent = texts.pLink; });
     }
 
-    // --- LÓGICA DE MODALES ---
+   // --- LÓGICA DE MODALES ---
     const contactModal = document.getElementById("contactModal");
     const serviceModal = document.getElementById("serviceDetailModal");
 
-    function openModal() { contactModal.style.display = "block"; }
-    function closeModal() { contactModal.style.display = "none"; }
+    // Funciones básicas para el modal de contacto
+    function openModal() { 
+      contactModal.style.display = "block"; 
+    }
+    
+    function closeModal() { 
+      contactModal.style.display = "none"; 
+    }
+    
+    // Función para cerrar el modal de servicios
+    function closeServiceModal() { 
+      serviceModal.style.display = "none"; 
+    }
 
+    // Función principal para construir y mostrar el modal de servicios con FAQs
     function openServiceModal(key) {
       const data = serviceDetails[key];
       const container = document.getElementById('serviceContent');
-      // Dividimos las FAQs por el signo '?' para crear el acordeón
-      const faqs = data.faq[currentLang].split('? ');
+      
+      // Separamos las preguntas buscando el cierre del signo '?'
+      const rawFaqs = data.faq[currentLang].split('?').filter(t => t.trim() !== "");
+      
+      const faqsHtml = rawFaqs.map(item => {
+        // Separamos la pregunta de la respuesta buscando el primer punto después del texto
+        const parts = item.split('. ');
+        const question = parts[0].trim() + '?';
+        const answer = parts.slice(1).join('. ').trim();
+
+        return `
+          <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+              <span>${question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              ${answer}
+            </div>
+          </div>`;
+      }).join('');
       
       container.innerHTML = `
-        <h3 style="color:var(--primary); font-family:'Playfair Display'; margin-bottom:10px;">${data.title[currentLang]}</h3>
-        <p style="font-size:15px; margin-bottom:20px;">${data.text[currentLang]}</p>
-        <div style="text-align:left; border-top:1px solid #eee; padding-top:15px;">
-          <p style="font-weight:700; color:var(--primary); font-size:12px; margin-bottom:10px; text-transform:uppercase;">Preguntas Frecuentes</p>
-          ${faqs.map(f => {
-            const parts = f.split('. ');
-            const q = parts[0];
-            const a = parts[1] || "";
-            return `
-              <div class="faq-item">
-                <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                  ${q}${q.includes('?') ? '' : '?'} <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">${a}</div>
-              </div>`;
-          }).join('')}
+        <h3 style="color:var(--primary); font-family:'Playfair Display'; font-size: 24px; margin-bottom:10px;">
+          ${data.title[currentLang]}
+        </h3>
+        <p style="font-size:16px; margin-bottom:20px; color: var(--text);">
+          ${data.text[currentLang]}
+        </p>
+        <div style="text-align:left; border-top:2px solid var(--bg); padding-top:15px;">
+          <p style="font-weight:700; color:var(--primary); font-size:12px; margin-bottom:10px; text-transform:uppercase; letter-spacing: 1px;">
+            ${currentLang === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
+          </p>
+          ${faqsHtml}
         </div>
       `;
+      
       serviceModal.style.display = "block";
     }
 
-    function closeServiceModal() { serviceModal.style.display = "none"; }
-
-    window.onclick = (e) => { 
-      if (e.target == contactModal) closeModal(); 
-      if (e.target == serviceModal) closeServiceModal();
+    // Cerrar modales automáticamente al hacer clic fuera de la caja blanca (en el fondo oscuro)
+    window.onclick = function(event) {
+      if (event.target == contactModal) {
+        closeModal();
+      }
+      if (event.target == serviceModal) {
+        closeServiceModal();
+      }
     }
 
     // --- FUNCIONALIDADES EXTRAS ---
