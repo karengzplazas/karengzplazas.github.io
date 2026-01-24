@@ -302,7 +302,7 @@
       margin:0 auto
     }
 
-    /* SERVICES MEJORADO */
+    /* SERVICES */
     .services-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -465,15 +465,20 @@
 
       <div class="hero-text">
         <h1 id="heroName">Karen Gómez P.</h1>
-        <p id="heroSubtitle">Química • Analista de Datos • Bioestadística y Machine Learning</p>
+        
+        <p id="heroSubtitle" style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">
+          Convierto datos científicos en decisiones claras.
+        </p>
+
+        <p id="heroRespaldo" style="font-size: 16px; opacity: 0.85; font-weight: 300;">
+          Analista de Datos con formación en Química · Bioestadística & Machine Learning
+        </p>
 
         <div class="hero-cta">
           <a class="btn-primary" id="ctaPrimary" href="#contact">Contáctame</a>
           <a class="btn-outline" id="ctaSecondary" href="https://github.com/karengzplazas" target="_blank">Ver GitHub</a>
         </div>
       </div>
-    </div>
-  </header>
 
   <main>
     <section id="about" aria-labelledby="aboutTitle">
@@ -649,7 +654,7 @@
   </footer>
 
   <script>
-    // --- DATOS EXTENDIDOS PARA SERVICIOS (ESTRUCTURA CORREGIDA) ---
+    // --- DATOS EXTENDIDOS PARA SERVICIOS ---
   const serviceDetails = {
     analytics: {
       title: { es: "Analítica & Visualización", en: "Analytics & Visualization" },
@@ -709,11 +714,14 @@
     }
   };
 
-    // --- LÓGICA DE TRADUCCIÓN ---
+   // --- LÓGICA DE TRADUCCIÓN ---
     const translations = {
       es: {
         navAbout: "Sobre mí", navServices: "Servicios", navProjects: "Proyectos", navContact: "Contacto",
-        heroSubtitle: "Química • Analista de Datos • Bioestadística y Machine Learning",
+        // Línea principal (Claim)
+        heroSubtitle: "Convierto datos científicos en decisiones claras.",
+        // Línea secundaria (Respaldo)
+        heroRespaldo: "Analista de Datos con formación en Química · Bioestadística & Machine Learning",
         ctaPrimary: "Contáctame", ctaSecondary: "Ver GitHub", aboutTitle: "Sobre mí",
         aboutText1: "<strong>Karen Gómez P.</strong> — Química con experiencia en bioestadística, análisis de datos y visualización. Manejo Python, SQL, Power BI y técnicas de machine learning para resolver problemas aplicados en salud, educación e industria.",
         aboutText2: "Trabajo produciendo resultados reproducibles y comunicables. Si necesitas un análisis riguroso, visualizaciones claras o apoyo estadístico para tus estudios, podemos conversar.",
@@ -732,7 +740,10 @@
       },
       en: {
         navAbout: "About me", navServices: "Services", navProjects: "Projects", navContact: "Contact",
-        heroSubtitle: "Chemist • Data Analyst • Biostatistics and Machine Learning",
+        // Main line (Claim)
+        heroSubtitle: "I turn scientific data into clear decisions.",
+        // Secondary line (Backing)
+        heroRespaldo: "Data Analyst with a Chemistry background · Biostatistics & Machine Learning",
         ctaPrimary: "Contact me", ctaSecondary: "View GitHub", aboutTitle: "About me",
         aboutText1: "<strong>Karen Gómez P.</strong> — Chemist with experience in biostatistics, data analysis and visualization. I handle Python, SQL, Power BI and machine learning techniques to solve problems applied in health, education and industry.",
         aboutText2: "I produce reproducible and communicable results. If you need rigorous analysis, clear visualizations or statistical support for your studies, let's talk.",
@@ -767,6 +778,7 @@
       document.getElementById('nav-projects').textContent = texts.navProjects;
       document.getElementById('nav-contact').textContent = texts.navContact;
       document.getElementById('heroSubtitle').textContent = texts.heroSubtitle;
+      document.getElementById('heroRespaldo').textContent = texts.heroRespaldo;
       document.getElementById('ctaPrimary').textContent = texts.ctaPrimary;
       document.getElementById('ctaSecondary').textContent = texts.ctaSecondary;
       document.getElementById('aboutTitle').textContent = texts.aboutTitle;
@@ -801,33 +813,30 @@
       document.querySelectorAll('.p-link').forEach(link => { link.textContent = texts.pLink; });
     }
 
-   // --- LÓGICA DE MODALES ---
+// --- LÓGICA DE MODALES ---
     const contactModal = document.getElementById("contactModal");
     const serviceModal = document.getElementById("serviceDetailModal");
 
-    // Funciones básicas para el modal de contacto
     function openModal() { 
       contactModal.style.display = "block"; 
+      document.body.style.overflow = "hidden"; // Evita scroll al estar abierto
     }
     
     function closeModal() { 
       contactModal.style.display = "none"; 
+      document.body.style.overflow = "auto";
     }
     
-    // Función para cerrar el modal de servicios
     function closeServiceModal() { 
       serviceModal.style.display = "none"; 
+      document.body.style.overflow = "auto";
     }
 
-    // Función principal para construir y mostrar el modal de servicios con FAQs
     function openServiceModal(key) {
       const data = serviceDetails[key];
       const container = document.getElementById('serviceContent');
-      
-      // Accedemos directamente a la lista que creamos en serviceDetails
       const currentFaqs = data.faqs[currentLang];
       
-      // Generamos el HTML usando los campos 'q' y 'a' que ya están listos
       const faqsHtml = currentFaqs.map(item => `
         <div class="faq-item">
           <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
@@ -856,25 +865,28 @@
       `;
       
       serviceModal.style.display = "block";
+      document.body.style.overflow = "hidden";
     }
 
-    // Cerrar modales automáticamente al hacer clic fuera de la caja blanca (en el fondo oscuro)
     window.onclick = function(event) {
-      if (event.target == contactModal) {
-        closeModal();
-      }
-      if (event.target == serviceModal) {
-        closeServiceModal();
-      }
+      if (event.target == contactModal) closeModal();
+      if (event.target == serviceModal) closeServiceModal();
     }
 
     // --- FUNCIONALIDADES EXTRAS ---
     document.getElementById('year').textContent = new Date().getFullYear();
+    
     const hamb = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
+    
     hamb.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-      hamb.setAttribute('aria-expanded', navLinks.classList.contains('show'));
+      const isExpanded = navLinks.classList.toggle('show');
+      hamb.setAttribute('aria-expanded', isExpanded);
+    });
+
+    // Cerrar menú móvil al hacer clic en un link
+    document.querySelectorAll('.links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('show'));
     });
   </script>
 </body>
