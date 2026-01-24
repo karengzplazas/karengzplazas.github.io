@@ -127,7 +127,7 @@
       .hamburger{display:inline-block}
     }
 
-    /* HERO CON ICONOS DE DATOS */
+    /* HERO MEJORADO CON ICONOS DE DATOS */
     header.hero{
       position: relative;
       background:linear-gradient(135deg,#0077b6 0%,#0096c7 60%);
@@ -215,65 +215,50 @@
       cursor: pointer;
     }
 
-   /* --- ESTILOS DEL MODAL ACTUALIZADOS --- */
+    /* --- ESTILOS DEL MODAL --- */
     .modal {
       display: none; 
       position: fixed; 
       z-index: 2000; 
       left: 0; top: 0;
       width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.6);
-      backdrop-filter: blur(5px);
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
       overflow-y: auto;
     }
-
     .modal-content {
       background-color: var(--card);
-      margin: 20px auto;
+      margin: 5% auto;
       padding: 30px;
       border-radius: var(--radius);
       width: 90%;
-      max-width: 550px;
+      max-width: 500px;
       box-shadow: var(--shadow);
       position: relative;
     }
-
     .close-modal {
       position: absolute;
       right: 20px; top: 15px;
       font-size: 28px;
       cursor: pointer;
       color: var(--muted);
-      z-index: 10;
     }
-
     .form-group { margin-bottom: 15px; text-align: left; }
     .form-group label { display: block; font-weight: 500; margin-bottom: 5px; color: var(--text); }
     .form-group input, .form-group textarea {
       width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;
     }
 
-    /* ACORDEÓN FAQ (DENTRO DEL MODAL) */
-    .faq-item { border-bottom: 1px solid #edf2f7; padding: 2px 0; }
+    /* ACORDEÓN FAQ DENTRO DEL MODAL */
+    .faq-item { border-bottom: 1px solid #edf2f7; padding: 5px 0; }
     .faq-question {
       width: 100%; background: none; border: none; text-align: left;
-      display: flex; justify-content: space-between; align-items: center;
-      font-weight: 600; cursor: pointer; padding: 15px 0; 
-      color: var(--text); font-size: 15px; gap: 10px;
+      display: flex; justify-content: space-between; font-weight: 600;
+      cursor: pointer; padding: 10px 0; color: var(--text); font-size: 14px;
     }
-    .faq-answer { 
-      max-height: 0; 
-      overflow: hidden; 
-      transition: all 0.3s ease-out; 
-      color: var(--muted); 
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .faq-item.active .faq-answer { 
-      max-height: 1000px; /* Suficiente para que no se corte el texto */
-      padding-bottom: 15px; 
-    }
-    .faq-item.active i { transform: rotate(180deg); color: var(--primary); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease; color: var(--muted); font-size: 13px; }
+    .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 10px; }
+    .faq-item.active i { transform: rotate(180deg); }
 
     /* MAIN */
     main{
@@ -302,7 +287,7 @@
       margin:0 auto
     }
 
-    /* SERVICES */
+    /* SERVICES MEJORADO */
     .services-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -465,20 +450,15 @@
 
       <div class="hero-text">
         <h1 id="heroName">Karen Gómez P.</h1>
-        
-        <p id="heroSubtitle" style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">
-          Convierto datos científicos en decisiones claras.
-        </p>
-
-        <p id="heroRespaldo" style="font-size: 16px; opacity: 0.85; font-weight: 300;">
-          Analista de Datos con formación en Química · Bioestadística & Machine Learning
-        </p>
+        <p id="heroSubtitle">Química • Analista de Datos • Bioestadística y Machine Learning</p>
 
         <div class="hero-cta">
           <a class="btn-primary" id="ctaPrimary" href="#contact">Contáctame</a>
           <a class="btn-outline" id="ctaSecondary" href="https://github.com/karengzplazas" target="_blank">Ver GitHub</a>
         </div>
       </div>
+    </div>
+  </header>
 
   <main>
     <section id="about" aria-labelledby="aboutTitle">
@@ -655,73 +635,34 @@
 
   <script>
     // --- DATOS EXTENDIDOS PARA SERVICIOS ---
-  const serviceDetails = {
-    analytics: {
-      title: { es: "Analítica & Visualización", en: "Analytics & Visualization" },
-      text: { es: "Transformo datos complejos en historias visuales. Uso Power BI y Python para crear dashboards que facilitan decisiones basadas en evidencia.", en: "I transform complex data into visual stories. I use Power BI and Python to create dashboards that facilitate evidence-based decisions." },
-      faqs: { 
-        es: [
-          { q: "¿Qué herramientas usas?", a: "Power BI, Plotly y Seaborn." },
-          { q: "¿Es fácil de usar?", a: "Sí, diseño interfaces intuitivas para perfiles no técnicos." }
-        ],
-        en: [
-          { q: "What tools do you use?", a: "Power BI, Plotly, and Seaborn." },
-          { q: "Is it easy to use?", a: "Yes, I design intuitive interfaces for non-technical profiles." }
-        ]
+    const serviceDetails = {
+      analytics: {
+        title: { es: "Analítica & Visualización", en: "Analytics & Visualization" },
+        text: { es: "Transformo datos complejos en historias visuales. Uso Power BI y Python para crear dashboards que facilitan decisiones basadas en evidencia.", en: "I transform complex data into visual stories. I use Power BI and Python to create dashboards that facilitate evidence-based decisions." },
+        faq: { es: "¿Qué herramientas usas? Power BI, Plotly y Seaborn. ¿Es fácil de usar? Sí, diseño interfaces intuitivas para perfiles no técnicos.", en: "What tools do you use? Power BI, Plotly, and Seaborn. Is it easy to use? Yes, I design intuitive interfaces for non-technical profiles." }
+      },
+      bio: {
+        title: { es: "Bioestadística & Rigor Científico", en: "Biostatistics & Scientific Rigor" },
+        text: { es: "Como Química, entiendo el rigor del laboratorio. Aplico diseño experimental (DoE) y modelos de regresión para asegurar resultados significativos.", en: "As a Chemist, I understand lab rigor. I apply experimental design (DoE) and regression models to ensure significant results." },
+        faq: { es: "¿Ayudas con publicaciones? Sí, aseguro que la estadística cumpla con estándares de revistas. ¿Analizas datos clínicos? Sí, manejo bases de datos de salud.", en: "Do you help with publications? Yes, I ensure statistics meet journal standards. Do you analyze clinical data? Yes, I handle health databases." }
+      },
+      data: {
+        title: { es: "Gestión de Datos & ETL", en: "Data Management & ETL" },
+        text: { es: "Automatizo la limpieza de datos desorganizados. Creo flujos de trabajo en SQL y Python para garantizar que tus datos sean reproducibles.", en: "I automate disorganized data cleaning. I create SQL and Python workflows to ensure your data is reproducible." },
+        faq: { es: "¿Es seguro mi dato? Manejo protocolos de confidencialidad. ¿Entregas el código? Sí, entrego scripts documentados.", en: "Is my data safe? I handle confidentiality protocols. Do you deliver the code? Yes, I deliver documented scripts." }
+      },
+      training: {
+        title: { es: "Capacitaciones a Medida", en: "Custom Training" },
+        text: { es: "Talleres prácticos sobre Python y visualización. Enseño a equipos a ser autónomos en el manejo de sus propios datos.", en: "Hands-on workshops on Python and visualization. I teach teams to be autonomous in handling their own data." },
+        faq: { es: "¿Es para principiantes? Sí, adapto el nivel desde cero. ¿Dan certificado? Se entrega constancia técnica de participación.", en: "Is it for beginners? Yes, I adapt the level from scratch. Do you provide certificates? Technical certificates of participation are provided." }
       }
-    },
-    bio: {
-      title: { es: "Bioestadística & Rigor Científico", en: "Biostatistics & Scientific Rigor" },
-      text: { es: "Como Química, entiendo el rigor del laboratorio. Aplico diseño experimental (DoE) y modelos de regresión para asegurar resultados significativos.", en: "As a Chemist, I understand lab rigor. I apply experimental design (DoE) and regression models to ensure significant results." },
-      faqs: {
-        es: [
-          { q: "¿Ayudas con publicaciones?", a: "Sí, aseguro que la estadística cumpla con estándares de revistas." },
-          { q: "¿Analizas datos clínicos?", a: "Sí, manejo bases de datos de salud bajo protocolos éticos." }
-        ],
-        en: [
-          { q: "Do you help with publications?", a: "Yes, I ensure statistics meet journal standards." },
-          { q: "Do you analyze clinical data?", a: "Yes, I handle health databases under ethical protocols." }
-        ]
-      }
-    },
-    data: {
-      title: { es: "Gestión de Datos & ETL", en: "Data Management & ETL" },
-      text: { es: "Automatizo la limpieza de datos desorganizados. Creo flujos de trabajo en SQL y Python para garantizar que tus datos sean reproducibles.", en: "I automate disorganized data cleaning. I create SQL and Python workflows to ensure your data is reproducible." },
-      faqs: {
-        es: [
-          { q: "¿Están seguros mis datos?", a: "Manejo protocolos de estricta confidencialidad para proteger toda tu información." },
-          { q: "¿Entregas el código fuente?", a: "Sí, entrego scripts documentados, limpios y listos para ser usados por tu equipo." }
-        ],
-        en: [
-          { q: "Is my data secure?", a: "I maintain strict confidentiality protocols to ensure all your information is protected." },
-          { q: "Do you deliver the source code?", a: "Yes, I provide documented, clean scripts ready for your team to use." }
-        ]
-      }
-    },
-    training: {
-      title: { es: "Capacitaciones a Medida", en: "Custom Training" },
-      text: { es: "Talleres prácticos sobre Python y visualización. Enseño a equipos a ser autónomos en el manejo de sus propios datos.", en: "Hands-on workshops on Python and visualization. I teach teams to be autonomous in handling their own data." },
-      faqs: {
-        es: [
-          { q: "¿Es para principiantes?", a: "Sí, adapto el nivel desde cero absoluto." },
-          { q: "¿Dan certificado?", a: "Se entrega constancia técnica de participación." }
-        ],
-        en: [
-          { q: "Is it for beginners?", a: "Yes, I adapt the level from absolute zero." },
-          { q: "Do you provide certificates?", a: "Technical certificates of participation are provided." }
-        ]
-      }
-    }
-  };
+    };
 
-   // --- LÓGICA DE TRADUCCIÓN ---
+    // --- LÓGICA DE TRADUCCIÓN ---
     const translations = {
       es: {
         navAbout: "Sobre mí", navServices: "Servicios", navProjects: "Proyectos", navContact: "Contacto",
-        // Línea principal (Claim)
-        heroSubtitle: "Convierto datos científicos en decisiones claras.",
-        // Línea secundaria (Respaldo)
-        heroRespaldo: "Analista de Datos con formación en Química · Bioestadística & Machine Learning",
+        heroSubtitle: "Química • Analista de Datos • Bioestadística y Machine Learning",
         ctaPrimary: "Contáctame", ctaSecondary: "Ver GitHub", aboutTitle: "Sobre mí",
         aboutText1: "<strong>Karen Gómez P.</strong> — Química con experiencia en bioestadística, análisis de datos y visualización. Manejo Python, SQL, Power BI y técnicas de machine learning para resolver problemas aplicados en salud, educación e industria.",
         aboutText2: "Trabajo produciendo resultados reproducibles y comunicables. Si necesitas un análisis riguroso, visualizaciones claras o apoyo estadístico para tus estudios, podemos conversar.",
@@ -740,10 +681,7 @@
       },
       en: {
         navAbout: "About me", navServices: "Services", navProjects: "Projects", navContact: "Contact",
-        // Main line (Claim)
-        heroSubtitle: "I turn scientific data into clear decisions.",
-        // Secondary line (Backing)
-        heroRespaldo: "Data Analyst with a Chemistry background · Biostatistics & Machine Learning",
+        heroSubtitle: "Chemist • Data Analyst • Biostatistics and Machine Learning",
         ctaPrimary: "Contact me", ctaSecondary: "View GitHub", aboutTitle: "About me",
         aboutText1: "<strong>Karen Gómez P.</strong> — Chemist with experience in biostatistics, data analysis and visualization. I handle Python, SQL, Power BI and machine learning techniques to solve problems applied in health, education and industry.",
         aboutText2: "I produce reproducible and communicable results. If you need rigorous analysis, clear visualizations or statistical support for your studies, let's talk.",
@@ -778,7 +716,6 @@
       document.getElementById('nav-projects').textContent = texts.navProjects;
       document.getElementById('nav-contact').textContent = texts.navContact;
       document.getElementById('heroSubtitle').textContent = texts.heroSubtitle;
-      document.getElementById('heroRespaldo').textContent = texts.heroRespaldo;
       document.getElementById('ctaPrimary').textContent = texts.ctaPrimary;
       document.getElementById('ctaSecondary').textContent = texts.ctaSecondary;
       document.getElementById('aboutTitle').textContent = texts.aboutTitle;
@@ -813,80 +750,55 @@
       document.querySelectorAll('.p-link').forEach(link => { link.textContent = texts.pLink; });
     }
 
-// --- LÓGICA DE MODALES ---
+    // --- LÓGICA DE MODALES ---
     const contactModal = document.getElementById("contactModal");
     const serviceModal = document.getElementById("serviceDetailModal");
 
-    function openModal() { 
-      contactModal.style.display = "block"; 
-      document.body.style.overflow = "hidden"; // Evita scroll al estar abierto
-    }
-    
-    function closeModal() { 
-      contactModal.style.display = "none"; 
-      document.body.style.overflow = "auto";
-    }
-    
-    function closeServiceModal() { 
-      serviceModal.style.display = "none"; 
-      document.body.style.overflow = "auto";
-    }
+    function openModal() { contactModal.style.display = "block"; }
+    function closeModal() { contactModal.style.display = "none"; }
 
     function openServiceModal(key) {
       const data = serviceDetails[key];
       const container = document.getElementById('serviceContent');
-      const currentFaqs = data.faqs[currentLang];
-      
-      const faqsHtml = currentFaqs.map(item => `
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-            <span>${item.q}</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p style="margin: 0; padding-top: 5px;">${item.a}</p>
-          </div>
-        </div>
-      `).join('');
+      // Dividimos las FAQs por el signo '?' para crear el acordeón
+      const faqs = data.faq[currentLang].split('? ');
       
       container.innerHTML = `
-        <h3 style="color:var(--primary); font-family:'Playfair Display'; font-size: 24px; margin-bottom:10px;">
-          ${data.title[currentLang]}
-        </h3>
-        <p style="font-size:16px; margin-bottom:20px; color: var(--text); line-height: 1.5;">
-          ${data.text[currentLang]}
-        </p>
+        <h3 style="color:var(--primary); font-family:'Playfair Display'; margin-bottom:10px;">${data.title[currentLang]}</h3>
+        <p style="font-size:15px; margin-bottom:20px;">${data.text[currentLang]}</p>
         <div style="text-align:left; border-top:1px solid #eee; padding-top:15px;">
-          <p style="font-weight:700; color:var(--primary); font-size:12px; margin-bottom:10px; text-transform:uppercase; letter-spacing: 1px;">
-            ${currentLang === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
-          </p>
-          ${faqsHtml}
+          <p style="font-weight:700; color:var(--primary); font-size:12px; margin-bottom:10px; text-transform:uppercase;">Preguntas Frecuentes</p>
+          ${faqs.map(f => {
+            const parts = f.split('. ');
+            const q = parts[0];
+            const a = parts[1] || "";
+            return `
+              <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                  ${q}${q.includes('?') ? '' : '?'} <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">${a}</div>
+              </div>`;
+          }).join('')}
         </div>
       `;
-      
       serviceModal.style.display = "block";
-      document.body.style.overflow = "hidden";
     }
 
-    window.onclick = function(event) {
-      if (event.target == contactModal) closeModal();
-      if (event.target == serviceModal) closeServiceModal();
+    function closeServiceModal() { serviceModal.style.display = "none"; }
+
+    window.onclick = (e) => { 
+      if (e.target == contactModal) closeModal(); 
+      if (e.target == serviceModal) closeServiceModal();
     }
 
     // --- FUNCIONALIDADES EXTRAS ---
     document.getElementById('year').textContent = new Date().getFullYear();
-    
     const hamb = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
-    
     hamb.addEventListener('click', () => {
-      const isExpanded = navLinks.classList.toggle('show');
-      hamb.setAttribute('aria-expanded', isExpanded);
-    });
-
-    // Cerrar menú móvil al hacer clic en un link
-    document.querySelectorAll('.links a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('show'));
+      navLinks.classList.toggle('show');
+      hamb.setAttribute('aria-expanded', navLinks.classList.contains('show'));
     });
   </script>
 </body>
