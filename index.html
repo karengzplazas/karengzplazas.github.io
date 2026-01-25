@@ -804,7 +804,7 @@
     const contactModal = document.getElementById("contactModal");
     const serviceModal = document.getElementById("serviceDetailModal");
 
-    // Funciones básicas para el modal de contacto
+    // 1. Funciones para el modal de contacto
     function openModal() { 
       contactModal.style.display = "block"; 
     }
@@ -813,43 +813,48 @@
       contactModal.style.display = "none"; 
     }
     
-    // Función para cerrar el modal de servicios
+    // 2. Función para cerrar el modal de servicios (¡ESTA FALTABA!)
+    function closeServiceModal() {
+      serviceModal.style.display = "none";
+    }
+    
+    // 3. Función para ABRIR el modal de servicios
     function openServiceModal(key) {
-  const data = serviceDetails[key];
-  const container = document.getElementById('serviceContent');
-  const currentFaqs = data.faqs[currentLang]; // Accedemos a la lista de FAQs directamente
-  
-  const faqsHtml = currentFaqs.map(item => `
-    <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-        <span>${item.q}</span>
-        <i class="fas fa-chevron-down"></i>
-      </button>
-      <div class="faq-answer">
-        <p style="margin: 0; padding-top: 5px;">${item.a}</p>
-      </div>
-    </div>
-  `).join('');
-  
-  container.innerHTML = `
-    <h3 style="color:var(--primary); font-family:'Playfair Display'; font-size: 24px; margin-bottom:15px;">
-      ${data.title[currentLang]}
-    </h3>
-    <p style="font-size:16px; margin-bottom:25px; color: var(--text); line-height: 1.5;">
-      ${data.text[currentLang]}
-    </p>
-    <div style="text-align:left; border-top:1px solid #eee; padding-top:15px;">
-      <p style="font-weight:700; color:var(--primary); font-size:12px; margin-bottom:10px; text-transform:uppercase; letter-spacing: 1px;">
-        ${currentLang === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
-      </p>
-      ${faqsHtml}
-    </div>
-  `;
-  
-  serviceModal.style.display = "block";
-}
+      const data = serviceDetails[key];
+      const container = document.getElementById('serviceContent');
+      const currentFaqs = data.faqs[currentLang];
+      
+      const faqsHtml = currentFaqs.map(item => `
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('active')">
+            <span>${item.q}</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p style="margin: 0; padding: 10px 0;">${item.a}</p>
+          </div>
+        </div>
+      `).join('');
+      
+      container.innerHTML = `
+        <h3 style="color:var(--primary); font-family:'Playfair Display'; font-size: 24px; margin-bottom:15px;">
+          ${data.title[currentLang]}
+        </h3>
+        <p style="font-size:16px; margin-bottom:25px; color: var(--text); line-height: 1.5;">
+          ${data.text[currentLang]}
+        </p>
+        <div style="text-align:left; border-top:1px solid #eee; padding-top:15px;">
+          <p style="font-weight:700; color:var(--primary); font-size:12px; margin-bottom:10px; text-transform:uppercase; letter-spacing: 1px;">
+            ${currentLang === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
+          </p>
+          ${faqsHtml}
+        </div>
+      `;
+      
+      serviceModal.style.display = "block";
+    }
 
-    // Cerrar modales automáticamente al hacer clic fuera de la caja blanca (en el fondo oscuro)
+    // 4. Cerrar modales automáticamente al hacer clic fuera
     window.onclick = function(event) {
       if (event.target == contactModal) {
         closeModal();
@@ -858,14 +863,18 @@
         closeServiceModal();
       }
     }
+
     // --- FUNCIONALIDADES EXTRAS ---
     document.getElementById('year').textContent = new Date().getFullYear();
     const hamb = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
-    hamb.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-      hamb.setAttribute('aria-expanded', navLinks.classList.contains('show'));
-    });
+    
+    if (hamb) {
+      hamb.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+        hamb.setAttribute('aria-expanded', navLinks.classList.contains('show'));
+      });
+    }
   </script>
 </body>
 </html>
