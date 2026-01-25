@@ -250,23 +250,28 @@
     }
 
     /* ACORDEÓN FAQ DENTRO DEL MODAL */
-    .faq-item { border-bottom: 1px solid #edf2f7; padding: 5px 0; }
-    .faq-question {
-      width: 100%; background: none; border: none; text-align: left;
-      display: flex; justify-content: space-between; font-weight: 600;
-      cursor: pointer; padding: 10px 0; color: var(--text); font-size: 14px;
-    }
-    .faq-answer { 
-  max-height: 0; 
-  overflow: hidden; 
-  transition: all 0.3s ease; 
-  color: var(--muted); 
-  font-size: 14px;
+.faq-item { border-bottom: 1px solid #edf2f7; padding: 5px 0; }
+
+.faq-question {
+    width: 100%; background: none; border: none; text-align: left;
+    display: flex; justify-content: space-between; align-items: center; /* Centra el icono con el texto */
+    font-weight: 600; cursor: pointer; padding: 15px 0; /* Un poco más de espacio para el click */
+    color: var(--text); font-size: 14px;
 }
 
+.faq-answer { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: all 0.3s ease-in-out; /* Transición más fluida */
+    color: var(--muted); 
+    font-size: 14px;
+    padding: 0; /* Importante: 0 mientras esté cerrado */
+}
+
+/*Asegurar que el contenido quepa y se vea el padding */
 .faq-item.active .faq-answer { 
-  max-height: 200px; 
-  padding: 10px 0 15px 0; /* Añadimos espacio arriba y abajo al abrirse */
+    max-height: 500px; /* Aumento para que no se corte si el texto es largo */
+    padding: 10px 0 15px 0; 
 }
 
     /* MAIN */
