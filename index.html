@@ -127,7 +127,7 @@
       .hamburger{display:inline-block}
     }
 
-    /* HERO MEJORADO CON ICONOS */
+    /* HERO CON ICONOS */
     header.hero{
       position: relative;
       background:linear-gradient(135deg,#0077b6 0%,#0096c7 60%);
@@ -256,9 +256,18 @@
       display: flex; justify-content: space-between; font-weight: 600;
       cursor: pointer; padding: 10px 0; color: var(--text); font-size: 14px;
     }
-    .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease; color: var(--muted); font-size: 13px; }
-    .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 10px; }
-    .faq-item.active i { transform: rotate(180deg); }
+    .faq-answer { 
+  max-height: 0; 
+  overflow: hidden; 
+  transition: all 0.3s ease; 
+  color: var(--muted); 
+  font-size: 14px;
+}
+
+.faq-item.active .faq-answer { 
+  max-height: 200px; 
+  padding: 10px 0 15px 0; /* Añadimos espacio arriba y abajo al abrirse */
+}
 
     /* MAIN */
     main{
@@ -636,27 +645,63 @@
   <script>
     // --- DATOS EXTENDIDOS PARA SERVICIOS ---
     const serviceDetails = {
-      analytics: {
-        title: { es: "Analítica & Visualización", en: "Analytics & Visualization" },
-        text: { es: "Transformo datos complejos en historias visuales. Uso Power BI y Python para crear dashboards que facilitan decisiones basadas en evidencia.", en: "I transform complex data into visual stories. I use Power BI and Python to create dashboards that facilitate evidence-based decisions." },
-        faq: { es: "¿Qué herramientas usas? Power BI, Plotly y Seaborn. ¿Es fácil de usar? Sí, diseño interfaces intuitivas para perfiles no técnicos.", en: "What tools do you use? Power BI, Plotly, and Seaborn. Is it easy to use? Yes, I design intuitive interfaces for non-technical profiles." }
-      },
-      bio: {
-        title: { es: "Bioestadística & Rigor Científico", en: "Biostatistics & Scientific Rigor" },
-        text: { es: "Como Química, entiendo el rigor del laboratorio. Aplico diseño experimental (DoE) y modelos de regresión para asegurar resultados significativos.", en: "As a Chemist, I understand lab rigor. I apply experimental design (DoE) and regression models to ensure significant results." },
-        faq: { es: "¿Ayudas con publicaciones? Sí, aseguro que la estadística cumpla con estándares de revistas. ¿Analizas datos clínicos? Sí, manejo bases de datos de salud.", en: "Do you help with publications? Yes, I ensure statistics meet journal standards. Do you analyze clinical data? Yes, I handle health databases." }
-      },
-      data: {
-        title: { es: "Gestión de Datos & ETL", en: "Data Management & ETL" },
-        text: { es: "Automatizo la limpieza de datos desorganizados. Creo flujos de trabajo en SQL y Python para garantizar que tus datos sean reproducibles.", en: "I automate disorganized data cleaning. I create SQL and Python workflows to ensure your data is reproducible." },
-        faq: { es: "¿Es seguro mi dato? Manejo protocolos de confidencialidad. ¿Entregas el código? Sí, entrego scripts documentados.", en: "Is my data safe? I handle confidentiality protocols. Do you deliver the code? Yes, I deliver documented scripts." }
-      },
-      training: {
-        title: { es: "Capacitaciones a Medida", en: "Custom Training" },
-        text: { es: "Talleres prácticos sobre Python y visualización. Enseño a equipos a ser autónomos en el manejo de sus propios datos.", en: "Hands-on workshops on Python and visualization. I teach teams to be autonomous in handling their own data." },
-        faq: { es: "¿Es para principiantes? Sí, adapto el nivel desde cero. ¿Dan certificado? Se entrega constancia técnica de participación.", en: "Is it for beginners? Yes, I adapt the level from scratch. Do you provide certificates? Technical certificates of participation are provided." }
+  analytics: {
+    title: { es: "Analítica & Visualización", en: "Analytics & Visualization" },
+    text: { es: "Transformo datos complejos en historias visuales. Uso Power BI y Python para crear dashboards que facilitan decisiones basadas en evidencia.", en: "I transform complex data into visual stories. I use Power BI and Python to create dashboards that facilitate evidence-based decisions." },
+    faqs: { 
+      es: [
+        { q: "¿Qué herramientas usas?", a: "Power BI, Plotly y Seaborn." },
+        { q: "¿Es fácil de usar?", a: "Sí, diseño interfaces intuitivas para perfiles no técnicos." }
+      ],
+      en: [
+        { q: "What tools do you use?", a: "Power BI, Plotly, and Seaborn." },
+        { q: "Is it easy to use?", a: "Yes, I design intuitive interfaces for non-technical profiles." }
+      ]
+    }
+  },
+  bio: {
+    title: { es: "Bioestadística & Rigor Científico", en: "Biostatistics & Scientific Rigor" },
+    text: { es: "Como Química, entiendo el rigor del laboratorio. Aplico diseño experimental (DoE) y modelos de regresión para asegurar resultados significativos.", en: "As a Chemist, I understand lab rigor. I apply experimental design (DoE) and regression models to ensure significant results." },
+    faqs: {
+      es: [
+        { q: "¿Ayudas con publicaciones?", a: "Sí, aseguro que la estadística cumpla con estándares de revistas." },
+        { q: "¿Analizas datos clínicos?", a: "Sí, manejo bases de datos de salud bajo protocolos éticos." }
+      ],
+      en: [
+        { q: "Do you help with publications?", a: "Yes, I ensure statistics meet journal standards." },
+        { q: "Do you analyze clinical data?", a: "Yes, I handle health databases under ethical protocols." }
+      ]
+    }
+  },
+  data: {
+      title: { es: "Gestión de Datos & ETL", en: "Data Management & ETL" },
+      text: { es: "Automatizo la limpieza de datos desorganizados. Creo flujos de trabajo en SQL y Python para garantizar que tus datos sean reproducibles.", en: "I automate disorganized data cleaning. I create SQL and Python workflows to ensure your data is reproducible." },
+      faqs: {
+        es: [
+          { q: "¿Están seguros mis datos?", a: "Manejo protocolos de estricta confidencialidad para proteger toda tu información." },
+          { q: "¿Entregas el código fuente?", a: "Sí, entrego scripts documentados, limpios y listos para ser usados por tu equipo." }
+        ],
+        en: [
+          { q: "Is my data secure?", a: "I maintain strict confidentiality protocols to ensure all your information is protected." },
+          { q: "Do you deliver the source code?", a: "Yes, I provide documented, clean scripts ready for your team to use." }
+        ]
       }
-    };
+    },
+  training: {
+    title: { es: "Capacitaciones a Medida", en: "Custom Training" },
+    text: { es: "Talleres prácticos sobre Python y visualización. Enseño a equipos a ser autónomos en el manejo de sus propios datos.", en: "Hands-on workshops on Python and visualization. I teach teams to be autonomous in handling their own data." },
+    faqs: {
+      es: [
+        { q: "¿Es para principiantes?", a: "Sí, adapto el nivel desde cero absoluto." },
+        { q: "¿Dan certificado?", a: "Se entrega constancia técnica de participación." }
+      ],
+      en: [
+        { q: "Is it for beginners?", a: "Yes, I adapt the level from absolute zero." },
+        { q: "Do you provide certificates?", a: "Technical certificates of participation are provided." }
+      ]
+    }
+  }
+};
 
     // --- LÓGICA DE TRADUCCIÓN ---
     const translations = {
@@ -750,48 +795,64 @@
       document.querySelectorAll('.p-link').forEach(link => { link.textContent = texts.pLink; });
     }
 
-    // --- LÓGICA DE MODALES ---
+    // --- LÓGICA DE MODALES (UNIFICADA Y ACTUALIZADA) ---
     const contactModal = document.getElementById("contactModal");
     const serviceModal = document.getElementById("serviceDetailModal");
 
-    function openModal() { contactModal.style.display = "block"; }
-    function closeModal() { contactModal.style.display = "none"; }
-
+    // Funciones básicas para el modal de contacto
+    function openModal() { 
+      contactModal.style.display = "block"; 
+    }
+    
+    function closeModal() { 
+      contactModal.style.display = "none"; 
+    }
+    
+    // Función para cerrar el modal de servicios
     function openServiceModal(key) {
-      const data = serviceDetails[key];
-      const container = document.getElementById('serviceContent');
-      // Dividimos las FAQs por el signo '?' para crear el acordeón
-      const faqs = data.faq[currentLang].split('? ');
-      
-      container.innerHTML = `
-        <h3 style="color:var(--primary); font-family:'Playfair Display'; margin-bottom:10px;">${data.title[currentLang]}</h3>
-        <p style="font-size:15px; margin-bottom:20px;">${data.text[currentLang]}</p>
-        <div style="text-align:left; border-top:1px solid #eee; padding-top:15px;">
-          <p style="font-weight:700; color:var(--primary); font-size:12px; margin-bottom:10px; text-transform:uppercase;">Preguntas Frecuentes</p>
-          ${faqs.map(f => {
-            const parts = f.split('. ');
-            const q = parts[0];
-            const a = parts[1] || "";
-            return `
-              <div class="faq-item">
-                <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                  ${q}${q.includes('?') ? '' : '?'} <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">${a}</div>
-              </div>`;
-          }).join('')}
-        </div>
-      `;
-      serviceModal.style.display = "block";
+  const data = serviceDetails[key];
+  const container = document.getElementById('serviceContent');
+  const currentFaqs = data.faqs[currentLang]; // Accedemos a la lista de FAQs directamente
+  
+  const faqsHtml = currentFaqs.map(item => `
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+        <span>${item.q}</span>
+        <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p style="margin: 0; padding-top: 5px;">${item.a}</p>
+      </div>
+    </div>
+  `).join('');
+  
+  container.innerHTML = `
+    <h3 style="color:var(--primary); font-family:'Playfair Display'; font-size: 24px; margin-bottom:15px;">
+      ${data.title[currentLang]}
+    </h3>
+    <p style="font-size:16px; margin-bottom:25px; color: var(--text); line-height: 1.5;">
+      ${data.text[currentLang]}
+    </p>
+    <div style="text-align:left; border-top:1px solid #eee; padding-top:15px;">
+      <p style="font-weight:700; color:var(--primary); font-size:12px; margin-bottom:10px; text-transform:uppercase; letter-spacing: 1px;">
+        ${currentLang === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
+      </p>
+      ${faqsHtml}
+    </div>
+  `;
+  
+  serviceModal.style.display = "block";
+}
+
+    // Cerrar modales automáticamente al hacer clic fuera de la caja blanca (en el fondo oscuro)
+    window.onclick = function(event) {
+      if (event.target == contactModal) {
+        closeModal();
+      }
+      if (event.target == serviceModal) {
+        closeServiceModal();
+      }
     }
-
-    function closeServiceModal() { serviceModal.style.display = "none"; }
-
-    window.onclick = (e) => { 
-      if (e.target == contactModal) closeModal(); 
-      if (e.target == serviceModal) closeServiceModal();
-    }
-
     // --- FUNCIONALIDADES EXTRAS ---
     document.getElementById('year').textContent = new Date().getFullYear();
     const hamb = document.getElementById('hamburger');
