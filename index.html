@@ -479,21 +479,19 @@
   </div>
 </header>
 
-  <main>
+ <main>
     <section id="about" aria-labelledby="aboutTitle">
       <h2 id="aboutTitle">Sobre mí</h2>
 
       <div class="about-card">
-        <p id="aboutText1">
-          <strong>Karen Gómez P.</strong> — Química con experiencia en bioestadística, análisis de datos y visualización. 
-          Manejo Python, SQL, Power BI y técnicas de machine learning para resolver problemas aplicados en salud, 
-          educación e industria.
+        <p id="aboutText1" style="font-size: 1.1rem; line-height: 1.6;">
+          <strong>Química con experiencia en análisis de datos y bioestadística aplicada a proyectos reales.</strong> 
+          Ayudo a transformar datos científicos en información clara para la toma de decisiones en salud, educación e industria.
         </p>
 
-        <p id="aboutText2" style="margin-top:8px;color:var(--muted)">
-          Trabajo produciendo resultados reproducibles y comunicables. 
-          Si necesitas un análisis riguroso, visualizaciones claras o apoyo estadístico para tus estudios, 
-          podemos conversar.
+        <p id="aboutText2" style="margin-top:12px; color:var(--muted); line-height: 1.6;">
+          Trabajo con Python, SQL y Power BI, aplicando técnicas de machine learning y análisis estadístico para generar resultados reproducibles, bien documentados y fáciles de comunicar. 
+          Si necesitas apoyo analítico riguroso, visualizaciones claras o acompañamiento estadístico para tus estudios o proyectos, ¡conversemos!
         </p>
       </div>
     </section>
@@ -713,60 +711,62 @@
   }
 };
 
-  // --- LÓGICA DE TRADUCCIÓN  ---
-    const translations = {
-      es: {
-        navAbout: "Sobre mí", navServices: "Servicios", navProjects: "Proyectos", navContact: "Contacto",
-        // NUEVO TÍTULO Y SUBTÍTULO
-        heroName: "Transformando datos en decisiones claras",
-        heroSubtitle: "Bioestadística • Machine Learning • Química",
-        ctaPrimary: "Trabajemos juntos", 
-        ctaSecondary: "Ver GitHub", 
-        
-        aboutTitle: "Sobre mí",
-        aboutText1: "<strong>Karen Gómez P.</strong> — Química especializada en extraer valor de datos complejos. Aplico rigor científico y modelos avanzados de aprendizaje automático para resolver desafíos en salud e industria.",
-        aboutText2: "Mi enfoque se centra en la reproducibilidad y la claridad. Si buscas transformar datos crudos en estrategias accionables o soporte estadístico especializado, estoy aquí para ayudarte.",
-        
-        servicesTitle: "Servicios", service1Title: "Analítica & Visualización", service1Desc: "Dashboards interactivos y reportes ejecutivos.",
-        service2Title: "Bioestadística", service2Desc: "Diseño experimental y análisis de estudios de salud.",
-        service3Title: "Gestión de Datos", service3Desc: "ETL, SQL y pipelines reproducibles.",
-        service4Title: "Capacitaciones", service4Desc: "Talleres prácticos en Python y visualización.",
-        projectsTitle: "Proyectos Destacados", pLink: "Ver proyecto", p1Desc: "Análisis predictivo para determinar factores de supervivencia usando ML y explicación de variables.",
-        p2Desc: "Modelo para predecir abandono y estrategia de optimización de retención.",
-        p3Desc: "Análisis de mercado de autos usados y modelo de optimización de compra-venta.",
-        p4Desc: "Estudio y visualizaciones para apoyar políticas públicas basadas en datos.",
-        contactTitle: "Contacto", contactLead: "¿Listo para transformar datos en decisión? Escríbeme y conversamos.",
-        btnMail: "Enviar correo", btnCall: "Agendar llamada", modalTitle: "Agendar una llamada",
-        labelName: "Nombre", labelPhone: "Teléfono", labelEmail: "Correo", labelMsg: "Mensaje", btnSubmitForm: "Enviar solicitud",
-        footerText: "Karen Gómez P. — Transformando datos en conocimiento.", modalServiceCta: "Solicitar información"
-      },
-      en: {
-        navAbout: "About me", navServices: "Services", navProjects: "Projects", navContact: "Contact",
-        // NEW COMMERCIAL TITLE AND SUBTITLE
-        heroName: "Transforming data into clear decisions",
-        heroSubtitle: "Biostatistics • Machine Learning • Chemistry",
-        ctaPrimary: "Let's work together", 
-        ctaSecondary: "View GitHub",
-        
-        aboutTitle: "About me",
-        aboutText1: "<strong>Karen Gómez P.</strong> — Chemist specializing in extracting value from complex data. I apply scientific rigor and advanced machine learning models to solve health and industry challenges.",
-        aboutText2: "My focus is on reproducibility and clarity. If you are looking to transform raw data into actionable strategies or specialized statistical support, I am here to help.",
-        
-        servicesTitle: "Services", service1Title: "Analytics & Visualization", service1Desc: "Interactive dashboards and executive reports.",
-        service2Title: "Biostatistics", service2Desc: "Experimental design and health study analysis.",
-        service3Title: "Data Management", service3Desc: "ETL, SQL and reproducible pipelines.",
-        service4Title: "Training", service4Desc: "Hands-on Python and visualization workshops.",
-        projectsTitle: "Featured Projects", pLink: "View project", p1Desc: "Predictive analysis to determine survival factors using ML and variable explanation.",
-        p2Desc: "Model to predict churn and retention optimization strategy.",
-        p3Desc: "Used cars market analysis and buy-sell optimization model.",
-        p4Desc: "Study and visualizations to support data-driven public policies.",
-        contactTitle: "Contact", contactLead: "Ready to transform data into decisions? Write to me and let's talk.",
-        btnMail: "Send email", btnCall: "Schedule call", modalTitle: "Schedule a call",
-        labelName: "Name", labelPhone: "Phone", labelEmail: "Email", labelMsg: "Message", btnSubmitForm: "Send request",
-        footerText: "Karen Gómez P. — Transforming data into knowledge.", modalServiceCta: "Request information"
-      }
-    };
-
+// --- LÓGICA DE TRADUCCIÓN ACTUALIZADA ---
+const translations = {
+  es: {
+    navAbout: "Sobre mí", navServices: "Servicios", navProjects: "Proyectos", navContact: "Contacto",
+    heroName: "Transformando datos en decisiones claras",
+    heroSubtitle: "Bioestadística • Machine Learning • Química",
+    ctaPrimary: "Trabajemos juntos", 
+    ctaSecondary: "Ver GitHub", 
+    
+    aboutTitle: "Sobre mí",
+    // Aquí integramos tu texto preferido:
+    aboutText1: "<strong>Química con experiencia en análisis de datos y bioestadística aplicada a proyectos reales.</strong> Ayudo a transformar datos científicos en información clara para la toma de decisiones en salud, educación e industria.",
+    aboutText2: "Trabajo con Python, SQL y Power BI, aplicando técnicas de machine learning y análisis estadístico para generar resultados reproducibles, bien documentados y fáciles de comunicar. Si necesitas apoyo analítico riguroso, visualizaciones claras o acompañamiento estadístico para tus estudios o proyectos, ¡conversemos!",
+    
+    servicesTitle: "Servicios", service1Title: "Analítica & Visualización", service1Desc: "Dashboards interactivos y reportes ejecutivos.",
+    service2Title: "Bioestadística", service2Desc: "Diseño experimental y análisis de estudios de salud.",
+    service3Title: "Gestión de Datos", service3Desc: "ETL, SQL y pipelines reproducibles.",
+    service4Title: "Capacitaciones", service4Desc: "Talleres prácticos en Python y visualización.",
+    projectsTitle: "Proyectos Destacados", pLink: "Ver proyecto", p1Desc: "Análisis predictivo para determinar factores de supervivencia usando ML y explicación de variables.",
+    p2Desc: "Modelo para predecir abandono y estrategia de optimización de retención.",
+    p3Desc: "Análisis de mercado de autos usados y modelo de optimización de compra-venta.",
+    p4Desc: "Estudio y visualizaciones para apoyar políticas públicas basadas en datos.",
+    contactTitle: "Contacto", contactLead: "¿Listo para transformar datos en decisión? Escríbeme y conversamos.",
+    btnMail: "Enviar correo", btnCall: "Agendar llamada", modalTitle: "Agendar una llamada",
+    labelName: "Nombre", labelPhone: "Teléfono", labelEmail: "Correo", labelMsg: "Mensaje", btnSubmitForm: "Enviar solicitud",
+    // Footer comercial sugerido:
+    footerText: "Karen Gómez P. • Datos con rigor, decisiones con claridad.", 
+    modalServiceCta: "Solicitar información"
+  },
+  en: {
+    navAbout: "About me", navServices: "Services", navProjects: "Projects", navContact: "Contact",
+    heroName: "Transforming data into clear decisions",
+    heroSubtitle: "Biostatistics • Machine Learning • Chemistry",
+    ctaPrimary: "Let's work together", 
+    ctaSecondary: "View GitHub",
+    
+    aboutTitle: "About me",
+    // Traducción fiel de tu texto:
+    aboutText1: "<strong>Chemist with experience in data analysis and biostatistics applied to real-world projects.</strong> I help transform scientific data into clear information for decision-making in health, education, and industry.",
+    aboutText2: "I work with Python, SQL, and Power BI, applying machine learning and statistical analysis to generate reproducible, well-documented, and easy-to-communicate results. If you need rigorous analytical support, clear visualizations, or statistical guidance for your studies or projects, let's talk!",
+    
+    servicesTitle: "Services", service1Title: "Analytics & Visualization", service1Desc: "Interactive dashboards and executive reports.",
+    service2Title: "Biostatistics", service2Desc: "Experimental design and health study analysis.",
+    service3Title: "Data Management", service3Desc: "ETL, SQL and reproducible pipelines.",
+    service4Title: "Training", service4Desc: "Hands-on Python and visualization workshops.",
+    projectsTitle: "Featured Projects", pLink: "View project", p1Desc: "Predictive analysis to determine survival factors using ML and variable explanation.",
+    p2Desc: "Model to predict churn and retention optimization strategy.",
+    p3Desc: "Used cars market analysis and buy-sell optimization model.",
+    p4Desc: "Study and visualizations to support data-driven public policies.",
+    contactTitle: "Contact", contactLead: "Ready to transform data into decisions? Write to me and let's talk.",
+    btnMail: "Send email", btnCall: "Schedule call", modalTitle: "Schedule a call",
+    labelName: "Name", labelPhone: "Phone", labelEmail: "Email", labelMsg: "Message", btnSubmitForm: "Send request",
+    footerText: "Karen Gómez P. • Rigorous data, clear decisions.", 
+    modalServiceCta: "Request information"
+  }
+};
     let currentLang = 'es';
     const langBtn = document.getElementById('langToggle');
 
