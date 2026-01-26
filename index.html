@@ -456,23 +456,28 @@
     </div>
   </nav>
 
-  <header class="hero" role="banner">
-    <div class="hero-inner">
-      <div class="hero-photo" aria-hidden="false">
-        <img src="Karen.png" alt="Foto de Karen Gómez" id="profilePic">
-      </div>
+ <header class="hero" role="banner">
+  <div class="hero-inner">
+    <div class="hero-photo" aria-hidden="false">
+      <img src="Karen.png" alt="Foto de Karen Gómez" id="profilePic">
+    </div>
 
-      <div class="hero-text">
-        <h1 id="heroName">Karen Gómez P.</h1>
-        <p id="heroSubtitle">Química • Analista de Datos • Bioestadística y Machine Learning</p>
+    <div class="hero-text">
+      <h1 id="heroName" style="font-family:'Playfair Display'; font-size: 2.8rem; margin-bottom: 15px;">
+        Convierto datos científicos en decisiones claras
+      </h1>
+      
+      <p id="heroSubtitle" style="font-size: 1.4rem; font-weight: 300; opacity: 0.95;">
+        Bioestadística • Machine Learning • Química
+      </p>
 
-        <div class="hero-cta">
-          <a class="btn-primary" id="ctaPrimary" href="#contact">Contáctame</a>
-          <a class="btn-outline" id="ctaSecondary" href="https://github.com/karengzplazas" target="_blank">Ver GitHub</a>
-        </div>
+      <div class="hero-cta" style="margin-top: 30px;">
+        <a class="btn-primary" id="ctaPrimary" href="#contact">Trabajemos juntos</a>
+        <a class="btn-outline" id="ctaSecondary" href="https://github.com/karengzplazas" target="_blank" style="margin-left: 10px;">Ver GitHub</a>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
   <main>
     <section id="about" aria-labelledby="aboutTitle">
@@ -708,14 +713,20 @@
   }
 };
 
-    // --- LÓGICA DE TRADUCCIÓN ---
+  // --- LÓGICA DE TRADUCCIÓN  ---
     const translations = {
       es: {
         navAbout: "Sobre mí", navServices: "Servicios", navProjects: "Proyectos", navContact: "Contacto",
-        heroSubtitle: "Química • Analista de Datos • Bioestadística y Machine Learning",
-        ctaPrimary: "Contáctame", ctaSecondary: "Ver GitHub", aboutTitle: "Sobre mí",
-        aboutText1: "<strong>Karen Gómez P.</strong> — Química con experiencia en bioestadística, análisis de datos y visualización. Manejo Python, SQL, Power BI y técnicas de machine learning para resolver problemas aplicados en salud, educación e industria.",
-        aboutText2: "Trabajo produciendo resultados reproducibles y comunicables. Si necesitas un análisis riguroso, visualizaciones claras o apoyo estadístico para tus estudios, podemos conversar.",
+        // NUEVO TÍTULO Y SUBTÍTULO
+        heroName: "Convierto datos científicos en decisiones claras",
+        heroSubtitle: "Bioestadística • Machine Learning • Química",
+        ctaPrimary: "Trabajemos juntos", 
+        ctaSecondary: "Ver GitHub", 
+        
+        aboutTitle: "Sobre mí",
+        aboutText1: "<strong>Karen Gómez P.</strong> — Química especializada en extraer valor de datos complejos. Aplico rigor científico y modelos avanzados de aprendizaje automático para resolver desafíos en salud e industria.",
+        aboutText2: "Mi enfoque se centra en la reproducibilidad y la claridad. Si buscas transformar datos crudos en estrategias accionables o soporte estadístico especializado, estoy aquí para ayudarte.",
+        
         servicesTitle: "Servicios", service1Title: "Analítica & Visualización", service1Desc: "Dashboards interactivos y reportes ejecutivos.",
         service2Title: "Bioestadística", service2Desc: "Diseño experimental y análisis de estudios de salud.",
         service3Title: "Gestión de Datos", service3Desc: "ETL, SQL y pipelines reproducibles.",
@@ -731,14 +742,20 @@
       },
       en: {
         navAbout: "About me", navServices: "Services", navProjects: "Projects", navContact: "Contact",
-        heroSubtitle: "Chemist • Data Analyst • Biostatistics and Machine Learning",
-        ctaPrimary: "Contact me", ctaSecondary: "View GitHub", aboutTitle: "About me",
-        aboutText1: "<strong>Karen Gómez P.</strong> — Chemist with experience in biostatistics, data analysis and visualization. I handle Python, SQL, Power BI and machine learning techniques to solve problems applied in health, education and industry.",
-        aboutText2: "I produce reproducible and communicable results. If you need rigorous analysis, clear visualizations or statistical support for your studies, let's talk.",
+        // NEW COMMERCIAL TITLE AND SUBTITLE
+        heroName: "I turn scientific data into clear decisions",
+        heroSubtitle: "Biostatistics • Machine Learning • Chemistry",
+        ctaPrimary: "Let's work together", 
+        ctaSecondary: "View GitHub",
+        
+        aboutTitle: "About me",
+        aboutText1: "<strong>Karen Gómez P.</strong> — Chemist specializing in extracting value from complex data. I apply scientific rigor and advanced machine learning models to solve health and industry challenges.",
+        aboutText2: "My focus is on reproducibility and clarity. If you are looking to transform raw data into actionable strategies or specialized statistical support, I am here to help.",
+        
         servicesTitle: "Services", service1Title: "Analytics & Visualization", service1Desc: "Interactive dashboards and executive reports.",
-        service2Title: "Biostatistics", service2Desc: "Experimental design and analysis of health studies.",
+        service2Title: "Biostatistics", service2Desc: "Experimental design and health study analysis.",
         service3Title: "Data Management", service3Desc: "ETL, SQL and reproducible pipelines.",
-        service4Title: "Training", service4Desc: "Practical workshops in Python and visualization.",
+        service4Title: "Training", service4Desc: "Hands-on Python and visualization workshops.",
         projectsTitle: "Featured Projects", pLink: "View project", p1Desc: "Predictive analysis to determine survival factors using ML and variable explanation.",
         p2Desc: "Model to predict churn and retention optimization strategy.",
         p3Desc: "Used cars market analysis and buy-sell optimization model.",
@@ -761,6 +778,7 @@
 
     function updateLanguage() {
       const texts = translations[currentLang];
+      document.getElementById('heroName').textContent = texts.heroName;
       document.getElementById('nav-about').textContent = texts.navAbout;
       document.getElementById('nav-services').textContent = texts.navServices;
       document.getElementById('nav-projects').textContent = texts.navProjects;
