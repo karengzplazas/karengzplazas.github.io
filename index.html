@@ -18,8 +18,12 @@
     referrerpolicy="no-referrer"
   />
 
-  <style>
-    :root{
+ <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
       --primary:#0077b6;
       --primary-dark:#005f8e;
       --accent:#ffb703;
@@ -31,7 +35,8 @@
       --shadow: 0 8px 22px rgba(16,24,40,0.08);
       --max-width:1200px;
     }
-
+    
+    /* ... el resto de tu código ... */
     *{box-sizing:border-box}
 
     body{
@@ -261,31 +266,46 @@
       width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;
     }
 
-    /* ACORDEÓN FAQ DENTRO DEL MODAL */
+  /* ACORDEÓN FAQ DENTRO DEL MODAL (VERSIÓN CORREGIDA) */
 .faq-item { border-bottom: 1px solid #edf2f7; padding: 5px 0; }
 
 .faq-question {
     width: 100%; background: none; border: none; text-align: left;
-    display: flex; justify-content: space-between; align-items: center; /* Centra el icono con el texto */
-    font-weight: 600; cursor: pointer; padding: 15px 0; /* Un poco más de espacio para el click */
+    display: flex; justify-content: space-between; align-items: center;
+    font-weight: 600; cursor: pointer; padding: 15px 0;
     color: var(--text); font-size: 14px;
+    transition: color 0.2s ease; /* Para que cambie de color al abrirse */
+}
+
+/* 1. Añadimos rotación suave al icono */
+.faq-question i {
+    transition: transform 0.3s ease;
+    color: var(--primary); /* La flecha resalta con tu color de marca */
 }
 
 .faq-answer { 
     max-height: 0; 
     overflow: hidden; 
-    transition: all 0.3s ease-in-out; /* Transición más fluida */
+    transition: all 0.3s ease-in-out;
     color: var(--muted); 
     font-size: 14px;
-    padding: 0; /* Importante: 0 mientras esté cerrado */
+    padding: 0;
 }
 
-/*Asegurar que el contenido quepa y se vea el padding */
 .faq-item.active .faq-answer { 
-    max-height: 500px; /* Aumento para que no se corte si el texto es largo */
+    max-height: 500px; 
     padding: 10px 0 15px 0; 
 }
 
+/* 2. Que la flecha gire cuando el ítem está activo */
+.faq-item.active i {
+    transform: rotate(180deg);
+}
+
+/* 3. Feedback visual: que el texto resalte cuando esté abierto */
+.faq-item.active .faq-question {
+    color: var(--primary);
+}
     /* MAIN */
     main{
       max-width:var(--max-width);
@@ -600,6 +620,26 @@
       </div>
     </section>
 
+    <section id="diagnostic-call" style="background-color: #f8f9fa; padding: 80px 20px; text-align: center; border-top: 1px solid #eee;">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <span id="diagStep" style="color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px;"></span>
+        <h2 id="diagTitle" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 15px 0;"></h2>
+        <p id="diagDesc" style="font-size: 1.15rem; color: #555; margin-bottom: 30px; line-height: 1.6;"></p>
+        
+        <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: inline-block; border: 1px solid #eee;">
+          <p id="diagPrice" style="font-size: 2rem; font-weight: 700; color: var(--text); margin-bottom: 10px;"></p>
+          <p id="diagNote" style="font-size: 0.9rem; color: var(--muted); margin-bottom: 25px;"></p>
+          
+          <a href="https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20el%20Diagnóstico%20de%20Estrategia%20Analítica." 
+             id="diagBtn" 
+             class="btn-primary" 
+             target="_blank"
+             style="background-color: #28a745; border-color: #28a745; padding: 18px 40px; font-size: 1.1rem; text-decoration: none; border-radius: 5px; color: white; display: inline-block; font-weight: bold;">
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" aria-labelledby="contactTitle">
       <h2 id="contactTitle">Contacto</h2>
 
@@ -615,12 +655,11 @@
           </button>
         </div>
 
-        <p style="margin-top:10px;color:var(--muted)">
-          Email: <a href="mailto:Karengzplazas@gmail.com">Karengzplazas@gmail.com</a>
+        <p style="margin-top:20px; color:var(--muted)">
+          Email: <a href="mailto:Karengzplazas@gmail.com" style="color:var(--primary)">Karengzplazas@gmail.com</a>
         </p>
       </div>
     </section>
-  </main>
 
   <div id="contactModal" class="modal">
     <div class="modal-content">
@@ -663,11 +702,15 @@
   </footer>
 
   <script>
-    // --- DATOS EXTENDIDOS PARA SERVICIOS ---
-    const serviceDetails = {
+   // --- DATOS EXTENDIDOS PARA SERVICIOS (CON ICONOS Y FAQS) ---
+const serviceDetails = {
   analytics: {
+    icon: "fa-chart-line",
     title: { es: "Analítica & Visualización", en: "Analytics & Visualization" },
-    text: { es: "Transformo datos complejos en historias visuales. Uso Power BI y Python para crear dashboards que facilitan decisiones basadas en evidencia.", en: "I transform complex data into visual stories. I use Power BI and Python to create dashboards that facilitate evidence-based decisions." },
+    text: { 
+      es: "Transformo datos complejos en historias visuales. Uso Power BI y Python para crear dashboards que facilitan decisiones basadas en evidencia.", 
+      en: "I transform complex data into visual stories. I use Power BI and Python to create dashboards that facilitate evidence-based decisions." 
+    },
     faqs: { 
       es: [
         { q: "¿Qué herramientas usas?", a: "Power BI, Plotly y Seaborn." },
@@ -680,8 +723,12 @@
     }
   },
   bio: {
+    icon: "fa-vials",
     title: { es: "Bioestadística & Rigor Científico", en: "Biostatistics & Scientific Rigor" },
-    text: { es: "Como Química, entiendo el rigor del laboratorio. Aplico diseño experimental (DoE) y modelos de regresión para asegurar resultados significativos.", en: "As a Chemist, I understand lab rigor. I apply experimental design (DoE) and regression models to ensure significant results." },
+    text: { 
+      es: "Como Química, entiendo el rigor del laboratorio. Aplico diseño experimental (DoE) y modelos de regresión para asegurar resultados significativos.", 
+      en: "As a Chemist, I understand lab rigor. I apply experimental design (DoE) and regression models to ensure significant results." 
+    },
     faqs: {
       es: [
         { q: "¿Ayudas con publicaciones?", a: "Sí, aseguro que la estadística cumpla con estándares de revistas." },
@@ -694,22 +741,30 @@
     }
   },
   data: {
-      title: { es: "Gestión de Datos & ETL", en: "Data Management & ETL" },
-      text: { es: "Automatizo la limpieza de datos desorganizados. Creo flujos de trabajo en SQL y Python para garantizar que tus datos sean reproducibles.", en: "I automate disorganized data cleaning. I create SQL and Python workflows to ensure your data is reproducible." },
-      faqs: {
-        es: [
-          { q: "¿Están seguros mis datos?", a: "Manejo protocolos de estricta confidencialidad para proteger toda tu información." },
-          { q: "¿Entregas el código fuente?", a: "Sí, entrego scripts documentados, limpios y listos para ser usados por tu equipo." }
-        ],
-        en: [
-          { q: "Is my data secure?", a: "I maintain strict confidentiality protocols to ensure all your information is protected." },
-          { q: "Do you deliver the source code?", a: "Yes, I provide documented, clean scripts ready for your team to use." }
-        ]
-      }
+    icon: "fa-database",
+    title: { es: "Gestión de Datos & ETL", en: "Data Management & ETL" },
+    text: { 
+      es: "Automatizo la limpieza de datos desorganizados. Creo flujos de trabajo en SQL y Python para garantizar que tus datos sean reproducibles.", 
+      en: "I automate disorganized data cleaning. I create SQL and Python workflows to ensure your data is reproducible." 
     },
+    faqs: {
+      es: [
+        { q: "¿Están seguros mis datos?", a: "Manejo protocolos de estricta confidencialidad para proteger toda tu información." },
+        { q: "¿Entregas el código fuente?", a: "Sí, entrego scripts documentados, limpios y listos para ser usados por tu equipo." }
+      ],
+      en: [
+        { q: "Is my data secure?", a: "I maintain strict confidentiality protocols to ensure all your information is protected." },
+        { q: "Do you deliver the source code?", a: "Yes, I provide documented, clean scripts ready for your team to use." }
+      ]
+    }
+  },
   training: {
+    icon: "fa-chalkboard-teacher",
     title: { es: "Capacitaciones a Medida", en: "Custom Training" },
-    text: { es: "Talleres prácticos sobre Python y visualización. Enseño a equipos a ser autónomos en el manejo de sus propios datos.", en: "Hands-on workshops on Python and visualization. I teach teams to be autonomous in handling their own data." },
+    text: { 
+      es: "Talleres prácticos sobre Python y visualización. Enseño a equipos a ser autónomos en el manejo de sus propios datos.", 
+      en: "Hands-on workshops on Python and visualization. I teach teams to be autonomous in handling their own data." 
+    },
     faqs: {
       es: [
         { q: "¿Es para principiantes?", a: "Sí, adapto el nivel desde cero absoluto." },
@@ -729,53 +784,66 @@ const translations = {
     navAbout: "Sobre mí", navServices: "Servicios", navProjects: "Proyectos", navContact: "Contacto",
     heroName: "Transformando datos en decisiones claras",
     heroSubtitle: "Bioestadística • Machine Learning • Química",
-    ctaPrimary: "Trabajemos juntos", 
-    ctaSecondary: "Ver GitHub", 
-    
+    ctaPrimary: "Trabajemos juntos", ctaSecondary: "Ver GitHub",
     aboutTitle: "Sobre mí",
-    // Aquí integramos tu texto preferido:
     aboutText1: "<strong>Química con experiencia en análisis de datos y bioestadística aplicada a proyectos reales.</strong> Ayudo a transformar datos científicos en información clara para la toma de decisiones en salud, educación e industria.",
-    aboutText2: "Trabajo con Python, SQL y Power BI, aplicando técnicas de machine learning y análisis estadístico para generar resultados reproducibles, bien documentados y fáciles de comunicar. Si necesitas apoyo analítico riguroso, visualizaciones claras o acompañamiento estadístico para tus estudios o proyectos, ¡conversemos!",
-    
-    servicesTitle: "Servicios", service1Title: "Analítica & Visualización", service1Desc: "Dashboards interactivos y reportes ejecutivos.",
+    aboutText2: "Trabajo con Python, SQL y Power BI, aplicando técnicas de machine learning y análisis estadístico para generar resultados reproducibles, bien documentados y fáciles de comunicar.",
+    servicesTitle: "Servicios", 
+    service1Title: "Analítica & Visualización", service1Desc: "Dashboards interactivos y reportes ejecutivos.",
     service2Title: "Bioestadística", service2Desc: "Diseño experimental y análisis de estudios de salud.",
     service3Title: "Gestión de Datos", service3Desc: "ETL, SQL y pipelines reproducibles.",
     service4Title: "Capacitaciones", service4Desc: "Talleres prácticos en Python y visualización.",
-    projectsTitle: "Proyectos Destacados", pLink: "Ver proyecto", p1Desc: "Análisis predictivo para determinar factores de supervivencia usando ML y explicación de variables.",
-    p2Desc: "Modelo para predecir abandono y estrategia de optimización de retención.",
-    p3Desc: "Análisis de mercado de autos usados y modelo de optimización de compra-venta.",
-    p4Desc: "Estudio y visualizaciones para apoyar políticas públicas basadas en datos.",
-    contactTitle: "Contacto", contactLead: "¿Listo para transformar datos en decisión? Escríbeme y conversamos.",
+    
+    // --- NUEVAS CLAVES PARA EL DIAGNÓSTICO (MONETIZACIÓN) ---
+    diagStep: "Paso 1: Claridad Técnica",
+    diagTitle: "Diagnóstico de Estrategia Analítica",
+    diagDesc: "Antes de invertir en un desarrollo completo, asegure la viabilidad de sus datos. En esta sesión evaluamos su arquitectura y definimos una hoja de ruta.",
+    diagPrice: "Inversión: $50 USD",
+    diagBtn: "Reservar y Pagar Diagnóstico",
+    diagNote: "*Monto deducible del presupuesto final.",
+
+    projectsTitle: "Proyectos Destacados", pLink: "Ver proyecto", 
+    p1Desc: "Análisis predictivo para factores de supervivencia usando ML.",
+    p2Desc: "Modelo para predecir abandono y optimización de retención.",
+    p3Desc: "Análisis de mercado de autos usados y modelo de compra-venta.",
+    p4Desc: "Estudio y visualizaciones para políticas públicas basadas en datos.",
+    contactTitle: "Contacto", contactLead: "¿Listo para transformar datos en decisión? Escríbeme.",
     btnMail: "Enviar correo", btnCall: "Agendar llamada", modalTitle: "Agendar una llamada",
     labelName: "Nombre", labelPhone: "Teléfono", labelEmail: "Correo", labelMsg: "Mensaje", btnSubmitForm: "Enviar solicitud",
-    // Footer comercial sugerido:
-    footerText: "Karen Gómez P. • Datos con rigor, decisiones con claridad.", 
+    footerText: "Karen Gómez P. • Datos con rigor, decisiones con claridad.",
     modalServiceCta: "Solicitar información"
   },
   en: {
     navAbout: "About me", navServices: "Services", navProjects: "Projects", navContact: "Contact",
     heroName: "Transforming data into clear decisions",
     heroSubtitle: "Biostatistics • Machine Learning • Chemistry",
-    ctaPrimary: "Let's work together", 
-    ctaSecondary: "View GitHub",
-    
+    ctaPrimary: "Let's work together", ctaSecondary: "View GitHub",
     aboutTitle: "About me",
-    // Traducción fiel de tu texto:
-    aboutText1: "<strong>Chemist with experience in data analysis and biostatistics applied to real-world projects.</strong> I help transform scientific data into clear information for decision-making in health, education, and industry.",
-    aboutText2: "I work with Python, SQL, and Power BI, applying machine learning and statistical analysis to generate reproducible, well-documented, and easy-to-communicate results. If you need rigorous analytical support, clear visualizations, or statistical guidance for your studies or projects, let's talk!",
-    
-    servicesTitle: "Services", service1Title: "Analytics & Visualization", service1Desc: "Interactive dashboards and executive reports.",
+    aboutText1: "<strong>Chemist with experience in data analysis and biostatistics applied to real-world projects.</strong> I help transform scientific data into clear information for decision-making.",
+    aboutText2: "I work with Python, SQL, and Power BI, applying machine learning and statistical analysis to generate reproducible, well-documented results.",
+    servicesTitle: "Services", 
+    service1Title: "Analytics & Visualization", service1Desc: "Interactive dashboards and executive reports.",
     service2Title: "Biostatistics", service2Desc: "Experimental design and health study analysis.",
     service3Title: "Data Management", service3Desc: "ETL, SQL and reproducible pipelines.",
     service4Title: "Training", service4Desc: "Hands-on Python and visualization workshops.",
-    projectsTitle: "Featured Projects", pLink: "View project", p1Desc: "Predictive analysis to determine survival factors using ML and variable explanation.",
+
+    // --- NEW KEYS FOR DIAGNOSIS (MONETIZATION) ---
+    diagStep: "Step 1: Technical Clarity",
+    diagTitle: "Analytical Strategy Diagnosis",
+    diagDesc: "Before investing in full development, ensure your data's viability. In this session, we evaluate your architecture and define a roadmap.",
+    diagPrice: "Investment: $50 USD",
+    diagBtn: "Book and Pay Diagnosis",
+    diagNote: "*Amount deductible from the final budget.",
+
+    projectsTitle: "Featured Projects", pLink: "View project", 
+    p1Desc: "Predictive analysis for survival factors using ML.",
     p2Desc: "Model to predict churn and retention optimization strategy.",
     p3Desc: "Used cars market analysis and buy-sell optimization model.",
-    p4Desc: "Study and visualizations to support data-driven public policies.",
-    contactTitle: "Contact", contactLead: "Ready to transform data into decisions? Write to me and let's talk.",
+    p4Desc: "Study and visualizations for data-driven public policies.",
+    contactTitle: "Contact", contactLead: "Ready to transform data into decisions? Write to me.",
     btnMail: "Send email", btnCall: "Schedule call", modalTitle: "Schedule a call",
     labelName: "Name", labelPhone: "Phone", labelEmail: "Email", labelMsg: "Message", btnSubmitForm: "Send request",
-    footerText: "Karen Gómez P. • Rigorous data, clear decisions.", 
+    footerText: "Karen Gómez P. • Rigorous data, clear decisions.",
     modalServiceCta: "Request information"
   }
 };
@@ -789,47 +857,73 @@ const translations = {
     });
 
     function updateLanguage() {
-      const texts = translations[currentLang];
-      document.getElementById('heroName').textContent = texts.heroName;
-      document.getElementById('nav-about').textContent = texts.navAbout;
-      document.getElementById('nav-services').textContent = texts.navServices;
-      document.getElementById('nav-projects').textContent = texts.navProjects;
-      document.getElementById('nav-contact').textContent = texts.navContact;
-      document.getElementById('heroSubtitle').textContent = texts.heroSubtitle;
-      document.getElementById('ctaPrimary').textContent = texts.ctaPrimary;
-      document.getElementById('ctaSecondary').textContent = texts.ctaSecondary;
-      document.getElementById('aboutTitle').textContent = texts.aboutTitle;
-      document.getElementById('aboutText1').innerHTML = texts.aboutText1;
-      document.getElementById('aboutText2').textContent = texts.aboutText2;
-      document.getElementById('servicesTitle').textContent = texts.servicesTitle;
-      document.getElementById('service1Title').textContent = texts.service1Title;
-      document.getElementById('service1Desc').textContent = texts.service1Desc;
-      document.getElementById('service2Title').textContent = texts.service2Title;
-      document.getElementById('service2Desc').textContent = texts.service2Desc;
-      document.getElementById('service3Title').textContent = texts.service3Title;
-      document.getElementById('service3Desc').textContent = texts.service3Desc;
-      document.getElementById('service4Title').textContent = texts.service4Title;
-      document.getElementById('service4Desc').textContent = texts.service4Desc;
-      document.getElementById('projectsTitle').textContent = texts.projectsTitle;
-      document.getElementById('p1Desc').textContent = texts.p1Desc;
-      document.getElementById('p2Desc').textContent = texts.p2Desc;
-      document.getElementById('p3Desc').textContent = texts.p3Desc;
-      document.getElementById('p4Desc').textContent = texts.p4Desc;
-      document.getElementById('contactTitle').textContent = texts.contactTitle;
-      document.getElementById('contactLead').textContent = texts.contactLead;
-      document.getElementById('btnMail').textContent = texts.btnMail;
-      document.getElementById('btnCall').textContent = texts.btnCall;
-      document.getElementById('modalTitle').textContent = texts.modalTitle;
-      document.getElementById('labelName').textContent = texts.labelName;
-      document.getElementById('labelPhone').textContent = texts.labelPhone;
-      document.getElementById('labelEmail').textContent = texts.labelEmail;
-      document.getElementById('labelMsg').textContent = texts.labelMsg;
-      document.getElementById('btnSubmitForm').textContent = texts.btnSubmitForm;
-      document.getElementById('footerText').textContent = texts.footerText;
-      document.getElementById('modalServiceCta').textContent = texts.modalServiceCta;
-      document.querySelectorAll('.p-link').forEach(link => { link.textContent = texts.pLink; });
-    }
+  const texts = translations[currentLang];
+  document.getElementById('heroName').textContent = texts.heroName;
+  document.getElementById('nav-about').textContent = texts.navAbout;
+  document.getElementById('nav-services').textContent = texts.navServices;
+  document.getElementById('nav-projects').textContent = texts.navProjects;
+  document.getElementById('nav-contact').textContent = texts.navContact;
+  document.getElementById('heroSubtitle').textContent = texts.heroSubtitle;
+  document.getElementById('ctaPrimary').textContent = texts.ctaPrimary;
+  document.getElementById('ctaSecondary').textContent = texts.ctaSecondary;
+  document.getElementById('aboutTitle').textContent = texts.aboutTitle;
+  document.getElementById('aboutText1').innerHTML = texts.aboutText1;
+  document.getElementById('aboutText2').textContent = texts.aboutText2;
+  document.getElementById('servicesTitle').textContent = texts.servicesTitle;
+  document.getElementById('service1Title').textContent = texts.service1Title;
+  document.getElementById('service1Desc').textContent = texts.service1Desc;
+  document.getElementById('service2Title').textContent = texts.service2Title;
+  document.getElementById('service2Desc').textContent = texts.service2Desc;
+  document.getElementById('service3Title').textContent = texts.service3Title;
+  document.getElementById('service3Desc').textContent = texts.service3Desc;
+  document.getElementById('service4Title').textContent = texts.service4Title;
+  document.getElementById('service4Desc').textContent = texts.service4Desc;
+  document.getElementById('projectsTitle').textContent = texts.projectsTitle;
+  document.getElementById('p1Desc').textContent = texts.p1Desc;
+  document.getElementById('p2Desc').textContent = texts.p2Desc;
+  document.getElementById('p3Desc').textContent = texts.p3Desc;
+  document.getElementById('p4Desc').textContent = texts.p4Desc;
+  document.getElementById('contactTitle').textContent = texts.contactTitle;
+  document.getElementById('contactLead').textContent = texts.contactLead;
+  document.getElementById('btnMail').textContent = texts.btnMail;
+  document.getElementById('btnCall').textContent = texts.btnCall;
+  document.getElementById('modalTitle').textContent = texts.modalTitle;
+  document.getElementById('labelName').textContent = texts.labelName;
+  document.getElementById('labelPhone').textContent = texts.labelPhone;
+  document.getElementById('labelEmail').textContent = texts.labelEmail;
+  document.getElementById('labelMsg').textContent = texts.labelMsg;
+  document.getElementById('btnSubmitForm').textContent = texts.btnSubmitForm;
+  document.getElementById('footerText').textContent = texts.footerText;
+  document.getElementById('modalServiceCta').textContent = texts.modalServiceCta;
+  document.querySelectorAll('.p-link').forEach(link => { link.textContent = texts.pLink; });
+  
+  const diagStep = document.getElementById('diagStep');
+  if(diagStep) diagStep.textContent = texts.diagStep;
 
+  const diagTitle = document.getElementById('diagTitle');
+  if(diagTitle) diagTitle.textContent = texts.diagTitle;
+
+  const diagDesc = document.getElementById('diagDesc');
+  if(diagDesc) diagDesc.textContent = texts.diagDesc;
+
+  const diagPrice = document.getElementById('diagPrice');
+  if(diagPrice) diagPrice.textContent = texts.diagPrice;
+
+  const diagBtn = document.getElementById('diagBtn');
+  if(diagBtn) {
+    diagBtn.textContent = texts.diagBtn;
+    
+    // --- LÓGICA DINÁMICA PARA WHATSAPP ---
+    if (currentLang === 'es') {
+      diagBtn.href = "https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20el%20Diagnóstico%20de%20Estrategia%20Analítica";
+    } else {
+      diagBtn.href = "https://wa.me/573007260562?text=Hi%20Karen,%20I%20am%20interested%20in%20booking%20the%20Analytical%20Strategy%20Diagnosis";
+    }
+  }
+
+  const diagNote = document.getElementById('diagNote');
+  if(diagNote) diagNote.textContent = texts.diagNote;
+}
     // --- LÓGICA DE MODALES (UNIFICADA Y ACTUALIZADA) ---
     const contactModal = document.getElementById("contactModal");
     const serviceModal = document.getElementById("serviceDetailModal");
@@ -843,12 +937,12 @@ const translations = {
       contactModal.style.display = "none"; 
     }
     
-    // 2. Función para cerrar el modal de servicios (¡ESTA FALTABA!)
+    // 2. Función para cerrar el modal de servicios
     function closeServiceModal() {
       serviceModal.style.display = "none";
     }
     
-    // 3. Función para ABRIR el modal de servicios
+   // 3. Función para ABRIR el modal de servicios (CORREGIDA)
     function openServiceModal(key) {
       const data = serviceDetails[key];
       const container = document.getElementById('serviceContent');
@@ -861,23 +955,35 @@ const translations = {
             <i class="fas fa-chevron-down"></i>
           </button>
           <div class="faq-answer">
-            <p style="margin: 0; padding: 10px 0;">${item.a}</p>
+            <p style="margin: 0; padding: 10px 0; color: #666; font-size: 0.95rem;">${item.a}</p>
           </div>
         </div>
       `).join('');
       
       container.innerHTML = `
-        <h3 style="color:var(--primary); font-family:'Playfair Display'; font-size: 24px; margin-bottom:15px;">
+        <div style="text-align:center; margin-bottom:20px;">
+          <i class="fas ${data.icon}" style="font-size: 3rem; color: var(--primary); opacity: 0.8;"></i>
+        </div>
+
+        <h3 style="color:var(--primary); font-family:'Playfair Display'; font-size: 26px; margin-bottom:15px; text-align:center;">
           ${data.title[currentLang]}
         </h3>
-        <p style="font-size:16px; margin-bottom:25px; color: var(--text); line-height: 1.5;">
+        
+        <p style="font-size:16px; margin-bottom:25px; color: var(--text); line-height: 1.6; text-align:center;">
           ${data.text[currentLang]}
         </p>
-        <div style="text-align:left; border-top:1px solid #eee; padding-top:15px;">
-          <p style="font-weight:700; color:var(--primary); font-size:12px; margin-bottom:10px; text-transform:uppercase; letter-spacing: 1px;">
+
+        <div style="text-align:left; border-top:1px solid #eee; padding-top:20px;">
+          <p style="font-weight:700; color:var(--primary); font-size:11px; margin-bottom:15px; text-transform:uppercase; letter-spacing: 1.5px;">
             ${currentLang === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
           </p>
           ${faqsHtml}
+        </div>
+
+        <div style="margin-top: 30px; text-align:center;">
+          <a href="#diagnostic-call" onclick="closeServiceModal()" class="btn-primary" style="background-color: #28a745; border: none; padding: 12px 25px; text-decoration: none; display: inline-block; border-radius: 5px; color: white; font-weight: bold;">
+            ${currentLang === 'es' ? 'Reservar Diagnóstico' : 'Book Diagnosis'}
+          </a>
         </div>
       `;
       
@@ -886,6 +992,9 @@ const translations = {
 
     // 4. Cerrar modales automáticamente al hacer clic fuera
     window.onclick = function(event) {
+      const contactModal = document.getElementById("contactModal");
+      const serviceModal = document.getElementById("serviceDetailModal");
+      
       if (event.target == contactModal) {
         closeModal();
       }
@@ -895,11 +1004,14 @@ const translations = {
     }
 
     // --- FUNCIONALIDADES EXTRAS ---
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Aseguramos que el año se actualice y el menú hamburguesa funcione
+    const yearEl = document.getElementById('year');
+    if(yearEl) yearEl.textContent = new Date().getFullYear();
+
     const hamb = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     
-    if (hamb) {
+    if (hamb && navLinks) {
       hamb.addEventListener('click', () => {
         navLinks.classList.toggle('show');
         hamb.setAttribute('aria-expanded', navLinks.classList.contains('show'));
