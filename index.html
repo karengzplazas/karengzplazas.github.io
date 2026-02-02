@@ -924,21 +924,25 @@ const translations = {
   const diagPrice = document.getElementById('diagPrice');
   if(diagPrice) diagPrice.textContent = texts.diagPrice;
 
-  const diagBtn = document.getElementById('diagBtn');
+ const diagBtn = document.getElementById('diagBtn');
   if(diagBtn) {
-    diagBtn.textContent = texts.diagBtn;
+    // 1. Añadimos la clase para que el botón "late" (la que pusimos en el CSS)
+    diagBtn.classList.add('btn-whatsapp-pulse');
+    
+    // 2. Usamos innerHTML para meter el icono de WhatsApp + el texto
+    diagBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right: 10px;"></i> ${texts.diagBtn}`;
     
     // --- LÓGICA DINÁMICA PARA WHATSAPP ---
     if (currentLang === 'es') {
-      diagBtn.href = "https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20el%20Diagnóstico%20de%20Estrategia%20Analítica";
+      diagBtn.href = "https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20una%20sesión%20de%20diagnóstico%20analítico.";
     } else {
-      diagBtn.href = "https://wa.me/573007260562?text=Hi%20Karen,%20I%20am%20interested%20in%20booking%20the%20Analytical%20Strategy%20Diagnosis";
+      diagBtn.href = "https://wa.me/573007260562?text=Hi%20Karen,%20I%20am%20interested%20in%20scheduling%20an%20analytical%20diagnosis%20session.";
     }
   }
 
   const diagNote = document.getElementById('diagNote');
   if(diagNote) diagNote.textContent = texts.diagNote;
-}
+      
     // --- LÓGICA DE MODALES (UNIFICADA Y ACTUALIZADA) ---
     const contactModal = document.getElementById("contactModal");
     const serviceModal = document.getElementById("serviceDetailModal");
