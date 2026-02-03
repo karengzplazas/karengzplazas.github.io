@@ -999,12 +999,18 @@ const translations = {
           ${faqsHtml}
         </div>
 
+       // Localiza la parte final de container.innerHTML y reemplaza el div del botón por este:
+
         <div style="margin-top: 30px; text-align:center;">
-          <a href="#diagnostic-call" onclick="closeServiceModal()" class="btn-primary" style="background-color: #28a745; border: none; padding: 12px 25px; text-decoration: none; display: inline-block; border-radius: 5px; color: white; font-weight: bold;">
-            ${currentLang === 'es' ? 'Reservar Diagnóstico' : 'Book Diagnosis'}
+          <a href="#diagnostic-call" 
+             onclick="closeServiceModal()" 
+             class="btn-primary btn-whatsapp-pulse" 
+             style="padding: 12px 25px; text-decoration: none; border-radius: 5px; color: white; font-weight: bold; display: inline-flex; align-items: center; justify-content: center;">
+            <i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2rem;"></i>
+            ${currentLang === 'es' ? 'Agendar Diagnóstico' : 'Schedule Diagnosis'}
           </a>
         </div>
-      `;
+      `; // Aquí cierra el container.innerHTML
       
       serviceModal.style.display = "block";
     }
