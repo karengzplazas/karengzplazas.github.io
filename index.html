@@ -809,19 +809,20 @@ const translations = {
     service3Title: "Gestión de Datos", service3Desc: "ETL, SQL y pipelines reproducibles.",
     service4Title: "Capacitaciones", service4Desc: "Talleres prácticos en Python y visualización.",
     
-    // --- NUEVAS CLAVES PARA EL DIAGNÓSTICO (MONETIZACIÓN) ---
-    diagStep: "Paso 1: Claridad Técnica",
+    // --- NUEVAS CLAVES PARA EL DIAGNÓSTICO (ACTUALIZADO) ---
+    diagStep: "Paso 1: Análisis Inicial",
     diagTitle: "Diagnóstico de Estrategia Analítica",
-    diagDesc: "Antes de invertir en un desarrollo completo, asegure la viabilidad de sus datos. En esta sesión evaluamos su arquitectura y definimos una hoja de ruta.",
-    diagPrice: "Inversión: $50 USD",
-    diagBtn: "Reservar y Pagar Diagnóstico",
-    diagNote: "*Monto deducible del presupuesto final.",
+    diagDesc: "Analicemos la viabilidad de sus datos y definamos una hoja de ruta técnica clara antes de iniciar su proyecto.",
+    diagPrice: "Consultoría de Viabilidad",
+    diagBtn: "Agendar por WhatsApp",
+    diagNote: "*Evaluación técnica personalizada para su proyecto.",
 
     projectsTitle: "Proyectos Destacados", pLink: "Ver proyecto", 
     p1Desc: "Análisis predictivo para factores de supervivencia usando ML.",
     p2Desc: "Modelo para predecir abandono y optimización de retención.",
     p3Desc: "Análisis de mercado de autos usados y modelo de compra-venta.",
     p4Desc: "Estudio y visualizaciones para políticas públicas basadas en datos.",
+    
     contactTitle: "Contacto", contactLead: "¿Listo para transformar datos en decisión? Escríbeme.",
     btnMail: "Enviar correo", btnCall: "Agendar llamada", modalTitle: "Agendar una llamada",
     labelName: "Nombre", labelPhone: "Teléfono", labelEmail: "Correo", labelMsg: "Mensaje", btnSubmitForm: "Enviar solicitud",
@@ -842,13 +843,13 @@ const translations = {
     service3Title: "Data Management", service3Desc: "ETL, SQL and reproducible pipelines.",
     service4Title: "Training", service4Desc: "Hands-on Python and visualization workshops.",
 
-    // --- NEW KEYS FOR DIAGNOSIS (MONETIZATION) ---
-    diagStep: "Step 1: Technical Clarity",
+    // --- NEW KEYS FOR DIAGNOSIS (UPDATED) ---
+    diagStep: "Step 1: Initial Analysis",
     diagTitle: "Analytical Strategy Diagnosis",
-    diagDesc: "Before investing in full development, ensure your data's viability. In this session, we evaluate your architecture and define a roadmap.",
-    diagPrice: "Investment: $50 USD",
-    diagBtn: "Book and Pay Diagnosis",
-    diagNote: "*Amount deductible from the final budget.",
+    diagDesc: "Let's analyze your data viability and define a clear technical roadmap before starting your project.",
+    diagPrice: "Feasibility Consultancy",
+    diagBtn: "Schedule via WhatsApp",
+    diagNote: "*Personalized technical evaluation for your project.",
 
     projectsTitle: "Featured Projects", pLink: "View project", 
     p1Desc: "Predictive analysis for survival factors using ML.",
@@ -862,15 +863,15 @@ const translations = {
     modalServiceCta: "Request information"
   }
 };
-    let currentLang = 'es';
-    const langBtn = document.getElementById('langToggle');
 
-    langBtn.addEventListener('click', () => {
-      currentLang = currentLang === 'es' ? 'en' : 'es';
-      langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
-      updateLanguage();
-    });
+let currentLang = 'es';
+const langBtn = document.getElementById('langToggle');
 
+langBtn.addEventListener('click', () => {
+  currentLang = currentLang === 'es' ? 'en' : 'es';
+  langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
+  updateLanguage();
+});
     function updateLanguage() {
   const texts = translations[currentLang];
   document.getElementById('heroName').textContent = texts.heroName;
