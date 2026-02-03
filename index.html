@@ -763,6 +763,11 @@ a:hover{color:var(--primary-dark)}
   </footer>
 
   <script>
+// Función para alternar las FAQs
+function toggleFaq(button) {
+  const item = button.parentElement;
+  item.classList.toggle('active');
+}
    // --- DATOS EXTENDIDOS PARA SERVICIOS (CON ICONOS Y FAQS) ---
 const serviceDetails = {
   analytics: {
@@ -932,118 +937,116 @@ const translations = {
 let currentLang = 'es';
 const langBtn = document.getElementById('langToggle');
 
-// 1. Escuchador para el clic del usuario
+// --- 1. FUNCIÓN PARA LAS PREGUNTAS FRECUENTES (Indispensable para que abran) ---
+function toggleFaq(button) {
+  const item = button.parentElement;
+  item.classList.toggle('active');
+}
+
+// --- 2. ESCUCHADOR PARA EL CAMBIO DE IDIOMA ---
 langBtn.addEventListener('click', () => {
   currentLang = currentLang === 'es' ? 'en' : 'es';
-  // El texto del botón muestra el idioma al que PUEDES cambiar
   langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES'; 
   updateLanguage();
 });
 
-// 2. IMPORTANTE: Llamada inicial para cargar los textos por primera vez
-// Esto debe ir al final de todo tu bloque de script.
-updateLanguage();
-    function updateLanguage() {
+// --- 3. FUNCIÓN DE TRADUCCIÓN SEGURA ---
+function updateLanguage() {
   const texts = translations[currentLang];
-  document.getElementById('heroName').textContent = texts.heroName;
-  document.getElementById('nav-about').textContent = texts.navAbout;
-  document.getElementById('nav-services').textContent = texts.navServices;
-  document.getElementById('nav-projects').textContent = texts.navProjects;
-  document.getElementById('nav-contact').textContent = texts.navContact;
-  document.getElementById('heroSubtitle').textContent = texts.heroSubtitle;
-  document.getElementById('ctaPrimary').textContent = texts.ctaPrimary;
-  document.getElementById('ctaSecondary').textContent = texts.ctaSecondary;
-  document.getElementById('aboutTitle').textContent = texts.aboutTitle;
-  document.getElementById('aboutText1').innerHTML = texts.aboutText1;
-  document.getElementById('aboutText2').textContent = texts.aboutText2;
-  document.getElementById('servicesTitle').textContent = texts.servicesTitle;
-  document.getElementById('service1Title').textContent = texts.service1Title;
-  document.getElementById('service1Desc').textContent = texts.service1Desc;
-  document.getElementById('service2Title').textContent = texts.service2Title;
-  document.getElementById('service2Desc').textContent = texts.service2Desc;
-  document.getElementById('service3Title').textContent = texts.service3Title;
-  document.getElementById('service3Desc').textContent = texts.service3Desc;
-  document.getElementById('service4Title').textContent = texts.service4Title;
-  document.getElementById('service4Desc').textContent = texts.service4Desc;
-  document.getElementById('projectsTitle').textContent = texts.projectsTitle;
-  document.getElementById('p1Desc').textContent = texts.p1Desc;
-  document.getElementById('p2Desc').textContent = texts.p2Desc;
-  document.getElementById('p3Desc').textContent = texts.p3Desc;
-  document.getElementById('p4Desc').textContent = texts.p4Desc;
-  document.getElementById('contactTitle').textContent = texts.contactTitle;
-  document.getElementById('contactLead').textContent = texts.contactLead;
-  document.getElementById('btnMail').textContent = texts.btnMail;
-  document.getElementById('btnCall').textContent = texts.btnCall;
-  document.getElementById('modalTitle').textContent = texts.modalTitle;
-  document.getElementById('labelName').textContent = texts.labelName;
-  document.getElementById('labelPhone').textContent = texts.labelPhone;
-  document.getElementById('labelEmail').textContent = texts.labelEmail;
-  document.getElementById('labelMsg').textContent = texts.labelMsg;
-  document.getElementById('btnSubmitForm').textContent = texts.btnSubmitForm;
-  document.getElementById('footerText').textContent = texts.footerText;
-  document.getElementById('modalServiceCta').textContent = texts.modalServiceCta;
-  document.querySelectorAll('.p-link').forEach(link => { link.textContent = texts.pLink; });
   
-  const diagStep = document.getElementById('diagStep');
-  if(diagStep) diagStep.textContent = texts.diagStep;
+  // Función de seguridad para evitar bloqueos
+  const safeUpdate = (id, content, isHTML = false) => {
+    const el = document.getElementById(id);
+    if (el) {
+      if (isHTML) el.innerHTML = content;
+      else el.textContent = content;
+    }
+  };
 
-  const diagTitle = document.getElementById('diagTitle');
-  if(diagTitle) diagTitle.textContent = texts.diagTitle;
+  // Traducción de todos tus elementos
+  safeUpdate('heroName', texts.heroName);
+  safeUpdate('nav-about', texts.navAbout);
+  safeUpdate('nav-services', texts.navServices);
+  safeUpdate('nav-projects', texts.navProjects);
+  safeUpdate('nav-contact', texts.navContact);
+  safeUpdate('heroSubtitle', texts.heroSubtitle);
+  safeUpdate('ctaPrimary', texts.ctaPrimary);
+  safeUpdate('ctaSecondary', texts.ctaSecondary);
+  safeUpdate('aboutTitle', texts.aboutTitle);
+  safeUpdate('aboutText1', texts.aboutText1, true);
+  safeUpdate('aboutText2', texts.aboutText2);
+  safeUpdate('servicesTitle', texts.servicesTitle);
+  safeUpdate('service1Title', texts.service1Title);
+  safeUpdate('service1Desc', texts.service1Desc);
+  safeUpdate('service2Title', texts.service2Title);
+  safeUpdate('service2Desc', texts.service2Desc);
+  safeUpdate('service3Title', texts.service3Title);
+  safeUpdate('service3Desc', texts.service3Desc);
+  safeUpdate('service4Title', texts.service4Title);
+  safeUpdate('service4Desc', texts.service4Desc);
+  safeUpdate('projectsTitle', texts.projectsTitle);
+  safeUpdate('p1Desc', texts.p1Desc);
+  safeUpdate('p2Desc', texts.p2Desc);
+  safeUpdate('p3Desc', texts.p3Desc);
+  safeUpdate('p4Desc', texts.p4Desc);
+  safeUpdate('contactTitle', texts.contactTitle);
+  safeUpdate('contactLead', texts.contactLead);
+  safeUpdate('btnMail', texts.btnMail);
+  safeUpdate('btnCall', texts.btnCall);
+  safeUpdate('modalTitle', texts.modalTitle);
+  safeUpdate('labelName', texts.labelName);
+  safeUpdate('labelPhone', texts.labelPhone);
+  safeUpdate('labelEmail', texts.labelEmail);
+  safeUpdate('labelMsg', texts.labelMsg);
+  safeUpdate('btnSubmitForm', texts.btnSubmitForm);
+  safeUpdate('footerText', texts.footerText);
+  safeUpdate('modalServiceCta', texts.modalServiceCta);
 
-  const diagDesc = document.getElementById('diagDesc');
-  if(diagDesc) diagDesc.textContent = texts.diagDesc;
+  document.querySelectorAll('.p-link').forEach(link => { 
+    link.textContent = texts.pLink; 
+  });
 
-  const diagPrice = document.getElementById('diagPrice');
-  if(diagPrice) diagPrice.textContent = texts.diagPrice;
+  safeUpdate('diagStep', texts.diagStep);
+  safeUpdate('diagTitle', texts.diagTitle);
+  safeUpdate('diagDesc', texts.diagDesc);
+  safeUpdate('diagPrice', texts.diagPrice);
+  safeUpdate('diagNote', texts.diagNote);
 
- const diagBtn = document.getElementById('diagBtn');
-  if(diagBtn) {
-    // 1. Añadimos la clase de animación (latido)
+  // WhatsApp con efecto de latido y mensajes correctos
+  const diagBtn = document.getElementById('diagBtn');
+  if (diagBtn) {
     diagBtn.classList.add('btn-whatsapp-pulse');
-    
-    // 2. Insertamos el icono de WhatsApp + el texto traducido
-    // El font-size 1.2rem hace que el icono se vea un poco más claro
     diagBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2rem;"></i> ${texts.diagBtn}`;
-    
-    // 3. Configuramos el mensaje automático según el idioma seleccionado
     if (currentLang === 'es') {
       diagBtn.href = "https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20una%20sesión%20de%20diagnóstico%20analítico.";
     } else {
       diagBtn.href = "https://wa.me/573007260562?text=Hi%20Karen,%20I%20am%20interested%20in%20scheduling%20an%20analytical%20diagnosis%20session.";
     }
   }
-  const diagNote = document.getElementById('diagNote');
-  if(diagNote) diagNote.textContent = texts.diagNote;
-  }
-      
-      
-    // --- LÓGICA DE MODALES (UNIFICADA Y ACTUALIZADA) ---
-    const contactModal = document.getElementById("contactModal");
-    const serviceModal = document.getElementById("serviceDetailModal");
+}
 
-    // 1. Funciones para el modal de contacto
-    function openModal() { 
-      contactModal.style.display = "block"; 
-    }
-    
-    function closeModal() { 
-      contactModal.style.display = "none"; 
-    }
-    
-    // 2. Función para cerrar el modal de servicios
-    function closeServiceModal() {
-      serviceModal.style.display = "none";
-    }
-    
-   // 3. Función para ABRIR el modal de servicios (CORREGIDA)
-    function openServiceModal(key) {
+// --- 4. LÓGICA DE MODALES (UNIFICADA) ---
+const contactModal = document.getElementById("contactModal");
+const serviceModal = document.getElementById("serviceDetailModal");
+
+function openModal() { 
+  if(contactModal) contactModal.style.display = "block"; 
+}
+function closeModal() { 
+  if(contactModal) contactModal.style.display = "none"; 
+}
+function closeServiceModal() { 
+  if(serviceModal) serviceModal.style.display = "none"; 
+}
+
+function openServiceModal(key) {
   const data = serviceDetails[key];
   const container = document.getElementById('serviceContent');
   const currentFaqs = data.faqs[currentLang];
   
   const faqsHtml = currentFaqs.map(item => `
     <div class="faq-item">
-      <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('active')">
+      <button class="faq-question" onclick="toggleFaq(this)">
         <span>${item.q}</span>
         <i class="fas fa-chevron-down"></i>
       </button>
@@ -1079,37 +1082,30 @@ updateLanguage();
       </a>
     </div>
   `;
-  
   serviceModal.style.display = "block";
 }
 
-    // 4. Cerrar modales automáticamente al hacer clic fuera
-    window.onclick = function(event) {
-      const contactModal = document.getElementById("contactModal");
-      const serviceModal = document.getElementById("serviceDetailModal");
-      
-      if (event.target == contactModal) {
-        closeModal();
-      }
-      if (event.target == serviceModal) {
-        closeServiceModal();
-      }
-    }
+// Cerrar modales al hacer clic fuera
+window.onclick = function(event) {
+  if (event.target == contactModal) closeModal();
+  if (event.target == serviceModal) closeServiceModal();
+}
 
-    // --- FUNCIONALIDADES EXTRAS ---
-    // Aseguramos que el año se actualice y el menú hamburguesa funcione
-    const yearEl = document.getElementById('year');
-    if(yearEl) yearEl.textContent = new Date().getFullYear();
+// --- 5. FUNCIONALIDADES EXTRAS Y ARRANQUE ---
+const yearEl = document.getElementById('year');
+if(yearEl) yearEl.textContent = new Date().getFullYear();
 
-    const hamb = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    
-    if (hamb && navLinks) {
-      hamb.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-        hamb.setAttribute('aria-expanded', navLinks.classList.contains('show'));
-      });
-    }
+const hamb = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+if (hamb && navLinks) {
+  hamb.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    hamb.setAttribute('aria-expanded', navLinks.classList.contains('show'));
+  });
+}
+
+// LLAMADA INICIAL: Carga los textos y arranca todo
+updateLanguage();
   </script>
 </body>
 </html>
