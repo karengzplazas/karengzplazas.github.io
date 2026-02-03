@@ -763,7 +763,10 @@ a:hover{color:var(--primary-dark)}
   </footer>
 
  <script>
-// --- 1. DATOS DE SERVICIOS ---
+<script>
+console.log("1. Iniciando carga completa...");
+
+// --- 1. TUS DATOS DE SERVICIOS COMPLETOS ---
 const serviceDetails = {
   analytics: {
     icon: "fa-chart-line",
@@ -839,7 +842,7 @@ const serviceDetails = {
   }
 };
 
-// --- 2. DATOS DE TRADUCCIÓN ---
+// --- 2. TUS TRADUCCIONES REALES ---
 const translations = {
   es: {
     navAbout: "Sobre mí", navServices: "Servicios", navProjects: "Proyectos", navContact: "Contacto",
@@ -905,17 +908,10 @@ const translations = {
 
 // --- 3. LÓGICA DE FUNCIONAMIENTO ---
 let currentLang = 'es';
-const langBtn = document.getElementById('langToggle');
-
-function toggleFaq(button) {
-  const item = button.parentElement;
-  if (item) item.classList.toggle('active');
-}
 
 function updateLanguage() {
   const texts = translations[currentLang];
-  if (!texts) return;
-
+  
   const safeUpdate = (id, content, isHTML = false) => {
     const el = document.getElementById(id);
     if (el) {
@@ -924,78 +920,30 @@ function updateLanguage() {
     }
   };
 
-  // Lista de traducciones
-  safeUpdate('heroName', texts.heroName);
-  safeUpdate('nav-about', texts.navAbout);
-  safeUpdate('nav-services', texts.navServices);
-  safeUpdate('nav-projects', texts.navProjects);
-  safeUpdate('nav-contact', texts.navContact);
-  safeUpdate('heroSubtitle', texts.heroSubtitle);
-  safeUpdate('ctaPrimary', texts.ctaPrimary);
-  safeUpdate('ctaSecondary', texts.ctaSecondary);
-  safeUpdate('aboutTitle', texts.aboutTitle);
-  safeUpdate('aboutText1', texts.aboutText1, true);
-  safeUpdate('aboutText2', texts.aboutText2);
-  safeUpdate('servicesTitle', texts.servicesTitle);
-  safeUpdate('service1Title', texts.service1Title);
-  safeUpdate('service1Desc', texts.service1Desc);
-  safeUpdate('service2Title', texts.service2Title);
-  safeUpdate('service2Desc', texts.service2Desc);
-  safeUpdate('service3Title', texts.service3Title);
-  safeUpdate('service3Desc', texts.service3Desc);
-  safeUpdate('service4Title', texts.service4Title);
-  safeUpdate('service4Desc', texts.service4Desc);
-  safeUpdate('projectsTitle', texts.projectsTitle);
-  safeUpdate('p1Desc', texts.p1Desc);
-  safeUpdate('p2Desc', texts.p2Desc);
-  safeUpdate('p3Desc', texts.p3Desc);
-  safeUpdate('p4Desc', texts.p4Desc);
-  safeUpdate('contactTitle', texts.contactTitle);
-  safeUpdate('contactLead', texts.contactLead);
-  safeUpdate('btnMail', texts.btnMail);
-  safeUpdate('btnCall', texts.btnCall);
-  safeUpdate('modalTitle', texts.modalTitle);
-  safeUpdate('labelName', texts.labelName);
-  safeUpdate('labelPhone', texts.labelPhone);
-  safeUpdate('labelEmail', texts.labelEmail);
-  safeUpdate('labelMsg', texts.labelMsg);
-  safeUpdate('btnSubmitForm', texts.btnSubmitForm);
-  safeUpdate('footerText', texts.footerText);
-  safeUpdate('modalServiceCta', texts.modalServiceCta);
+  // Traducción masiva de IDs
+  Object.keys(texts).forEach(key => {
+    safeUpdate(key, texts[key], key === 'aboutText1');
+  });
 
-  document.querySelectorAll('.p-link').forEach(link => { link.textContent = texts.pLink; });
-  
-  safeUpdate('diagStep', texts.diagStep);
-  safeUpdate('diagTitle', texts.diagTitle);
-  safeUpdate('diagDesc', texts.diagDesc);
-  safeUpdate('diagPrice', texts.diagPrice);
-  safeUpdate('diagNote', texts.diagNote);
+  // Traducción de clases (p-link)
+  document.querySelectorAll('.p-link').forEach(link => { 
+    link.textContent = texts.pLink; 
+  });
 
+  // Actualizar Botón WhatsApp con icono
   const diagBtn = document.getElementById('diagBtn');
   if (diagBtn) {
-    diagBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right: 10px;"></i> ${texts.diagBtn}`;
+    diagBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right:10px;"></i> ${texts.diagBtn}`;
     diagBtn.href = currentLang === 'es' 
-      ? "https://wa.me/573007260562?text=Hola%20Karen..." 
-      : "https://wa.me/573007260562?text=Hi%20Karen...";
+      ? "https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20una%20sesión%20de%20diagnóstico%20analítico."
+      : "https://wa.me/573007260562?text=Hi%20Karen,%20I%20am%20interested%20in%20scheduling%20an%20analytical%20diagnosis%20session.";
   }
 }
 
-// Evento cambio de idioma
-if (langBtn) {
-  langBtn.addEventListener('click', () => {
-    currentLang = currentLang === 'es' ? 'en' : 'es';
-    langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES'; 
-    updateLanguage();
-  });
+// --- 4. MODALES Y FAQS ---
+function toggleFaq(btn) {
+  btn.parentElement.classList.toggle('active');
 }
-
-// Modales
-const contactModal = document.getElementById("contactModal");
-const serviceModal = document.getElementById("serviceDetailModal");
-
-function openModal() { if(contactModal) contactModal.style.display = "block"; }
-function closeModal() { if(contactModal) contactModal.style.display = "none"; }
-function closeServiceModal() { if(serviceModal) serviceModal.style.display = "none"; }
 
 function openServiceModal(key) {
   const data = serviceDetails[key];
@@ -1013,29 +961,44 @@ function openServiceModal(key) {
   `).join('');
 
   container.innerHTML = `
-    <h3 style="text-align:center;">${data.title[currentLang]}</h3>
-    <p>${data.text[currentLang]}</p>
-    <div class="faq-section">${faqsHtml}</div>
-    <div style="text-align:center; margin-top:20px;">
-      <button onclick="closeServiceModal(); openModal();" class="btn-primary">Agendar ahora</button>
-    </div>`;
-  serviceModal.style.display = "block";
+    <div style="text-align:center; margin-bottom:20px;"><i class="fas ${data.icon}" style="font-size:3rem; color:var(--primary);"></i></div>
+    <h3 style="text-align:center; font-family:'Playfair Display';">${data.title[currentLang]}</h3>
+    <p style="text-align:center; margin-bottom:20px;">${data.text[currentLang]}</p>
+    <div class="modal-faqs">${faqsHtml}</div>
+    <div style="text-align:center; margin-top:30px;">
+      <a href="#contact" onclick="closeServiceModal()" class="btn-primary">
+        ${currentLang === 'es' ? 'Consultar ahora' : 'Inquire now'}
+      </a>
+    </div>
+  `;
+  document.getElementById('serviceDetailModal').style.display = "block";
 }
 
-window.onclick = (event) => {
-  if (event.target == contactModal) closeModal();
-  if (event.target == serviceModal) closeServiceModal();
-};
-
-// Menu Hamburguesa
-const hamb = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-if (hamb && navLinks) {
-  hamb.addEventListener('click', () => navLinks.classList.toggle('show'));
+function closeServiceModal() {
+  document.getElementById('serviceDetailModal').style.display = "none";
 }
 
-// Inicio
-updateLanguage();
+// --- 5. INICIO ---
+document.addEventListener('DOMContentLoaded', () => {
+  const langToggle = document.getElementById('langToggle');
+  if (langToggle) {
+    langToggle.onclick = () => {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      langToggle.textContent = currentLang.toUpperCase();
+      updateLanguage();
+    };
+  }
+  
+  // Cerrar modales al hacer clic fuera
+  window.onclick = (e) => {
+    if (e.target.className === 'modal') {
+      e.target.style.display = "none";
+    }
+  };
+
+  updateLanguage();
+  console.log("4. Todo listo.");
+});
 </script>
 </body>
 </html>
