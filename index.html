@@ -926,20 +926,20 @@ const translations = {
 
  const diagBtn = document.getElementById('diagBtn');
   if(diagBtn) {
-    // 1. Añadimos la clase para que el botón "late" (la que pusimos en el CSS)
+    // 1. Añadimos la clase de animación (latido)
     diagBtn.classList.add('btn-whatsapp-pulse');
     
-    // 2. Usamos innerHTML para meter el icono de WhatsApp + el texto
-    diagBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right: 10px;"></i> ${texts.diagBtn}`;
+    // 2. Insertamos el icono de WhatsApp + el texto traducido
+    // El font-size 1.2rem hace que el icono se vea un poco más claro
+    diagBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2rem;"></i> ${texts.diagBtn}`;
     
-    // --- LÓGICA DINÁMICA PARA WHATSAPP ---
+    // 3. Configuramos el mensaje automático según el idioma seleccionado
     if (currentLang === 'es') {
       diagBtn.href = "https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20una%20sesión%20de%20diagnóstico%20analítico.";
     } else {
       diagBtn.href = "https://wa.me/573007260562?text=Hi%20Karen,%20I%20am%20interested%20in%20scheduling%20an%20analytical%20diagnosis%20session.";
     }
   }
-
   const diagNote = document.getElementById('diagNote');
   if(diagNote) diagNote.textContent = texts.diagNote;
       
@@ -1010,7 +1010,6 @@ const translations = {
             ${currentLang === 'es' ? 'Agendar Diagnóstico' : 'Schedule Diagnosis'}
           </a>
         </div>
-      `; 
       
       serviceModal.style.display = "block";
     }
