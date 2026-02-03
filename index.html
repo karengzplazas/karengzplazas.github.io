@@ -978,26 +978,45 @@ function closeServiceModal() {
   document.getElementById('serviceDetailModal').style.display = "none";
 }
 
-// --- 5. INICIO ---
+// --- 5. CONFIGURACIÓN FINAL Y ARRANQUE ---
 document.addEventListener('DOMContentLoaded', () => {
+  console.log("Iniciando configuración final...");
+
+  // A. Botón de Idioma
   const langToggle = document.getElementById('langToggle');
   if (langToggle) {
-    langToggle.onclick = () => {
+    langToggle.addEventListener('click', () => {
       currentLang = currentLang === 'es' ? 'en' : 'es';
       langToggle.textContent = currentLang.toUpperCase();
       updateLanguage();
-    };
+    });
   }
-  
-  // Cerrar modales al hacer clic fuera
-  window.onclick = (e) => {
-    if (e.target.className === 'modal') {
+
+  // B. Control de Modales (Cerrar al hacer clic fuera)
+  // Usamos addEventListener para no sobreescribir otros clics
+  window.addEventListener('click', (e) => {
+    // Si el usuario hace clic en el fondo oscuro del modal, se cierra
+    if (e.target.classList.contains('modal')) {
       e.target.style.display = "none";
     }
-  };
+  });
 
+  // C. Menú Hamburguesa (Para que no se pierda en el móvil)
+  const hamb = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (hamb && navLinks) {
+    hamb.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+
+  // D. Año del Footer
+  const yearEl = document.getElementById('year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // E. EJECUCIÓN INICIAL
   updateLanguage();
-  console.log("4. Todo listo.");
+  console.log("4. Todo listo y funcionando.");
 });
 </script>
 </body>
