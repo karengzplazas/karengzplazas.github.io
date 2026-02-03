@@ -1000,8 +1000,6 @@ langBtn.addEventListener('click', () => {
           ${faqsHtml}
         </div>
 
-       // Localiza la parte final de container.innerHTML y reemplaza el div del botón por este:
-
         <div style="margin-top: 30px; text-align:center;">
           <a href="#diagnostic-call" 
              onclick="closeServiceModal()" 
@@ -1011,9 +1009,10 @@ langBtn.addEventListener('click', () => {
             ${currentLang === 'es' ? 'Agendar Diagnóstico' : 'Schedule Diagnosis'}
           </a>
         </div>
+      `; // Aquí se cierra el contenido del modal
       
       serviceModal.style.display = "block";
-    }
+    } // Aquí se cierra la función completa
 
     // 4. Cerrar modales automáticamente al hacer clic fuera
     window.onclick = function(event) {
