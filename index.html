@@ -24,31 +24,35 @@
     }
 
     :root {
-      --primary:#0077b6;
-      --primary-dark:#005f8e;
-      --accent:#ffb703;
-      --bg:#f5f7fb;
-      --card:#ffffff;
-      --text:#20313a;
-      --muted:#55666f;
-      --radius:12px;
-      --shadow: 0 8px 22px rgba(16,24,40,0.08);
-      --max-width:1200px;
-    }
-   
-    *{box-sizing:border-box}
+  --primary:#0077b6;
+  --primary-dark:#005f8e;
+  --accent:#ffb703;
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#20313a;
+  --muted:#55666f;
+  --radius:12px;
+  --shadow: 0 8px 22px rgba(16,24,40,0.08);
+  --max-width:1200px;
 
-    body{
-      margin:0;
-      font-family:'Roboto',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased
-    }
+  /* WhatsApp */
+  --whatsapp:#25D366;
+  --whatsapp-dark:#1ebe5d;
+}
 
-    a{color:var(--primary);text-decoration:none}
-    a:hover{color:var(--primary-dark)}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Roboto',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased
+}
+
+a{color:var(--primary);text-decoration:none}
+a:hover{color:var(--primary-dark)}
 
     /* NAV */
     .nav{
@@ -259,11 +263,48 @@
       cursor: pointer;
       color: var(--muted);
     }
-    .form-group { margin-bottom: 15px; text-align: left; }
-    .form-group label { display: block; font-weight: 500; margin-bottom: 5px; color: var(--text); }
     .form-group input, .form-group textarea {
-      width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;
-    }
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+/* =========================
+   Botón WhatsApp
+   ========================= */
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  background: var(--whatsapp);
+  color: #ffffff !important;
+
+  padding: 16px 36px;
+  border-radius: 999px;
+
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.35);
+  transition: all 0.25s ease;
+}
+
+/* Icono de WhatsApp */
+.btn-whatsapp i {
+  font-size: 1.35rem;
+}
+
+/* Hover */
+.btn-whatsapp:hover {
+  background: var(--whatsapp-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(37, 211, 102, 0.45);
+}
 
   /* ACORDEÓN FAQ DENTRO DEL MODAL (VERSIÓN CORREGIDA) */
 .faq-item { border-bottom: 1px solid #edf2f7; padding: 5px 0; }
@@ -469,9 +510,9 @@
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  background-color: #28a745 !important; /* Color oficial de WhatsApp */
-  border-color: #28a745 !important;
-  color: white !important;
+  background-color: var(--whatsapp) !important;
+  border-color: var(--whatsapp) !important;
+  color: #ffffff !important;
 }
   </style>
 </head>
