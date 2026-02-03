@@ -762,13 +762,8 @@ a:hover{color:var(--primary-dark)}
     © <span id="year"></span> <span id="footerText">Karen Gómez P. — Transformando datos en conocimiento.</span>
   </footer>
 
-  <script>
-// Función para alternar las FAQs
-function toggleFaq(button) {
-  const item = button.parentElement;
-  item.classList.toggle('active');
-}
-   // --- DATOS EXTENDIDOS PARA SERVICIOS (CON ICONOS Y FAQS) ---
+ <script>
+// --- 1. DATOS DE SERVICIOS ---
 const serviceDetails = {
   analytics: {
     icon: "fa-chart-line",
@@ -843,27 +838,8 @@ const serviceDetails = {
     }
   }
 };
-  training: {
-    icon: "fa-chalkboard-teacher",
-    title: { es: "Capacitaciones a Medida", en: "Custom Training" },
-    text: { 
-      es: "Talleres prácticos sobre Python y visualización. Enseño a equipos a ser autónomos en el manejo de sus propios datos.", 
-      en: "Hands-on workshops on Python and visualization. I teach teams to be autonomous in handling their own data." 
-    },
-    faqs: {
-      es: [
-        { q: "¿Es para principiantes?", a: "Sí, adapto el nivel desde cero absoluto." },
-        { q: "¿Dan certificado?", a: "Se entrega constancia técnica de participación." }
-      ],
-      en: [
-        { q: "Is it for beginners?", a: "Yes, I adapt the level from absolute zero." },
-        { q: "Do you provide certificates?", a: "Technical certificates of participation are provided." }
-      ]
-    }
-  }
-};
 
-// --- LÓGICA DE TRADUCCIÓN ACTUALIZADA ---
+// --- 2. DATOS DE TRADUCCIÓN ---
 const translations = {
   es: {
     navAbout: "Sobre mí", navServices: "Servicios", navProjects: "Proyectos", navContact: "Contacto",
@@ -878,21 +854,17 @@ const translations = {
     service2Title: "Bioestadística", service2Desc: "Diseño experimental y análisis de estudios de salud.",
     service3Title: "Gestión de Datos", service3Desc: "ETL, SQL y pipelines reproducibles.",
     service4Title: "Capacitaciones", service4Desc: "Talleres prácticos en Python y visualización.",
-    
-    // --- NUEVAS CLAVES PARA EL DIAGNÓSTICO (ACTUALIZADO) ---
     diagStep: "Paso 1: Análisis Inicial",
     diagTitle: "Diagnóstico de Estrategia Analítica",
     diagDesc: "Analicemos la viabilidad de sus datos y definamos una hoja de ruta técnica clara antes de iniciar su proyecto.",
     diagPrice: "Consultoría de Viabilidad",
     diagBtn: "Agendar por WhatsApp",
     diagNote: "*Evaluación técnica personalizada para su proyecto.",
-
     projectsTitle: "Proyectos Destacados", pLink: "Ver proyecto", 
     p1Desc: "Análisis predictivo para factores de supervivencia usando ML.",
     p2Desc: "Modelo para predecir abandono y optimización de retención.",
     p3Desc: "Análisis de mercado de autos usados y modelo de compra-venta.",
     p4Desc: "Estudio y visualizaciones para políticas públicas basadas en datos.",
-    
     contactTitle: "Contacto", contactLead: "¿Listo para transformar datos en decisión? Escríbeme.",
     btnMail: "Enviar correo", btnCall: "Agendar llamada", modalTitle: "Agendar una llamada",
     labelName: "Nombre", labelPhone: "Teléfono", labelEmail: "Correo", labelMsg: "Mensaje", btnSubmitForm: "Enviar solicitud",
@@ -912,15 +884,12 @@ const translations = {
     service2Title: "Biostatistics", service2Desc: "Experimental design and health study analysis.",
     service3Title: "Data Management", service3Desc: "ETL, SQL and reproducible pipelines.",
     service4Title: "Training", service4Desc: "Hands-on Python and visualization workshops.",
-
-    // --- NEW KEYS FOR DIAGNOSIS (UPDATED) ---
     diagStep: "Step 1: Initial Analysis",
     diagTitle: "Analytical Strategy Diagnosis",
     diagDesc: "Let's analyze your data viability and define a clear technical roadmap before starting your project.",
     diagPrice: "Feasibility Consultancy",
     diagBtn: "Schedule via WhatsApp",
     diagNote: "*Personalized technical evaluation for your project.",
-
     projectsTitle: "Featured Projects", pLink: "View project", 
     p1Desc: "Predictive analysis for survival factors using ML.",
     p2Desc: "Model to predict churn and retention optimization strategy.",
@@ -934,31 +903,18 @@ const translations = {
   }
 };
 
-// --- 1. CONFIGURACIÓN INICIAL Y PREGUNTAS FRECUENTES ---
+// --- 3. LÓGICA DE FUNCIONAMIENTO ---
 let currentLang = 'es';
 const langBtn = document.getElementById('langToggle');
 
-// Esta función debe estar aquí para que las FAQs funcionen
 function toggleFaq(button) {
   const item = button.parentElement;
-  if (item) {
-    item.classList.toggle('active');
-  }
+  if (item) item.classList.toggle('active');
 }
 
-// --- 2. ESCUCHADOR PARA EL CAMBIO DE IDIOMA ---
-if (langBtn) {
-  langBtn.addEventListener('click', () => {
-    currentLang = currentLang === 'es' ? 'en' : 'es';
-    langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES'; 
-    updateLanguage();
-  });
-}
-
-// --- 3. FUNCIÓN DE TRADUCCIÓN (LISTA LARGA PROTEGIDA) ---
 function updateLanguage() {
   const texts = translations[currentLang];
-  if (!texts) return; // Seguridad por si translations no carga
+  if (!texts) return;
 
   const safeUpdate = (id, content, isHTML = false) => {
     const el = document.getElementById(id);
@@ -968,7 +924,7 @@ function updateLanguage() {
     }
   };
 
-  // Tu lista larga completa
+  // Lista de traducciones
   safeUpdate('heroName', texts.heroName);
   safeUpdate('nav-about', texts.navAbout);
   safeUpdate('nav-services', texts.navServices);
@@ -1007,30 +963,33 @@ function updateLanguage() {
   safeUpdate('footerText', texts.footerText);
   safeUpdate('modalServiceCta', texts.modalServiceCta);
 
-  // Links de proyectos
-  document.querySelectorAll('.p-link').forEach(link => { 
-    link.textContent = texts.pLink; 
-  });
-
-  // Sección de Diagnóstico
+  document.querySelectorAll('.p-link').forEach(link => { link.textContent = texts.pLink; });
+  
   safeUpdate('diagStep', texts.diagStep);
   safeUpdate('diagTitle', texts.diagTitle);
   safeUpdate('diagDesc', texts.diagDesc);
   safeUpdate('diagPrice', texts.diagPrice);
   safeUpdate('diagNote', texts.diagNote);
 
-  // Botón de WhatsApp
   const diagBtn = document.getElementById('diagBtn');
   if (diagBtn) {
-    diagBtn.classList.add('btn-whatsapp-pulse');
-    diagBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2rem;"></i> ${texts.diagBtn}`;
+    diagBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right: 10px;"></i> ${texts.diagBtn}`;
     diagBtn.href = currentLang === 'es' 
-      ? "https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20una%20sesión%20de%20diagnóstico%20analítico."
-      : "https://wa.me/573007260562?text=Hi%20Karen,%20I%20am%20interested%20in%20scheduling%20an%20analytical%20diagnosis%20session.";
+      ? "https://wa.me/573007260562?text=Hola%20Karen..." 
+      : "https://wa.me/573007260562?text=Hi%20Karen...";
   }
 }
 
-// --- 4. LÓGICA DE MODALES (UNIFICADA) ---
+// Evento cambio de idioma
+if (langBtn) {
+  langBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES'; 
+    updateLanguage();
+  });
+}
+
+// Modales
 const contactModal = document.getElementById("contactModal");
 const serviceModal = document.getElementById("serviceDetailModal");
 
@@ -1039,69 +998,44 @@ function closeModal() { if(contactModal) contactModal.style.display = "none"; }
 function closeServiceModal() { if(serviceModal) serviceModal.style.display = "none"; }
 
 function openServiceModal(key) {
-  if (typeof serviceDetails === 'undefined') return;
   const data = serviceDetails[key];
   const container = document.getElementById('serviceContent');
   if (!data || !container) return;
 
-  const currentFaqs = data.faqs[currentLang];
-  const faqsHtml = currentFaqs.map(item => `
+  const faqsHtml = data.faqs[currentLang].map(item => `
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
         <span>${item.q}</span>
         <i class="fas fa-chevron-down"></i>
       </button>
-      <div class="faq-answer">
-        <p style="margin: 0; padding: 10px 0; color: #666; font-size: 0.95rem;">${item.a}</p>
-      </div>
+      <div class="faq-answer"><p>${item.a}</p></div>
     </div>
   `).join('');
 
   container.innerHTML = `
-    <div style="text-align:center; margin-bottom:20px;">
-      <i class="fas ${data.icon}" style="font-size: 3rem; color: var(--primary); opacity: 0.8;"></i>
-    </div>
-    <h3 style="color:var(--primary); font-family:'Playfair Display'; font-size: 26px; margin-bottom:15px; text-align:center;">
-      ${data.title[currentLang]}
-    </h3>
-    <p style="font-size:16px; margin-bottom:25px; color: var(--text); line-height: 1.6; text-align:center;">
-      ${data.text[currentLang]}
-    </p>
-    <div style="text-align:left; border-top:1px solid #eee; padding-top:20px;">
-      <p style="font-weight:700; color:var(--primary); font-size:11px; margin-bottom:15px; text-transform:uppercase; letter-spacing: 1.5px;">
-        ${currentLang === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
-      </p>
-      ${faqsHtml}
-    </div>
-    <div style="margin-top: 30px; text-align:center;">
-      <a href="#diagnostic-call" onclick="closeServiceModal()" class="btn-primary btn-whatsapp-pulse" style="padding: 12px 25px; text-decoration: none; border-radius: 5px; color: white; font-weight: bold; display: inline-flex; align-items: center; justify-content: center;">
-        <i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2rem;"></i>
-        ${currentLang === 'es' ? 'Agendar Diagnóstico' : 'Schedule Diagnosis'}
-      </a>
-    </div>
-  `;
+    <h3 style="text-align:center;">${data.title[currentLang]}</h3>
+    <p>${data.text[currentLang]}</p>
+    <div class="faq-section">${faqsHtml}</div>
+    <div style="text-align:center; margin-top:20px;">
+      <button onclick="closeServiceModal(); openModal();" class="btn-primary">Agendar ahora</button>
+    </div>`;
   serviceModal.style.display = "block";
 }
 
-window.onclick = function(event) {
+window.onclick = (event) => {
   if (event.target == contactModal) closeModal();
   if (event.target == serviceModal) closeServiceModal();
-}
+};
 
-// --- 5. EXTRAS Y ARRANQUE ---
-const yearEl = document.getElementById('year');
-if(yearEl) yearEl.textContent = new Date().getFullYear();
-
+// Menu Hamburguesa
 const hamb = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 if (hamb && navLinks) {
-  hamb.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
+  hamb.addEventListener('click', () => navLinks.classList.toggle('show'));
 }
 
-// ARRANQUE FINAL
+// Inicio
 updateLanguage();
-  </script>
+</script>
 </body>
 </html>
