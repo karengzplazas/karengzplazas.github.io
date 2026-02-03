@@ -934,27 +934,32 @@ const translations = {
   }
 };
 
+// --- 1. CONFIGURACIÓN INICIAL Y PREGUNTAS FRECUENTES ---
 let currentLang = 'es';
 const langBtn = document.getElementById('langToggle');
 
-// --- 1. FUNCIÓN PARA LAS PREGUNTAS FRECUENTES (Indispensable para que abran) ---
+// Esta función debe estar aquí para que las FAQs funcionen
 function toggleFaq(button) {
   const item = button.parentElement;
-  item.classList.toggle('active');
+  if (item) {
+    item.classList.toggle('active');
+  }
 }
 
 // --- 2. ESCUCHADOR PARA EL CAMBIO DE IDIOMA ---
-langBtn.addEventListener('click', () => {
-  currentLang = currentLang === 'es' ? 'en' : 'es';
-  langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES'; 
-  updateLanguage();
-});
+if (langBtn) {
+  langBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES'; 
+    updateLanguage();
+  });
+}
 
-// --- 3. FUNCIÓN DE TRADUCCIÓN SEGURA ---
+// --- 3. FUNCIÓN DE TRADUCCIÓN (LISTA LARGA PROTEGIDA) ---
 function updateLanguage() {
   const texts = translations[currentLang];
-  
-  // Función de seguridad para evitar bloqueos
+  if (!texts) return; // Seguridad por si translations no carga
+
   const safeUpdate = (id, content, isHTML = false) => {
     const el = document.getElementById(id);
     if (el) {
@@ -963,7 +968,7 @@ function updateLanguage() {
     }
   };
 
-  // Traducción de todos tus elementos
+  // Tu lista larga completa
   safeUpdate('heroName', texts.heroName);
   safeUpdate('nav-about', texts.navAbout);
   safeUpdate('nav-services', texts.navServices);
@@ -1002,26 +1007,26 @@ function updateLanguage() {
   safeUpdate('footerText', texts.footerText);
   safeUpdate('modalServiceCta', texts.modalServiceCta);
 
+  // Links de proyectos
   document.querySelectorAll('.p-link').forEach(link => { 
     link.textContent = texts.pLink; 
   });
 
+  // Sección de Diagnóstico
   safeUpdate('diagStep', texts.diagStep);
   safeUpdate('diagTitle', texts.diagTitle);
   safeUpdate('diagDesc', texts.diagDesc);
   safeUpdate('diagPrice', texts.diagPrice);
   safeUpdate('diagNote', texts.diagNote);
 
-  // WhatsApp con efecto de latido y mensajes correctos
+  // Botón de WhatsApp
   const diagBtn = document.getElementById('diagBtn');
   if (diagBtn) {
     diagBtn.classList.add('btn-whatsapp-pulse');
     diagBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2rem;"></i> ${texts.diagBtn}`;
-    if (currentLang === 'es') {
-      diagBtn.href = "https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20una%20sesión%20de%20diagnóstico%20analítico.";
-    } else {
-      diagBtn.href = "https://wa.me/573007260562?text=Hi%20Karen,%20I%20am%20interested%20in%20scheduling%20an%20analytical%20diagnosis%20session.";
-    }
+    diagBtn.href = currentLang === 'es' 
+      ? "https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20una%20sesión%20de%20diagnóstico%20analítico."
+      : "https://wa.me/573007260562?text=Hi%20Karen,%20I%20am%20interested%20in%20scheduling%20an%20analytical%20diagnosis%20session.";
   }
 }
 
@@ -1029,21 +1034,17 @@ function updateLanguage() {
 const contactModal = document.getElementById("contactModal");
 const serviceModal = document.getElementById("serviceDetailModal");
 
-function openModal() { 
-  if(contactModal) contactModal.style.display = "block"; 
-}
-function closeModal() { 
-  if(contactModal) contactModal.style.display = "none"; 
-}
-function closeServiceModal() { 
-  if(serviceModal) serviceModal.style.display = "none"; 
-}
+function openModal() { if(contactModal) contactModal.style.display = "block"; }
+function closeModal() { if(contactModal) contactModal.style.display = "none"; }
+function closeServiceModal() { if(serviceModal) serviceModal.style.display = "none"; }
 
 function openServiceModal(key) {
+  if (typeof serviceDetails === 'undefined') return;
   const data = serviceDetails[key];
   const container = document.getElementById('serviceContent');
+  if (!data || !container) return;
+
   const currentFaqs = data.faqs[currentLang];
-  
   const faqsHtml = currentFaqs.map(item => `
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
@@ -1073,10 +1074,7 @@ function openServiceModal(key) {
       ${faqsHtml}
     </div>
     <div style="margin-top: 30px; text-align:center;">
-      <a href="#diagnostic-call" 
-         onclick="closeServiceModal()" 
-         class="btn-primary btn-whatsapp-pulse" 
-         style="padding: 12px 25px; text-decoration: none; border-radius: 5px; color: white; font-weight: bold; display: inline-flex; align-items: center; justify-content: center;">
+      <a href="#diagnostic-call" onclick="closeServiceModal()" class="btn-primary btn-whatsapp-pulse" style="padding: 12px 25px; text-decoration: none; border-radius: 5px; color: white; font-weight: bold; display: inline-flex; align-items: center; justify-content: center;">
         <i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2rem;"></i>
         ${currentLang === 'es' ? 'Agendar Diagnóstico' : 'Schedule Diagnosis'}
       </a>
@@ -1085,13 +1083,12 @@ function openServiceModal(key) {
   serviceModal.style.display = "block";
 }
 
-// Cerrar modales al hacer clic fuera
 window.onclick = function(event) {
   if (event.target == contactModal) closeModal();
   if (event.target == serviceModal) closeServiceModal();
 }
 
-// --- 5. FUNCIONALIDADES EXTRAS Y ARRANQUE ---
+// --- 5. EXTRAS Y ARRANQUE ---
 const yearEl = document.getElementById('year');
 if(yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -1100,11 +1097,10 @@ const navLinks = document.getElementById('navLinks');
 if (hamb && navLinks) {
   hamb.addEventListener('click', () => {
     navLinks.classList.toggle('show');
-    hamb.setAttribute('aria-expanded', navLinks.classList.contains('show'));
   });
 }
 
-// LLAMADA INICIAL: Carga los textos y arranca todo
+// ARRANQUE FINAL
 updateLanguage();
   </script>
 </body>
