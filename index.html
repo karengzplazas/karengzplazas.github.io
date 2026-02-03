@@ -24,31 +24,35 @@
     }
 
     :root {
-      --primary:#0077b6;
-      --primary-dark:#005f8e;
-      --accent:#ffb703;
-      --bg:#f5f7fb;
-      --card:#ffffff;
-      --text:#20313a;
-      --muted:#55666f;
-      --radius:12px;
-      --shadow: 0 8px 22px rgba(16,24,40,0.08);
-      --max-width:1200px;
-    }
-   
-    *{box-sizing:border-box}
+  --primary:#0077b6;
+  --primary-dark:#005f8e;
+  --accent:#ffb703;
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#20313a;
+  --muted:#55666f;
+  --radius:12px;
+  --shadow: 0 8px 22px rgba(16,24,40,0.08);
+  --max-width:1200px;
 
-    body{
-      margin:0;
-      font-family:'Roboto',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased
-    }
+  /* WhatsApp */
+  --whatsapp:#25D366;
+  --whatsapp-dark:#1ebe5d;
+}
 
-    a{color:var(--primary);text-decoration:none}
-    a:hover{color:var(--primary-dark)}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Roboto',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased
+}
+
+a{color:var(--primary);text-decoration:none}
+a:hover{color:var(--primary-dark)}
 
     /* NAV */
     .nav{
@@ -259,11 +263,48 @@
       cursor: pointer;
       color: var(--muted);
     }
-    .form-group { margin-bottom: 15px; text-align: left; }
-    .form-group label { display: block; font-weight: 500; margin-bottom: 5px; color: var(--text); }
     .form-group input, .form-group textarea {
-      width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;
-    }
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+/* =========================
+   Botón WhatsApp
+   ========================= */
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  background: var(--whatsapp);
+  color: #ffffff !important;
+
+  padding: 16px 36px;
+  border-radius: 999px;
+
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.35);
+  transition: all 0.25s ease;
+}
+
+/* Icono de WhatsApp */
+.btn-whatsapp i {
+  font-size: 1.35rem;
+}
+
+/* Hover */
+.btn-whatsapp:hover {
+  background: var(--whatsapp-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(37, 211, 102, 0.45);
+}
 
   /* ACORDEÓN FAQ DENTRO DEL MODAL (VERSIÓN CORREGIDA) */
 .faq-item { border-bottom: 1px solid #edf2f7; padding: 5px 0; }
@@ -469,9 +510,9 @@
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  background-color: #28a745 !important; /* Color oficial de WhatsApp */
-  border-color: #28a745 !important;
-  color: white !important;
+  background-color: var(--whatsapp) !important;
+  border-color: var(--whatsapp) !important;
+  color: #ffffff !important;
 }
   </style>
 </head>
@@ -645,15 +686,20 @@
           <p id="diagPrice" style="font-size: 2rem; font-weight: 700; color: var(--text); margin-bottom: 10px;"></p>
           <p id="diagNote" style="font-size: 0.9rem; color: var(--muted); margin-bottom: 25px;"></p>
           
-          <a href="https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20el%20Diagnóstico%20de%20Estrategia%20Analítica." 
-             id="diagBtn" 
-             class="btn-primary" 
-             target="_blank"
-             style="background-color: #28a745; border-color: #28a745; padding: 18px 40px; font-size: 1.1rem; text-decoration: none; border-radius: 5px; color: white; display: inline-block; font-weight: bold;">
+          <a
+            href="https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20el%20Diagnóstico%20de%20Estrategia%20Analítica."
+            id="diagBtn"
+            class="btn-whatsapp btn-whatsapp-pulse"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa-brands fa-whatsapp"></i>
+            Escríbeme por WhatsApp
           </a>
-        </div>
-      </div>
-    </section>
+          </div>
+          </div>
+          </section>
+
 
     <section id="contact" aria-labelledby="contactTitle">
       <h2 id="contactTitle">Contacto</h2>
@@ -792,6 +838,25 @@ const serviceDetails = {
     }
   }
 };
+  training: {
+    icon: "fa-chalkboard-teacher",
+    title: { es: "Capacitaciones a Medida", en: "Custom Training" },
+    text: { 
+      es: "Talleres prácticos sobre Python y visualización. Enseño a equipos a ser autónomos en el manejo de sus propios datos.", 
+      en: "Hands-on workshops on Python and visualization. I teach teams to be autonomous in handling their own data." 
+    },
+    faqs: {
+      es: [
+        { q: "¿Es para principiantes?", a: "Sí, adapto el nivel desde cero absoluto." },
+        { q: "¿Dan certificado?", a: "Se entrega constancia técnica de participación." }
+      ],
+      en: [
+        { q: "Is it for beginners?", a: "Yes, I adapt the level from absolute zero." },
+        { q: "Do you provide certificates?", a: "Technical certificates of participation are provided." }
+      ]
+    }
+  }
+};
 
 // --- LÓGICA DE TRADUCCIÓN ACTUALIZADA ---
 const translations = {
@@ -809,19 +874,20 @@ const translations = {
     service3Title: "Gestión de Datos", service3Desc: "ETL, SQL y pipelines reproducibles.",
     service4Title: "Capacitaciones", service4Desc: "Talleres prácticos en Python y visualización.",
     
-    // --- NUEVAS CLAVES PARA EL DIAGNÓSTICO (MONETIZACIÓN) ---
-    diagStep: "Paso 1: Claridad Técnica",
+    // --- NUEVAS CLAVES PARA EL DIAGNÓSTICO (ACTUALIZADO) ---
+    diagStep: "Paso 1: Análisis Inicial",
     diagTitle: "Diagnóstico de Estrategia Analítica",
-    diagDesc: "Antes de invertir en un desarrollo completo, asegure la viabilidad de sus datos. En esta sesión evaluamos su arquitectura y definimos una hoja de ruta.",
-    diagPrice: "Inversión: $50 USD",
-    diagBtn: "Reservar y Pagar Diagnóstico",
-    diagNote: "*Monto deducible del presupuesto final.",
+    diagDesc: "Analicemos la viabilidad de sus datos y definamos una hoja de ruta técnica clara antes de iniciar su proyecto.",
+    diagPrice: "Consultoría de Viabilidad",
+    diagBtn: "Agendar por WhatsApp",
+    diagNote: "*Evaluación técnica personalizada para su proyecto.",
 
     projectsTitle: "Proyectos Destacados", pLink: "Ver proyecto", 
     p1Desc: "Análisis predictivo para factores de supervivencia usando ML.",
     p2Desc: "Modelo para predecir abandono y optimización de retención.",
     p3Desc: "Análisis de mercado de autos usados y modelo de compra-venta.",
     p4Desc: "Estudio y visualizaciones para políticas públicas basadas en datos.",
+    
     contactTitle: "Contacto", contactLead: "¿Listo para transformar datos en decisión? Escríbeme.",
     btnMail: "Enviar correo", btnCall: "Agendar llamada", modalTitle: "Agendar una llamada",
     labelName: "Nombre", labelPhone: "Teléfono", labelEmail: "Correo", labelMsg: "Mensaje", btnSubmitForm: "Enviar solicitud",
@@ -842,13 +908,13 @@ const translations = {
     service3Title: "Data Management", service3Desc: "ETL, SQL and reproducible pipelines.",
     service4Title: "Training", service4Desc: "Hands-on Python and visualization workshops.",
 
-    // --- NEW KEYS FOR DIAGNOSIS (MONETIZATION) ---
-    diagStep: "Step 1: Technical Clarity",
+    // --- NEW KEYS FOR DIAGNOSIS (UPDATED) ---
+    diagStep: "Step 1: Initial Analysis",
     diagTitle: "Analytical Strategy Diagnosis",
-    diagDesc: "Before investing in full development, ensure your data's viability. In this session, we evaluate your architecture and define a roadmap.",
-    diagPrice: "Investment: $50 USD",
-    diagBtn: "Book and Pay Diagnosis",
-    diagNote: "*Amount deductible from the final budget.",
+    diagDesc: "Let's analyze your data viability and define a clear technical roadmap before starting your project.",
+    diagPrice: "Feasibility Consultancy",
+    diagBtn: "Schedule via WhatsApp",
+    diagNote: "*Personalized technical evaluation for your project.",
 
     projectsTitle: "Featured Projects", pLink: "View project", 
     p1Desc: "Predictive analysis for survival factors using ML.",
@@ -862,15 +928,21 @@ const translations = {
     modalServiceCta: "Request information"
   }
 };
-    let currentLang = 'es';
-    const langBtn = document.getElementById('langToggle');
 
-    langBtn.addEventListener('click', () => {
-      currentLang = currentLang === 'es' ? 'en' : 'es';
-      langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
-      updateLanguage();
-    });
+let currentLang = 'es';
+const langBtn = document.getElementById('langToggle');
 
+// 1. Escuchador para el clic del usuario
+langBtn.addEventListener('click', () => {
+  currentLang = currentLang === 'es' ? 'en' : 'es';
+  // El texto del botón muestra el idioma al que PUEDES cambiar
+  langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES'; 
+  updateLanguage();
+});
+
+// 2. IMPORTANTE: Llamada inicial para cargar los textos por primera vez
+// Esto debe ir al final de todo tu bloque de script.
+updateLanguage();
     function updateLanguage() {
   const texts = translations[currentLang];
   document.getElementById('heroName').textContent = texts.heroName;
@@ -963,56 +1035,51 @@ const translations = {
     
    // 3. Función para ABRIR el modal de servicios (CORREGIDA)
     function openServiceModal(key) {
-      const data = serviceDetails[key];
-      const container = document.getElementById('serviceContent');
-      const currentFaqs = data.faqs[currentLang];
-      
-      const faqsHtml = currentFaqs.map(item => `
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('active')">
-            <span>${item.q}</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p style="margin: 0; padding: 10px 0; color: #666; font-size: 0.95rem;">${item.a}</p>
-          </div>
-        </div>
-      `).join('');
-      
-      container.innerHTML = `
-        <div style="text-align:center; margin-bottom:20px;">
-          <i class="fas ${data.icon}" style="font-size: 3rem; color: var(--primary); opacity: 0.8;"></i>
-        </div>
+  const data = serviceDetails[key];
+  const container = document.getElementById('serviceContent');
+  const currentFaqs = data.faqs[currentLang];
+  
+  const faqsHtml = currentFaqs.map(item => `
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('active')">
+        <span>${item.q}</span>
+        <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p style="margin: 0; padding: 10px 0; color: #666; font-size: 0.95rem;">${item.a}</p>
+      </div>
+    </div>
+  `).join('');
 
-        <h3 style="color:var(--primary); font-family:'Playfair Display'; font-size: 26px; margin-bottom:15px; text-align:center;">
-          ${data.title[currentLang]}
-        </h3>
-        
-        <p style="font-size:16px; margin-bottom:25px; color: var(--text); line-height: 1.6; text-align:center;">
-          ${data.text[currentLang]}
-        </p>
-
-        <div style="text-align:left; border-top:1px solid #eee; padding-top:20px;">
-          <p style="font-weight:700; color:var(--primary); font-size:11px; margin-bottom:15px; text-transform:uppercase; letter-spacing: 1.5px;">
-            ${currentLang === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
-          </p>
-          ${faqsHtml}
-        </div>
-
-       // Localiza la parte final de container.innerHTML y reemplaza el div del botón por este:
-
-        <div style="margin-top: 30px; text-align:center;">
-          <a href="#diagnostic-call" 
-             onclick="closeServiceModal()" 
-             class="btn-primary btn-whatsapp-pulse" 
-             style="padding: 12px 25px; text-decoration: none; border-radius: 5px; color: white; font-weight: bold; display: inline-flex; align-items: center; justify-content: center;">
-            <i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2rem;"></i>
-            ${currentLang === 'es' ? 'Agendar Diagnóstico' : 'Schedule Diagnosis'}
-          </a>
-        </div>
-      
-      serviceModal.style.display = "block";
-    }
+  container.innerHTML = `
+    <div style="text-align:center; margin-bottom:20px;">
+      <i class="fas ${data.icon}" style="font-size: 3rem; color: var(--primary); opacity: 0.8;"></i>
+    </div>
+    <h3 style="color:var(--primary); font-family:'Playfair Display'; font-size: 26px; margin-bottom:15px; text-align:center;">
+      ${data.title[currentLang]}
+    </h3>
+    <p style="font-size:16px; margin-bottom:25px; color: var(--text); line-height: 1.6; text-align:center;">
+      ${data.text[currentLang]}
+    </p>
+    <div style="text-align:left; border-top:1px solid #eee; padding-top:20px;">
+      <p style="font-weight:700; color:var(--primary); font-size:11px; margin-bottom:15px; text-transform:uppercase; letter-spacing: 1.5px;">
+        ${currentLang === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
+      </p>
+      ${faqsHtml}
+    </div>
+    <div style="margin-top: 30px; text-align:center;">
+      <a href="#diagnostic-call" 
+         onclick="closeServiceModal()" 
+         class="btn-primary btn-whatsapp-pulse" 
+         style="padding: 12px 25px; text-decoration: none; border-radius: 5px; color: white; font-weight: bold; display: inline-flex; align-items: center; justify-content: center;">
+        <i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2rem;"></i>
+        ${currentLang === 'es' ? 'Agendar Diagnóstico' : 'Schedule Diagnosis'}
+      </a>
+    </div>
+  `;
+  
+  serviceModal.style.display = "block";
+}
 
     // 4. Cerrar modales automáticamente al hacer clic fuera
     window.onclick = function(event) {
