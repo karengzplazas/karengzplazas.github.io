@@ -762,10 +762,8 @@ a:hover{color:var(--primary-dark)}
     © <span id="year"></span> <span id="footerText">Karen Gómez P. — Transformando datos en conocimiento.</span>
   </footer>
 
- <script>
-console.log("1. Iniciando carga completa...");
-
-// --- 1. TUS DATOS DE SERVICIOS COMPLETOS ---
+<script>
+// --- 1. DATOS DE SERVICIOS ---
 const serviceDetails = {
   analytics: {
     icon: "fa-chart-line",
@@ -841,7 +839,7 @@ const serviceDetails = {
   }
 };
 
-// --- 2. TUS TRADUCCIONES REALES ---
+// --- 2. TRADUCCIONES ---
 const translations = {
   es: {
     navAbout: "Sobre mí", navServices: "Servicios", navProjects: "Proyectos", navContact: "Contacto",
@@ -905,9 +903,9 @@ const translations = {
   }
 };
 
-// --- 3. LÓGICA DE FUNCIONAMIENTO ---
 let currentLang = 'es';
 
+// --- 3. LÓGICA ---
 function updateLanguage() {
   const texts = translations[currentLang];
   
@@ -927,93 +925,58 @@ function updateLanguage() {
     link.textContent = texts.pLink; 
   });
 
-  const diagBtn = document.getElementById('diagBtn');
-  if (diagBtn) {
-    diagBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right:10px;"></i> ${texts.diagBtn}`;
-    diagBtn.href = currentLang === 'es' 
-      ? "https://wa.me/573007260562?text=Hola%20Karen,%20me%20interesa%20agendar%20una%20sesión%20de%20diagnóstico%20analítico."
-      : "https://wa.me/573007260562?text=Hi%20Karen,%20I%20am%20interested%20in%20scheduling%20an%20analytical%20diagnosis%20session.";
+  const dBtn = document.getElementById('diagBtn');
+  if (dBtn) {
+    dBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right:10px;"></i> ${texts.diagBtn}`;
+    const msg = currentLang === 'es' ? "Hola%20Karen..." : "Hi%20Karen...";
+    dBtn.href = `https://wa.me/573007260562?text=${msg}`;
   }
 }
 
-// --- 4. MODALES Y FAQS ---
 function toggleFaq(btn) {
-  if(btn && btn.parentElement) {
-    btn.parentElement.classList.toggle('active');
-  }
+  if(btn && btn.parentElement) btn.parentElement.classList.toggle('active');
 }
 
 function openServiceModal(key) {
   const data = serviceDetails[key];
-  const container = document.getElementById('serviceContent');
-  if (!data || !container) return;
+  const cont = document.getElementById('serviceContent');
+  if (!data || !cont) return;
 
-  const faqsHtml = data.faqs[currentLang].map(item => `
+  const faqs = data.faqs[currentLang].map(item => `
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        <span>${item.q}</span>
-        <i class="fas fa-chevron-down"></i>
-      </button>
+      <button class="faq-question" onclick="toggleFaq(this)"><span>${item.q}</span><i class="fas fa-chevron-down"></i></button>
       <div class="faq-answer"><p>${item.a}</p></div>
-    </div>
-  `).join('');
+    </div>`).join('');
 
-  container.innerHTML = `
-    <div style="text-align:center; margin-bottom:20px;"><i class="fas ${data.icon}" style="font-size:3rem; color:var(--primary);"></i></div>
-    <h3 style="text-align:center; font-family:'Playfair Display';">${data.title[currentLang]}</h3>
-    <p style="text-align:center; margin-bottom:20px;">${data.text[currentLang]}</p>
-    <div class="modal-faqs">${faqsHtml}</div>
-    <div style="text-align:center; margin-top:30px;">
-      <a href="#contact" onclick="closeServiceModal()" class="btn-primary">
-        ${currentLang === 'es' ? 'Consultar ahora' : 'Inquire now'}
-      </a>
-    </div>
-  `;
+  cont.innerHTML = `<h3>${data.title[currentLang]}</h3><p>${data.text[currentLang]}</p><div class="modal-faqs">${faqs}</div>`;
   document.getElementById('serviceDetailModal').style.display = "block";
 }
 
 function closeServiceModal() {
-  const modal = document.getElementById('serviceDetailModal');
-  if(modal) modal.style.display = "none";
+  const m = document.getElementById('serviceDetailModal');
+  if(m) m.style.display = "none";
 }
 
-// --- 5. CONFIGURACIÓN FINAL Y ARRANQUE ---
+// --- 4. ARRANQUE ---
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("Iniciando configuración final...");
-
-  // A. Botón de Idioma
-  const langToggle = document.getElementById('langToggle');
-  if (langToggle) {
-    langToggle.addEventListener('click', () => {
+  const lBtn = document.getElementById('langToggle');
+  if (lBtn) {
+    lBtn.onclick = () => {
       currentLang = currentLang === 'es' ? 'en' : 'es';
-      langToggle.textContent = currentLang.toUpperCase();
+      lBtn.textContent = currentLang.toUpperCase();
       updateLanguage();
-    });
+    };
   }
 
-  // B. Control de Modales (Cerrar al hacer clic fuera)
-  window.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal')) {
-      e.target.style.display = "none";
-    }
-  });
+  window.onclick = (e) => {
+    if (e.target.classList.contains('modal')) e.target.style.display = "none";
+  };
 
-  // C. Menú Hamburguesa
-  const hamb = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  if (hamb && navLinks) {
-    hamb.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
-  }
+  const year = document.getElementById('year');
+  if(year) year.textContent = new Date().getFullYear();
 
-  // D. Año del Footer
-  const yearEl = document.getElementById('year');
-  if(yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // E. EJECUCIÓN INICIAL
   updateLanguage();
-  console.log("4. Todo listo y funcionando.");
+  console.log("Sistema activo.");
 });
 </script>
 </body>
