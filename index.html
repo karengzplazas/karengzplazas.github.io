@@ -763,7 +763,6 @@ a:hover{color:var(--primary-dark)}
   </footer>
 
  <script>
-<script>
 console.log("1. Iniciando carga completa...");
 
 // --- 1. TUS DATOS DE SERVICIOS COMPLETOS ---
@@ -920,17 +919,14 @@ function updateLanguage() {
     }
   };
 
-  // Traducción masiva de IDs
   Object.keys(texts).forEach(key => {
     safeUpdate(key, texts[key], key === 'aboutText1');
   });
 
-  // Traducción de clases (p-link)
   document.querySelectorAll('.p-link').forEach(link => { 
     link.textContent = texts.pLink; 
   });
 
-  // Actualizar Botón WhatsApp con icono
   const diagBtn = document.getElementById('diagBtn');
   if (diagBtn) {
     diagBtn.innerHTML = `<i class="fab fa-whatsapp" style="margin-right:10px;"></i> ${texts.diagBtn}`;
@@ -942,7 +938,9 @@ function updateLanguage() {
 
 // --- 4. MODALES Y FAQS ---
 function toggleFaq(btn) {
-  btn.parentElement.classList.toggle('active');
+  if(btn && btn.parentElement) {
+    btn.parentElement.classList.toggle('active');
+  }
 }
 
 function openServiceModal(key) {
@@ -975,7 +973,8 @@ function openServiceModal(key) {
 }
 
 function closeServiceModal() {
-  document.getElementById('serviceDetailModal').style.display = "none";
+  const modal = document.getElementById('serviceDetailModal');
+  if(modal) modal.style.display = "none";
 }
 
 // --- 5. CONFIGURACIÓN FINAL Y ARRANQUE ---
@@ -993,15 +992,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // B. Control de Modales (Cerrar al hacer clic fuera)
-  // Usamos addEventListener para no sobreescribir otros clics
   window.addEventListener('click', (e) => {
-    // Si el usuario hace clic en el fondo oscuro del modal, se cierra
     if (e.target.classList.contains('modal')) {
       e.target.style.display = "none";
     }
   });
 
-  // C. Menú Hamburguesa (Para que no se pierda en el móvil)
+  // C. Menú Hamburguesa
   const hamb = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
   if (hamb && navLinks) {
