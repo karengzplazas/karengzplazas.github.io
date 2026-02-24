@@ -978,6 +978,16 @@ document.addEventListener('DOMContentLoaded', () => {
   updateLanguage();
   console.log("Sistema activo.");
 });
+  // --- FUNCIONES PARA MODAL DE CONTACTO ---
+function openModal() {
+  const modal = document.getElementById("contactModal");
+  if (modal) modal.style.display = "block";
+}
+
+function closeModal() {
+  const modal = document.getElementById("contactModal");
+  if (modal) modal.style.display = "none";
+}
 </script>
 </body>
 </html>
